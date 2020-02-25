@@ -1,0 +1,150 @@
+#
+
+# Shortcuts
+
+super + p
+    ~/Scripts/pmenu.sh
+
+super + shift + f
+    firefox
+    
+
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher
+super + d
+	rofi -show run
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+super + alt + space
+    ~/Scripts/kbdlayout.sh
+    
+#pulse Audio controls
+
+super + Left
+    amixer -c 0 -q set Master 2dB-
+super + Right
+    amixer -c 0 -q set Master 2dB+
+
+
+
+# Sreen brightness controls
+
+super + Up
+	light -A 5    # increase screen brightness
+super + Down
+	light -U 5    # decrease screen brightness
+
+# keyboard brightness controls
+
+XF86KbdBrightnessUp
+	light -s sysfs/leds/smc::kbd_backlight -A 5    # increase Kbd brightness
+XF86KbdBrightnessDown 
+	light -s sysfs/leds/smc::kbd_backlight -U 5 # decrease Kbd brightness
+
+# Media player controls
+
+XF86AudioPlay
+	playerctl play
+XF86AudioPause
+	playerctl pause
+XF86AudioNext
+	playerctl next
+XF86AudioPrev
+playerctl previous
+
+
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + shift + r
+	bspc wm -r
+
+# close and kill
+super + shift + q
+	bspc node -c
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# swap the current node and the biggest node
+super + space
+	bspc node -s biggest
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+# focus the next/previous node in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+
+
+
+
