@@ -6,16 +6,16 @@
 alias ls='ls --color=auto'
 PS1="\[\e[32m\]\w\[\e[m\]\[\e[31m\]_>\[\e[m\]"
 
-alias i3conf='sudo vim ~/.config/i3/config'
-alias sxconf='sudo vim ~/.config/sxhkd/sxhkdrc'
-alias berryconf='sudo vim ~/.config/berry/autostart'
-alias bsxconf='sudo vim ~/.config/berry/sxhkdrc'
-alias polyconf='sudo vim ~/.config/polybar/config'
+alias i3conf='vim ~/.config/i3/config'
+alias sxconf='vim ~/.config/sxhkd/sxhkdrc'
+alias bspconf='vim ~/.config/bspwm/bspwmrc'
+alias polyconf='vim ~/.config/polybar/config'
 alias h='cd ~/'
 alias c='cd ~/.config'
 alias D='cd ~/Downloads'
 alias d='cd ~/Documents'
 alias fuck='sudo !!'
+alias ls='exa -al'
 
 
 #bind 'set show-all-if-ambiguous on'

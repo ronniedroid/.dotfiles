@@ -5,7 +5,7 @@ c=$(echo -e "YES\nNO\n" | $MENU)
 
 if [ ${c} == YES ] 
 then
-	  qtile-cmd -o cmd -f shutdown
+	  bspc quit
 
 elif [ ${c} == NO ]
 then

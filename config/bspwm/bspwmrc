@@ -1,1 +1,26 @@
-/home/ronnie/.dotfiles/config/bspwm/bspwmrc
+#! /bin/sh
+
+sxhkd &
+picom &
+nitrogen --restore &
+~/.config/polybar/launch.sh
+
+bspc monitor LVDS1 -d I II III IV V
+bspc monitor VGA1 -d VI
+
+bspc config border_width         4
+bspc config window_gap          12
+
+bspc config normal_border_color "#b48ead"
+bspc config focused_border_color "#8fbcbb"
+bspc config urgent_border_color "#bf616a"
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a firefox desktop=^2
+bspc rule -a Emacs desktop=^3 state=tiled
+bspc rule -a Thunderbird desktop=^5
+bspc rule -a xfce4-session floating=on fullscreen=on
+bspc rule -a xfce4-panel floating=on manage=off
