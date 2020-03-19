@@ -1,14 +1,15 @@
 #! /bin/sh
 
 sxhkd &
-picom &
-nitrogen --restore &
+borders &
 ~/.config/polybar/launch.sh
+xsetroot -cursor_name left_ptr
+
 
 bspc monitor LVDS1 -d I II III IV V
 bspc monitor VGA1 -d VI
 
-bspc config border_width         4
+bspc config border_width        8
 bspc config window_gap          12
 
 bspc config normal_border_color "#b48ead"

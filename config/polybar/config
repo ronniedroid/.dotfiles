@@ -1,0 +1,258 @@
+[colors]
+;background = ${xrdb:color0:#222}
+;nord 10
+background = #3b4252
+background-alt = #444
+background-desktop = #8fbcbb
+background-battery-nord = #81A1C1
+background-wlan-nord = #BF616A 
+background-cpu-nord = #D08770 
+background-memory-nord = #B48EAD
+background-volume-nord = #EBCB8B 
+;foreground = ${xrdb:color7:#222}
+;nord 6
+foreground = #3b4252 
+foreground-alt = #555
+primary = #ffb52a
+secondary = #81a1c1
+alert = #bf616a
+
+[hacks]
+;Allow padding of modules while keeping the formatted background colour we've set
+module-margin = "  "
+
+
+[bar/bar1]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 26
+;offset-x = 1%
+;offset-y = 50%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #8fbcbb
+
+border-size = 0
+border-color = #8fbcbb
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 0
+;Usefull because some icons have weird heights
+font-0 = FontAwesome:size=10;1
+font-1 = FontAwesome:size=10;2
+font-2 = "Roboto Mono Bold for Powerline:size=10;1"
+font-3 = siji:pixelsize=10;1
+
+modules-left = bspwm
+modules-center = xwindow maximize close 
+modules-right = xkeyboard backlight volume battery date wlan 
+
+wm-restack = bspwm
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+tray-background = #bf616a
+
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <label>
+label =  %percentage%%
+label-foreground = #8fbcbb
+format-prefix = ${hacks.module-margin}
+format-suffix = ${hacks.module-margin}
+
+[module/close]
+type = custom/script
+exec = echo "X"
+format = <label>
+
+label = "  "
+format-foreground = #8fbcbb
+click-left = bspc node -c
+
+[module/maximize]
+type = custom/script
+exec = echo "M"
+format = <label>
+
+label = "  "
+format-foreground = #8fbcbb
+click-left = bspc desktop -l next
+
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format = <label-layout> <label-indicator>
+format-spacing = 0
+label-layout =   %layout%
+label-layout-padding = 2
+label-layout-foreground = #d08770
+
+
+[module/xwindow]
+type = internal/xwindow
+
+format = <label>
+label = %title%
+label-maxlen = 50
+format-foreground = 8fbcbb
+
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %icon%
+label-focused-foreground = #8fbcbb
+label-focused-underline= #8fbcbb
+label-focused-padding = 2
+
+label-occupied = %icon%
+label-occupied-foreground = #8fbcbb
+label-occupied-padding = 2
+
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = #b48ead
+label-empty-padding = 2
+
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
+ws-icon-default = ♟
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused = %name%
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-padding = ${module/bspwm.label-focused-padding}
+
+label-unfocused = %name%
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-background}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %name%!
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+format-connected = "  <label-connected>"
+label-connected = %essid%
+format-disconnected = "  WiFi Disconnected"
+format-connected-prefix = ${hacks.module-margin}
+format-connected-foreground=${colors.background-wlan-nord}
+format-disconnected-foreground=${colors.background-wlan-nord}
+format-connected-suffix = ${hacks.module-margin}
+format-disconnected-prefix = ${hacks.module-margin}
+format-disconnected-suffix = ${hacks.module-margin}
+connected-active-font=2 
+disconnected-active-font=2
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M 
+time-alt = %H:%M:%S  
+;have to manually insert module margins here
+format-prefix = "    "
+format-suffix = ${hacks.module-margin}
+;nord 9
+format-foreground = #a3be8c
+
+label = %date% %time%
+
+[module/volume]
+type = internal/alsa
+
+format-volume = <label-volume>
+label-volume =   %percentage%%
+label-volume-foreground = ${colors.background-volume-nord}
+format-volume-prefix = ${hacks.module-margin}
+format-volume-suffix = ${hacks.module-margin}
+format-muted-prefix = ${hacks.module-margin}
+format-muted-suffix = ${hacks.module-margin}
+format-muted-foreground = ${colors.foreground}
+label-muted-foreground = ${colors.background-volume-nord}
+format-volume-foreground = ${colors.foreground}
+label-muted =   %percentage% 
+format-muted = <label-muted>
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 100
+background = #3b4252 
+format-full-suffix = ${hacks.module-margin}
+format-discharging-suffix= ${hacks.module-margin}
+format-full-prefix = ${hacks.module-margin}
+format-discharging-prefix= ${hacks.module-margin}
+format-charging-prefix = ${hacks.module-margin}
+format-charging-foreground = #81A1C1
+format-charging =  <label-charging>
+format-discharging =  <label-discharging>
+format-discharging-foreground = #81A1C1
+format-full-prefix-foreground= #81A1C1
+format-full-suffix-foreground= #81A1C1
+
+[global/wm]
+margin-top = 7
+margin-bottom = 5
+
+; vim:ft=dosini

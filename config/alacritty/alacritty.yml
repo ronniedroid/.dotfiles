@@ -8,16 +8,21 @@
 # References:
 #   https://github.com/jwilm/alacritty
 
+
+
 window:
         dimensions:
                 columns: 80
                 lines: 24
 
-
+        
         padding:
                 x: 10
                 y: 10
 
+        dynamic_padding: true
+
+        decorations: none
 font:
        
         size: 10.0
@@ -53,4 +58,4 @@ colors:
     white: '0xECEFF4'
 
 
-background_opacity: 0.9
+    #background_opacity: 0.9
