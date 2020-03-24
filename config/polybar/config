@@ -53,7 +53,7 @@ font-3 = siji:pixelsize=10;1
 
 modules-left = bspwm
 modules-center = xwindow maximize close 
-modules-right = xkeyboard backlight volume battery date wlan 
+modules-right = backlight volume xkeyboard battery date wlan 
 
 wm-restack = bspwm
 
@@ -66,11 +66,18 @@ tray-background = #bf616a
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
-format = <label>
-label =  %percentage%%
+format = <label> <bar>
+label = " " 
 label-foreground = #8fbcbb
 format-prefix = ${hacks.module-margin}
 format-suffix = ${hacks.module-margin}
+bar-width = 10
+bar-indicator = :
+bar-indicator-foreground = #8fbcbb
+bar-fill = :
+bar-fill-foreground = #8fbcbb
+bar-empty = :
+bar-empty-foreground = #2e3440
 
 [module/close]
 type = custom/script
@@ -220,8 +227,8 @@ label = %date% %time%
 [module/volume]
 type = internal/alsa
 
-format-volume = <label-volume>
-label-volume =   %percentage%%
+format-volume = <label-volume> <bar-volume>
+label-volume = "  "
 label-volume-foreground = ${colors.background-volume-nord}
 format-volume-prefix = ${hacks.module-margin}
 format-volume-suffix = ${hacks.module-margin}
@@ -230,8 +237,17 @@ format-muted-suffix = ${hacks.module-margin}
 format-muted-foreground = ${colors.foreground}
 label-muted-foreground = ${colors.background-volume-nord}
 format-volume-foreground = ${colors.foreground}
-label-muted =   %percentage% 
+label-muted = " "  
 format-muted = <label-muted>
+
+bar-volume-width = 10
+bar-volume-indicator = :
+bar-volume-indicator-foreground = ${colors.background-volume-nord}
+bar-volume-fill = :
+bar-volume-fill-foreground = ${colors.background-volume-nord}
+bar-volume-empty = :
+bar-volume-empty-foreground = #2e3440
+
 
 [module/battery]
 type = internal/battery

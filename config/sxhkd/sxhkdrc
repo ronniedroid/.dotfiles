@@ -12,7 +12,7 @@ super + shift + f
 
 # terminal emulator
 super + Return
-	st
+	alacritty
 
 # program launcher
 super + d
