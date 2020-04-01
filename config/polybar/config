@@ -51,62 +51,38 @@ font-1 = FontAwesome:size=10;2
 font-2 = "Roboto Mono Bold for Powerline:size=10;1"
 font-3 = siji:pixelsize=10;1
 
-modules-left = bspwm
-modules-center = xwindow maximize close 
-modules-right = backlight volume xkeyboard battery date wlan 
+modules-left = bspwm xwindow
+modules-center = 
+modules-right = xkeyboard backlight volume battery date wlan 
 
 wm-restack = bspwm
 
 tray-position = right
 tray-padding = 2
 ;tray-transparent = true
-tray-background = #bf616a
+tray-background = #3b4252
+
 
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
-format = <label> <bar>
-label = " " 
+format = <label>
+label = "  %percentage%% " 
 label-foreground = #8fbcbb
-format-prefix = ${hacks.module-margin}
-format-suffix = ${hacks.module-margin}
-bar-width = 10
-bar-indicator = :
-bar-indicator-foreground = #8fbcbb
-bar-fill = :
-bar-fill-foreground = #8fbcbb
-bar-empty = :
-bar-empty-foreground = #2e3440
-
-[module/close]
-type = custom/script
-exec = echo "X"
-format = <label>
-
-label = "  "
-format-foreground = #8fbcbb
-click-left = bspc node -c
-
-[module/maximize]
-type = custom/script
-exec = echo "M"
-format = <label>
-
-label = "  "
-format-foreground = #8fbcbb
-click-left = bspc desktop -l next
-
+format-prefix = "      "
+format-prefix-background = #8fbcbb
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format = <label-layout> <label-indicator>
+format = <label-layout>
 format-spacing = 0
-label-layout =   %layout%
-label-layout-padding = 2
+label-layout = "  %layout% "
 label-layout-foreground = #d08770
+format-prefix = "    "
+format-prefix-background = #d08770
 
 
 [module/xwindow]
@@ -121,133 +97,73 @@ format-foreground = 8fbcbb
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %icon%
+label-focused = %name%
 label-focused-foreground = #8fbcbb
 label-focused-underline= #8fbcbb
 label-focused-padding = 2
 
-label-occupied = %icon%
+label-occupied = %name%
 label-occupied-foreground = #8fbcbb
 label-occupied-padding = 2
 
-label-urgent = %icon%
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %icon%
+label-empty = %name%
 label-empty-foreground = #b48ead
 label-empty-padding = 2
-
-ws-icon-0 = I;
-ws-icon-1 = II;
-ws-icon-2 = III;
-ws-icon-3 = IV;
-ws-icon-4 = V;
-ws-icon-default = ♟
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-
-label-focused = %name%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
-
-label-unfocused = %name%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
-label-visible = %name%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-background}
-label-visible-padding = ${self.label-focused-padding}
-
-label-urgent = %name%!
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 [module/wlan]
 type = internal/network
 interface = wlp3s0
 interval = 3.0
-format-connected = "  <label-connected>"
-label-connected = %essid%
-format-disconnected = "  WiFi Disconnected"
-format-connected-prefix = ${hacks.module-margin}
+format-connected = <label-connected>
+label-connected = "  %essid% "
+format-disconnected = "  WiFi Disconnected "
+format-connected-prefix = "    "
 format-connected-foreground=${colors.background-wlan-nord}
+format-connected-prefix-background=${colors.background-wlan-nord}
+format-connected-prefix-foreground= #3b4252
 format-disconnected-foreground=${colors.background-wlan-nord}
-format-connected-suffix = ${hacks.module-margin}
-format-disconnected-prefix = ${hacks.module-margin}
-format-disconnected-suffix = ${hacks.module-margin}
+format-disconnected-prefix =  "    "
+format-disconnected-prefix-background=${colors.background-wlan-nord}
+format-disconnected-prefix-foreground= #3b4252
 connected-active-font=2 
 disconnected-active-font=2
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-
-[module/eth]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
 interval = 5
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = "  %Y-%m-%d "
 
-time = %H:%M 
-time-alt = %H:%M:%S  
+time = "  %H:%M " 
+time-alt = "  %H:%M:%S "  
 ;have to manually insert module margins here
-format-prefix = "    "
-format-suffix = ${hacks.module-margin}
+format-prefix = "      "
+format-prefix-background = #a3be8c
+format-prefix-foreground = #3b4252
 ;nord 9
 format-foreground = #a3be8c
-
 label = %date% %time%
 
 [module/volume]
 type = internal/alsa
 
-format-volume = <label-volume> <bar-volume>
-label-volume = "  "
+format-volume = <label-volume>
+label-volume = "  %percentage%% "
 label-volume-foreground = ${colors.background-volume-nord}
-format-volume-prefix = ${hacks.module-margin}
-format-volume-suffix = ${hacks.module-margin}
-format-muted-prefix = ${hacks.module-margin}
-format-muted-suffix = ${hacks.module-margin}
+format-volume-prefix = "      "
+format-volume-prefix-background = #ebcb8b 
+format-muted-prefix = "      "
+format-muted-prefix-background = #ebcb8b 
 format-muted-foreground = ${colors.foreground}
 label-muted-foreground = ${colors.background-volume-nord}
 format-volume-foreground = ${colors.foreground}
-label-muted = " "  
+label-muted = "  %percentage%% "
 format-muted = <label-muted>
-
-bar-volume-width = 10
-bar-volume-indicator = :
-bar-volume-indicator-foreground = ${colors.background-volume-nord}
-bar-volume-fill = :
-bar-volume-fill-foreground = ${colors.background-volume-nord}
-bar-volume-empty = :
-bar-volume-empty-foreground = #2e3440
-
 
 [module/battery]
 type = internal/battery
@@ -255,14 +171,17 @@ battery = BAT0
 adapter = AC
 full-at = 100
 background = #3b4252 
-format-full-suffix = ${hacks.module-margin}
-format-discharging-suffix= ${hacks.module-margin}
-format-full-prefix = ${hacks.module-margin}
-format-discharging-prefix= ${hacks.module-margin}
-format-charging-prefix = ${hacks.module-margin}
+format-discharging-prefix= "       "
+format-discharging-prefix-background = #5e81ac 
+format-discharging-prefix-foreground = #3b4252
+format-charging-prefix = "        "
+format-charging-prefix-background = #5e81ac 
+format-charging-prefix-foreground = #3b4252
 format-charging-foreground = #81A1C1
-format-charging =  <label-charging>
-format-discharging =  <label-discharging>
+format-charging = <label-charging>
+label-charging = "  %percentage%% "
+format-discharging =  <label-discharging>
+label-discharging = "  %percentage%% "
 format-discharging-foreground = #81A1C1
 format-full-prefix-foreground= #81A1C1
 format-full-suffix-foreground= #81A1C1

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-$(cd ~/ && ls -lR | grep '/\|pdf$' | find -iname '*.pdf' | rofi -dmenu | xargs -r zathura)
+$(cd ~/ && ls -lR | grep '/\|pdf$' | find -iname '*.pdf' | dmenu -l 10 | xargs -r zathura)
