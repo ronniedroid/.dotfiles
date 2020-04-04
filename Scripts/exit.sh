@@ -5,7 +5,7 @@ c=$(echo -e "YES\nNO\n" | $MENU)
 
 if [ "$c" == "YES" ];
 then
-	  bspc quit
+	  pkill dwm
 
 elif [ "$c" == "NO" ];
 then

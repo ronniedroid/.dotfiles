@@ -1,6 +1,6 @@
 #! /bin/sh
 
-sxhkd &
+sxhkd -c $HOME/.config/bspwm/sxhkdrc &
 ~/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr
 
