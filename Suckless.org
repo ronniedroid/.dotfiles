@@ -1,0 +1,449 @@
+
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+#+TITLE: How to Install, Manage, backup and use suckless tools
+#+AuTHOR: Ronnie Nissan
+#+DATE: 5/4/2020
+#+OPtions: num:nil
+
+* Introducation
+
+The suckless tools, especially dwm, st and dmenu, are some very amazing pieces
+of software, that allow a great flixability while being very minimal. But they
+come at a cost, yes, libre software is free as both in freedome and as in beer
+(most) of time), but you should make an effort to be able to use it, and that effort
+(cost) is much needed when it comes to the sucklees tools.
+
+I used dwm, st and dmenu about a year ago, but I had no idea how to manage and
+backup them, I didn't know alot about customizing (patching) them, but recently
+I started learining C programing language, and so I decided to use all three, as
+I will have to edit the source code to make any changes and so this will help me
+in my endavor of learning C.
+
+The resone I am making this toturial is to help you get started with using dwm,
+st and dmenu too. This tuturial is my own personal experiencve and knowledge and
+has no connection to the guys at suckless, nor it is the best how-to guide.
+
+This tuturial will assume you have a basic knwoledge in linux and
+you are able to install packages though your distroes package manager and solve
+dependencies, and that you use xinit to login to your xorg-session.
+
+Hope you'll enjoy it and learn something from it.
+
+* Installation
+to install any of the above three, you'll need to have a few libraries and git installed in your system, you
+can install them with
+
+On void Linux
+
+#+begin_src shell
+sudo xbps-install -S git make libX11-devel libXinerama-devel
+#+end_src
+
+on Debian and Debian based distroes
+
+#+begin_src shell
+sudo apt-get install build-essential libx11-dev libxinerama-dev sharutils
+#+end_src
+
+and on Arch and arch based distroes
+
+#+begin_src shell
+sudo pacman -S git make libX11-devel libXinerama-devel
+#+end_src
+
+
+** dwm
+
+Clone dwm from suckless.org
+
+#+begin_src shell
+git clone git clone https://git.suckless.org/dwm
+#+end_src
+
+then
+
+#+begin_src shell
+cd dwm/
+make
+sudo make install
+#+end_src
+
+then all that's left is that you put the following to your .xinitrc and then startx
+
+#+begin_src shell
+exec dwm
+#+end_src
+
+This will give you an untouched dwm experiance like the guys at suckless
+intended it.
+
+
+** st
+
+clone st from suckless.org
+
+#+begin_src shell
+git clone https://git.suckless.org/st
+#+end_src
+
+#+begin_src shell
+cd st/
+make
+sudo make install
+#+end_src
+
+and this will install st, unmodified, on your system. Just note that st doesn't
+have a .desktop file by default, which means you will not find it in menus (like dmenu)
+whoever, st it is the default terminal in dwm and it is binded to ALT + Shift +
+Return.
+
+** dmenu
+
+clone dmenu from suckless.org
+
+#+begin_src shell
+git clone https://git.suckless.org/dmenu
+#+end_src
+
+#+begin_src shell
+cd st/
+make
+sudo make install
+#+end_src
+
+now dmenu is installed on on your system, in dwm, alt + p is binded to launching
+dmenu.
+
+* configuration
+
+by now you should have a working (in the suckless philosophy way) system, but
+maybe you want to edit some colors, add some features through patching those
+programs to make them even more usable, or just more pleasing to look at.
+
+****  NOTE: it is recommended that you make a copy of config.def.h file and name it config.h and make your edits to this file, so that when you update dwm for example you get the new config.def.h it will not overwrite your modefications, whoever I don't do that, I edit config.def.h and config.h is generated automatically when you compile and install. this way when a patch edited config.def.h, I can just delete config.h and recompile.
+
+** dwm
+
+to edit dwm, you'll have to cd into the dwm directory and edit config.def.h,
+remember to remove the config.h file before recompiling (see
+note above). and here I'll explain some parts of the config file.
+
+*** Font and Colorscheme
+
+In lines 8 and 9 you can set the font, and font size of dwm, and also dmenu if
+you don't want to edit your dmenu instalation and launch it though the dwm
+defined flags on line 59.
+
+From line 10 to line 19 in your config.h file, you'll see the following
+
+#+begin_src c
+     static const char col_gray1[]       = "#222222";
+     static const char col_gray2[]       = "#444444";
+     static const char col_gray3[]       = "#bbbbbb";
+     static const char col_gray4[]       = "#eeeeee";
+     static const char col_cyan[]        = "#005577";
+     static const char *colors[][3]      = {
+     	/*               fg         bg         border   */
+     	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+     	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+     };
+#+end_src
+
+in the lines from 10 to 15 you'll see some constants of type character defined. they are six
+colors, which you can change to whatever you like, you can also change the names
+of the constants for example
+
+#+begin_src c
+    static const char normalbg[]       = "#0ff000";
+#+end_src
+
+then on line 17 and 18 we are setting the defined constants to the element we
+want which are are SchemeNorm and Schemesel from the *colors constant, the first color is the forground
+(fg) second is the background (bg) and the third is border color. Edit those to
+your liking then recompile, install and exit and log back into dwm to see your
+changes.
+
+*** The rules
+
+from line 30 to 31 you'll see some rules set for gimp and firefox
+
+#+begin_src c
+ 	/* class      instance    title       tags mask     isfloating   monitor */
+      	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+      	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+#+end_src
+
+you can rules for over programs and remove the ones set as you like, what you
+need to know is, the class of the program using xprop. and writing it under
+"class", keeping both "instance" and "title" as NULL (most of the time) if you set
+"isfloating" to 1, the pragram will spawn in floating mode, and under "monitor" you
+set which monitor the program will spawn on.
+
+it's the "tags mask" that is a bit tricky. but it is very easy ones you know
+what you are doing. they are bitwise operatores (which I myself don't fully understand to be honest)
+
+but if all you want to do is spawn firefox on the ninth tag (default behavior)
+
+you'll have to set tag mask to "1 << 8" which means 1 shifted to the right by 8,
+which makes it 9. so the tags by default are "000000001", when the 1 is in the
+rightmost possition (the ninth from left to right) you are on tag 1, so what "1
+<< 8" means is to put the "1" in the leftmost positon 100000000 (first position from
+left), which is tag nine.
+
+If you want emacs for example to open on tag 3 and in floating mode you'll add
+this line to the above code
+
+#+begin_src c
+{ "Emacs",     NULL,       NULL,       1 << 2,            1,           -1 },
+#+end_src
+
+which tarnsaltes to 000000100.
+
+If you want to learn more about tag masks, check [[https:https://dwm.suckless.org/customisation/tagmask/][How does a tag-mask work?]] over
+at suckless.org
+
+*** Key bindings
+
+I will not cover key bindings because I use sxhkd for custom keybindings, but if
+you want to use dwm key damon or you just want to edit a few of the defaly a
+look at the config from line 46 to line 96 help you as it is self explanatory.
+
+if you want to change the mod key from alt to super key, you can edit line 47
+and it from Mod1Mask to Mod4Mask.
+
+This is more than enough to get you a costumized dwm and you can start living in
+it from this point, but if you want to learn how to patch it, go to the "Patching"
+section of this page.
+
+** st
+
+    The simple Terminal is amazing, very fast and has the best font rendering
+    (second only to Alacritty) in my opinion. but it lacks some basic
+    functionalitty by default which I'll address under the "Patching" section.
+    but for Just changing some of the default bindings and color schemes, you'll
+    do the same as you did with dwm, go to the st directory, and edit the
+    config.def.h file, remove the config.h file and recompile.
+
+*** Font and Padding
+
+    To edit the font and the padding you'll have to edit line 8 and 9, to set
+    the font to Hack and size to 14, and set padding to 8, you'll do the following
+
+#+begin_src c
+    static char *font = "Hack:pixelsize=14:antialias=true:autohint=true";
+    static int borderpx = 8;
+#+end_src
+
+*** Colorscheme
+
+To change st's default colorscheme you'll have to edit Lines 86 to 112
+
+#+begin_src c
+/* Terminal colors (16 first used in escape sequence) */
+     static const char *colorname[] = {
+     	/* 8 normal colors */
+     	"black",
+     	"red3",
+     	"green3",
+     	"yellow3",
+     	"blue2",
+     	"magenta3",
+     	"cyan3",
+     	"gray90",
+
+     	/* 8 bright colors */
+     	"gray50",
+     	"red",
+     	"green",
+     	"yellow",
+     	"#5c5cff",
+     	"magenta",
+     	"cyan",
+     	"white",
+
+     	[255] = 0,
+
+     	/* more colors can be added after 255 to use with DefaultXX */
+     	"#cccccc",
+     	"#555555",
+     };
+#+end_src
+
+*** Cursor Shape
+
+St have four cursor shapes defined by default:
+
+#+begin_src c
+  * Default shape of cursor
+      * 2: Block ("█")
+      * 4: Underline ("_")
+      * 6: Bar ("|")
+      * 7: Snowman ("☃")
+#+end_src
+
+to change the cursor to any of the above you'll edited line 131 and set it to
+the number corsponding to the shape you want.
+
+#+begin_src c
+static unsigned int cursorshape = 2;
+#+end_src
+
+This is the based customisation that you can do to st, to make it more
+pleasing to look it.
+
+** dmenu
+
+You costumize dmenu the same way you did st and dwm, by editing the
+config.def.h, removing config.h and recompiling.
+
+dmenu is a very flixable and very simple program that you can do alot with, I
+use it to set my wallapper, change my monitor layout, as a powermenu etc. You
+can pipe things into dmenu and paste the output to stdout. which makes it very
+extensable though scripting.
+
+**** Note, please remember that if you want to use your own build of dmenu, you'll
+have to remove some things from dwm, the things to be removed from config.def.h
+of dwm are the folowing
+
+In line 59, everyhting between <> should be removed
+#+begin_src c
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, <"-fn", dmenufont, "-nb", col_gray1,
+                                  "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4,> NULL };
+#+end_src
+
+*** Font and colorscheme
+
+to change the font on dmenu you should edit line 7 and set it to the font you
+want
+
+#+begin_src c
+       	"monospace:size=10"
+#+end_src
+
+
+to change the colorscheme, it's the same as in dwm, but here we sit the colors
+inside the *colors cosntant directly.
+
+#+begin_src c
+      	[SchemeNorm] = { "#bbbbbb", "#222222" },
+      	[SchemeSel] = { "#eeeeee", "#005577" },
+      	[SchemeOut] = { "#000000", "#00ffff" },
+#+end_src
+
+first one is the foreground and the second one is the background.
+first line is for the Normal enteries and second line for the selected enteries.
+
+If you want to watch a good video about dmenu, I recommed that you watching [[https:https://www.youtube.com/watch?v=R9m723tAurA][Luke
+Smith's]] video on it.
+
+
+* Patching
+
+Patching is how you extend the suckless tools with features they lack out of
+the box that either make them more usuable or enhance the look and feel of them,
+Like adding the ability of scroll back in st and gaps in dwm.
+
+to apply a patch you must go to suckless.org first. download the patch you want
+to apply to the sourcecode directory of the software you want to apply it to.
+
+then you'll do the following.
+
+#+begin_src shell
+sudo make clean
+git remove config.h
+git branch <name of the patch>.def
+git checkout <name of the new branch>
+patch -p1 < <name of the patch>
+#+end_src
+
+at this point, if all the hunks were sucssesful, you will do;
+
+#+begin_src shell
+git status #and check which files were modified, then do
+git add <names of the modified files>
+git commit -m <enter a of what you are commiting here>
+#+end_src
+
+Then do
+
+#+begin_src shell
+git checkout master
+git merge <name of the new branch>
+make
+sudo make install
+#+end_src
+
+If one or more hunks fails, you'll have to look into the terminal to see which
+file (or files) was it that the hunks failed to apply to, and you'll see inside
+the source code you'll have a file called, <name of the file>.<extension>.rej
+
+so now all you have to do is, open the .rej file in your favorite text editor,
+look for the lines that have "-" (remove) and "+" (add) right to them, those are the lines you
+haev to remove and add. then you'll do the above steps.
+
+if you want to remove a patch you've applied you haev to does
+
+#+begin_src shell
+patch -R < <name of the patch>.def
+#+end_src
+
+If you want to learn more about patches check out the [[https:https://suckless.org/hacking/][Hacking]] page from
+suckless.org and you can also watch DistroTube's video on [[https:https://www.youtube.com/watch?v=bBJ0qxqzlxk][Patching dmenu]].
+
+* Backup
+
+If you cutmized any of the suckless tools to your liking, then you know it
+is not as easy as editing a config file. espessially after you patch them. So
+keeping a backup of them is not as easy as saving a dotfile to a git repository
+and linking it to .config/<name or program>. and here I'll show you the steps to
+make a backup of your suckless tools while still having the abillity to update
+them when a new version comes out (which doesn't happen that often).
+
+first of all you have to be in the directory of the program you want to make a
+backup of. then you'll rename the remote of the git repository from origin to upstream.
+
+#+begin_src shell
+git remote rename origin upstream
+#+end_src
+
+then you'll go to github.com (or gitlab) and make a new repository, call it the
+same as the program you are backing up for conviniance. then copy the
+repository's url and do
+
+#+begin_src shell
+git add remote origin <the repository's url>
+#+end_src
+
+now if you do
+
+#+begin_src shell
+git remote -v
+#+end_src
+
+You'll se that you have two remotes called upstream (pointing to suckless.org)
+and one called origin (pointing to your repository). now all that's left is that
+you push your build to the master branch of your repository, to do that you do.
+
+#+begin_src shell
+git push origin master
+#+end_src
+
+if the guys at suckless updated the program, all you'll have to do is, go to
+that programs directory, and run the follwoing
+
+#+begin_src shell
+git pull upstream master
+#+end_src
+
+
+* Conculosion
+
+I think by now you can get around using the suckless tools with ease, custmize
+them and back them up. which is really amazing because the suckless tools are
+amazing.
+
+Later I'll be posting more articles explaining how to coustmize dwm's bar and
+how to use sxhkd as your key damon.
+
+I really hope that you enjoyed this read and that it was usefull to you.
