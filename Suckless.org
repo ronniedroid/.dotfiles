@@ -437,7 +437,7 @@ git pull upstream master
 #+end_src
 
 
-* Conculosion
+* Conclusion
 
 I think by now you can get around using the suckless tools with ease, custmize
 them and back them up. which is really amazing because the suckless tools are
