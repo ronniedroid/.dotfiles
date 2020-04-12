@@ -7,6 +7,8 @@ super + alt + p
 
 super + shift + f
     firefox
+super + shift + e
+    emacs
     
 super + alt + m
     MonitorLayout.sh
@@ -22,18 +24,18 @@ super + alt + w
 #pulse Audio controls
 
 super + Left
-    amixer -c 0 -q set Master 2dB-
+    amixer -c 0 -q set Master 2dB- && pkill -RTMIN+10 dwmblocks
 super + Right
-    amixer -c 0 -q set Master 2dB+
+    amixer -c 0 -q set Master 2dB+ && pkill -RTMIN+10 dwmblocks
 
 
 
 # Sreen brightness controls
 
 super + Up
-	light -A 5    # increase screen brightness
+	light -A 5 && pkill -RTMIN+11 dwmblocks
 super + Down
-	light -U 5    # decrease screen brightness
+	light -U 5 && pkill -RTMIN+11 dwmblocks
 
 # Media player controls
 

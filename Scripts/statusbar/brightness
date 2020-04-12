@@ -1,0 +1,6 @@
+#!/bin/bash
+
+bri=$(light -G)
+icon="" 
+
+printf " %s %d%% \\n" "$icon" "$bri" 2>/dev/null

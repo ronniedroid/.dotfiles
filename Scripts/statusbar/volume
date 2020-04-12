@@ -1,0 +1,15 @@
+#!/bin/sh
+
+volstat="$(amixer get Master)" # ALSA only equivalent.
+
+vol=$(echo "$volstat" | grep -o "\[[0-9]\+%\]" | sed "s/[^0-9]*//g;1q") # ALSA
+
+if [ "$vol" -gt "70" ]; then
+	icon=""
+elif [ "$vol" -lt "30" ]; then
+	icon=""
+else
+	icon=""
+fi
+
+printf " %s %s%% \\n" "$icon" "$vol"

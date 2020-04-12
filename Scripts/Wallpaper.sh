@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-DIR="$HOME/Pictures/"
+DIR="$HOME/Pictures/wallpapers/"
 FILE=$(sxiv -t -o $DIR) 
 
 Center(){
