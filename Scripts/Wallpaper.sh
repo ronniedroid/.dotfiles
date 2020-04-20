@@ -5,24 +5,19 @@ DIR="$HOME/Pictures/wallpapers/"
 FILE=$(sxiv -t -o $DIR) 
 
 Center(){
-  xwallpaper --center $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --center $FILE|" $HOME/.xinitrc
+  xwallpaper --center $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --center $FILE|" $HOME/.Scripts/defaultwallpaper.sh
 }
-
 Stretch(){
-  xwallpaper --stretch $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --stretch $FILE|" $HOME/.xinitrc
+  xwallpaper --stretch $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --stretch $FILE|" $HOME/.Scripts/defaultwallpaper.sh
 }
-
 Tile(){
-  xwallpaper --tile $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --tile $FILE|" $HOME/.xinitrc
+  xwallpaper --tile $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --tile $FILE|" $HOME/.Scripts/defaultwallpaper.sh
 }
-
 Zoom(){
-  xwallpaper --zoom $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --zoom $FILE|" $HOME/.xinitrc
+  xwallpaper --zoom $FILE  && sed -i "s|xwallpaper.*|xwallpaper  --zoom $FILE|" $HOME/.Scripts/defaultwallpaper.sh
 }
-
 No-randr(){
-  xwallpaper --no-randr --stretch $FILE  && sed -i "s|xwallpaper.*|xwallpaper
-  --no-randr --stretch $FILE|" $HOME/.xinitrc
+  xwallpaper --no-randr --stretch $FILE  && sed -i "s|xwallpaper.*|xwallpaper --no-randr --stretch $FILE|" $HOME/.Scripts/defaultwallpaper.sh
 }
 
 if [ -z "$FILE" ]

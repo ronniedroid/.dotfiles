@@ -24,9 +24,9 @@ super + alt + w
 #pulse Audio controls
 
 super + Left
-    amixer -c 0 -q set Master 2dB- && pkill -RTMIN+10 dwmblocks
+    pamixer --decrease 5 && pkill -RTMIN+10 dwmblocks
 super + Right
-    amixer -c 0 -q set Master 2dB+ && pkill -RTMIN+10 dwmblocks
+    pamixer --increase 5 && pkill -RTMIN+10 dwmblocks
 
 
 
