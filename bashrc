@@ -3,6 +3,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export HISTFILESIZE=0
+export HISTSIZE=0
+unset HISTFILE
 alias ls='ls --color=auto'
 PS1="\[\e[32m\]\w\[\e[m\]\[\e[31m\]_>\[\e[m\]"
 

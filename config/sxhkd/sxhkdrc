@@ -7,6 +7,7 @@ super + alt + p
 
 super + shift + f
     firefox
+
 super + shift + e
     emacs
     
@@ -23,19 +24,13 @@ super + alt + w
   Wallpaper.sh    
 #pulse Audio controls
 
-super + Left
-    pamixer --decrease 5 && pkill -RTMIN+10 dwmblocks
-super + Right
-    pamixer --increase 5 && pkill -RTMIN+10 dwmblocks
-
-
+super + {Left,Right}
+    pamixer {-d,-i} 5 && pkill -RTMIN+10 dwmblocks
 
 # Sreen brightness controls
 
-super + Up
-	light -A 5 && pkill -RTMIN+11 dwmblocks
-super + Down
-	light -U 5 && pkill -RTMIN+11 dwmblocks
+super + {Down,Up}
+	light {-U,-A,} 5 && pkill -RTMIN+11 dwmblocks
 
 # Media player controls
 

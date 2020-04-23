@@ -2,15 +2,14 @@
 # VERSION: 3.0
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_D:cd\x20\x7e/Documents
-SETUVAR _fish_abbr_bspconf:vim\x20\x7e/\x2econfig/bspwm/bspwmrc
-SETUVAR _fish_abbr_bspcong:vim\x20\x7e/\x2econfig/bspwm/bspwmrc
+SETUVAR _fish_abbr_bspconf:nvim\x20\x7e/\x2econfig/bspwm/bspwmrc
 SETUVAR _fish_abbr_c:cd\x20\x7e/\x2econfig
 SETUVAR _fish_abbr_d:cd\x20\x7e/Downloads
 SETUVAR _fish_abbr_fuck:sudo\x20\x21\x21
 SETUVAR _fish_abbr_h:cd\x20\x7e/
 SETUVAR _fish_abbr_ls:exa\x20\x2dal
-SETUVAR _fish_abbr_polyconf:vim\x20\x7e/\x2econfig/polybar/config
-SETUVAR _fish_abbr_sxconf:vim\x20\x7e/\x2econfig/sxhkd/sxhkdrc
+SETUVAR _fish_abbr_polyconf:nvim\x20\x7e/\x2econfig/polybar/config
+SETUVAR _fish_abbr_sxconf:nvim\x20\x7e/\x2econfig/sxhkd/sxhkdrc
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:81a1c1
