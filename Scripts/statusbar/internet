@@ -12,4 +12,4 @@ else
   essid="disconnected"
 fi
 
-printf " %s %s \\n" "$wifiicon" "$essid"
+printf "%s \\n" "^c#2e3440^^b#bf616a^ $wifiicon^ d^^c#bf616a ^ $essid"

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-volstat="$(amixer get Master)" # ALSA only equivalent.
+volstat="$(pamixer --get-volume)" # ALSA only equivalent.
 
-vol=$(echo "$volstat" | grep -o "\[[0-9]\+%\]" | sed "s/[^0-9]*//g;1q") # ALSA
+vol=$(echo "$volstat")
 
 if [ "$vol" -gt "70" ]; then
 	icon=""
@@ -12,4 +12,4 @@ else
 	icon=""
 fi
 
-printf " %s %s%% \\n" "$icon" "$vol"
+printf "%s%%\\n" "^c#2e3440^^b#ebcb8b^ $icon ^ d^^c#ebcb8b ^ $vol"

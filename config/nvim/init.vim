@@ -13,7 +13,9 @@ Plug 'ncm2/ncm2-cssomni'
 Plug 'junegunn/fzf'
 Plug 'chrisbra/Colorizer'
 Plug 'justinmk/vim-sneak'
-Plug 'mhinz/vim-startify'
+Plug 'preservim/nerdtree'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 "----------------------colorscheme-----------------------
@@ -70,6 +72,8 @@ set shortmess+=c
 inoremap <c-c> <ESC>
 " pyclang
 let g:ncm2_pyclang#library_path = '/usr/lib64/libclang.so.5.0'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
 "------------------keybindings--------------------------------
 
 let mapleader = " "
@@ -95,7 +99,8 @@ map <leader>s :setlocal spell! spelllang=en_us<CR>
 " difining FZF for my usually visited files
 noremap <leader>, :FZF ~<CR>
 noremap <leader>f :FZF<CR>
+noremap <leader>n :NERDTreeToggle<CR>
 
-"------------------Startify-bookmarkes----------------
-    let g:startify_bookmarks = [{'vc': '~/.config/nvim/init.vim'}, {'c': '~/.config/'}, {'lc': '~/Documents/learnc/'}]
-
+let g:UltiSnipsExpandTrigger="<tab>"  " use <Tab> trigger autocompletion
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"

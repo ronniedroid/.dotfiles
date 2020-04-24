@@ -3,7 +3,6 @@
 
 if setxkbmap -query| grep "us" ; then
 	setxkbmap ar ;
-else 
+else
 	setxkbmap us ;
-
 fi

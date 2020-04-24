@@ -1,8 +1,8 @@
 #!/bin/sh
 
-date=$(date '+%b %d (%a) %H:%M')
+date=$(date '+%H:%M')
 icon=''
 
-printf " %s %s \\n" "$icon" "$date"
+printf "%s\\n" "^c#2e3440^^b#a3be8c^ $icon ^ d^^c#a3be8c ^ $date"
 
 

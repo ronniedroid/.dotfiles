@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bri=$(light -G)
-icon="" 
+bri=$(light -G | sed 's/\..*//g')
+icon=""
 
-printf " %s %d%% \\n" "$icon" "$bri" 2>/dev/null
+printf "%s%%\n" "^c#2e3440^^b#88c0d0^ $icon ^ d^^c#88c0d0 ^ $bri"

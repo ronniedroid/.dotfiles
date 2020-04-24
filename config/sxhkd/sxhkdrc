@@ -10,7 +10,7 @@ super + shift + f
 
 super + shift + e
     emacs
-    
+
 super + alt + m
     MonitorLayout.sh
 # make sxhkd reload its configuration files:
@@ -18,10 +18,11 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 super + alt + space
-    kbdlayout.sh
+    kbdlayout.sh && pkill -RTMIN+9 dwmblocks
+
 
 super + alt + w
-  Wallpaper.sh    
+  Wallpaper.sh
 #pulse Audio controls
 
 super + {Left,Right}
