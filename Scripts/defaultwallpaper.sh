@@ -1,3 +1,3 @@
 #!/bin/sh
 
-xwallpaper  --zoom /home/ron/Pictures/wallpapers/zoltan-tasi-oeo9JeFXPwo-unsplash.jpg
+xwallpaper  --zoom /home/ron/Pictures/wallpapers/olivier-guillard-FKJgBUDoVC0-unsplash.jpg

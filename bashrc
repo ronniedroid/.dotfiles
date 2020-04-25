@@ -5,8 +5,8 @@
 
 export HISTFILESIZE=0
 export HISTSIZE=0
+export EDITOR=nvim
 unset HISTFILE
-alias ls='ls --color=auto'
 PS1="\[\e[32m\]\w\[\e[m\]\[\e[31m\]_>\[\e[m\]"
 
 alias i3conf='vim ~/.config/i3/config'

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+sstatus=$(xrandr --listactivemonitors | grep "Monitors" | awk '{print $2}')
+
+if [ "$sstatus" -eq 1 ]; then
+    icon=""
+else
+    icon=""
+fi
+
+printf "%s \\n" "^c#2e3440^^b#d08770^ $icon^ d^"
