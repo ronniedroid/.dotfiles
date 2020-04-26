@@ -1,3 +1,3 @@
 #!/bin/sh
 
-xwallpaper  --zoom /home/ron/Pictures/wallpapers/olivier-guillard-FKJgBUDoVC0-unsplash.jpg
+xwallpaper --output LVDS1 --zoom /home/ron/Pictures/wallpapers/olivier-guillard.jpg --output HDMI1 --zoom /home/ron/Pictures/wallpapers/zoltan-tasi.jpg
