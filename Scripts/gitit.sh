@@ -17,7 +17,7 @@ fi
 
 # Print status in a clear way.
 gstatus() {
-    ST=$(git status | sed 's/modified://;s/new\ file://;s/deleted://;s/[[:space:]]//g;/^[[:space:]]*$/d;/On.*/d;/(use.*/d;s/Changestobecommitted/Staged\ Changes/;s/Changesnotstagedforcommit/Unstaged\ Changes/;s/Untrackedfiles/Untracked Files/;s/Yourbranchisuptodatewith/Up to do with remote repo\ /;s/Yourbranchisaheadof/Ahead of remote repo\ /;s/by/\ by\ /;s/commit/\ commit/')
+    ST=$(git status | sed 's/modified://;s/new\ file://;s/deleted://;s/[[:space:]]//g;/^[[:space:]]*$/d;/On.*/d;/(use.*/d;s/Changestobecommitted/Staged\ Changes:/;s/Changesnotstagedforcommit/Unstaged\ Changes:/;s/Untrackedfiles/Untracked Files/;s/Yourbranchisuptodatewith/Up to do with remote repo\ /;s/Yourbranchisaheadof/Ahead of remote repo\ /;s/by/\ by\ /;s/commit/\ commit/')
     printf "%s\n" "$ST"
 }
 
@@ -27,17 +27,28 @@ switchbranch() {
 }
 
 listbranch() {
-    l=$(git branch | fzf -i)
+    l=$(git branch)
+    printf "%s" "$l"
 }
 
 stage() {
     lu=$( gstatus | awk '/Unstaged.*/,/*/' | fzf -m --reverse)
-    s=$(git add $lu)
+    if [ -z $lu ]; then
+        printf "%s" "Nothing selected to stage"
+        exit 0
+    else
+        s=$(git add $lu 2> /dev/null)
+    fi
 }
 
 unstage() {
     lS=$( gstatus | awk '/Staged.*/,/Unstaged.*/' | sed '/Unstaged.*/d'  | fzf -m --reverse)
-    s=$(git restore --staged $lS)
+    if [ -z $lS ];then
+        printf "%s" "Nothing selected to unstage"
+        exit 0
+    else
+        s=$(git restore --staged $lS  2> /dev/null)
+    fi
 }
 
 commit() {
@@ -45,15 +56,35 @@ commit() {
     git commit -m "$message"
 }
 
-choice=$(echo -e "Status\nSwitch-branch\nlistbranchs\nstage\nunstage\ncommit\n" | fzf -i)
+listremote() {
+    LR=$(git remote -v)
+    printf "%s" "$LR"
+}
+
+pull() {
+    remote=$(listremote | grep "fetch" | awk '{print $1}' | fzf -m)
+    branch=$(listbranch | fzf -m)
+    git pull $remote $branch
+}
+
+push() {
+    remote=$(listremote | grep "push" | awk '{print $1}' | fzf -m)
+    branch=$(listbranch | fzf -m)
+    git push $remote $branch
+}
+
+choice=$(echo -e "Status\nSwitch-branch\nlist-branchs\nstage\nunstage\ncommit\nlist-remotes\npull\npush" | fzf -i)
 
     case "$choice" in
 
         Status) gstatus ;;
         Switch-branch) switchbranch ;;
-        listbranchs) listbranch ;;
+        list-branchs) listbranch ;;
         stage) stage && printf "%s\n%s" "staged changes" "$lu" ;;
         unstage) unstage && printf "%s\n%s" "Unstaged changes:" "$lS" ;;
-        commit) commit
+        list-remotes) listremote ;;
+        commit) commit ;;
+        pull) pull ;;
+        push) push
     esac
 
