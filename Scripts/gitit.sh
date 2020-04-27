@@ -61,17 +61,6 @@ listremote() {
     printf "%s" "$LR"
 }
 
-pull() {
-    remote=$(listremote | grep "fetch" | awk '{print $1}' | fzf -m)
-    branch=$(listbranch | fzf -m)
-    git pull $remote $branch
-}
-
-push() {
-    remote=$(listremote | grep "push" | awk '{print $1}' | fzf -m)
-    branch=$(listbranch | fzf -m)
-    git push $remote $branch
-}
 
 choice=$(echo -e "Status\nSwitch-branch\nlist-branchs\nstage\nunstage\ncommit\nlist-remotes\npull\npush" | fzf -i)
 
@@ -83,8 +72,6 @@ choice=$(echo -e "Status\nSwitch-branch\nlist-branchs\nstage\nunstage\ncommit\nl
         stage) stage && printf "%s\n%s" "staged changes" "$lu" ;;
         unstage) unstage && printf "%s\n%s" "Unstaged changes:" "$lS" ;;
         list-remotes) listremote ;;
-        commit) commit ;;
-        pull) pull ;;
-        push) push
+        commit) commit
     esac
 

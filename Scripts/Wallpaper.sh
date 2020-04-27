@@ -34,12 +34,12 @@ Single(){
 
 # to set to diffrent wallpapers on each desktop
 Dual() {
-    walls=$(sxiv -t -o $DIR | xargs)  # running sxiv, and marking either one or two files
-    wall1=$(printf "%s" "$walls" | awk '{print $1}')  # Print the path to the first marked picture
-    wall2=$(printf "%s" "$walls" | awk '{print $2}')  # Print the path to the second marked picture
+    dwalls=$(sxiv -t -o $DIR | xargs)  # running sxiv, and marking either one or two files
+    dwall1=$(printf "%s" "$dwalls" | awk '{print $1}')  # Print the path to the first marked picture
+    dwall2=$(printf "%s" "$dwalls" | awk '{print $2}')  # Print the path to the second marked picture
 
     # if no picture is marked in sxiv, exit.
-    if [ -z "$walls" ]
+    if [ -z "$dwalls" ]
     then
       exit 0
     else
@@ -51,7 +51,7 @@ Dual() {
     SecondScreenMenu="dmenu -i -l 4 -p "Second_screen_options""
     SecondScreenOptions=$(echo -e "zoom\ncenter\ntile\nstretch" | $SecondScreenMenu)
 
-    xwallpaper --output $screen1 --$FirstScreenOptions $wall1 --output $screen2 --$SecondScreenOptions $wall2 && sed -i "s|xwallpaper.*|xwallpaper --output $screen1 --$FirstScreenOptions $wall1 --output $screen2 --$SecondScreenOptions $wall2|" $HOME/.Scripts/defaultwallpaper.sh
+    xwallpaper --output $screen1 --$FirstScreenOptions $dwall1 --output $screen2 --$SecondScreenOptions $dwall2 && sed -i "s|xwallpaper.*|xwallpaper --output $screen1 --$FirstScreenOptions $dwall1 --output $screen2 --$SecondScreenOptions $dwall2|" $HOME/.Scripts/defaultwallpaper.sh
 }
 
 MENU="dmenu -l 2 -p "Mode?""
