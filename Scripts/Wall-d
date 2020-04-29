@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 #  ____                   _        _   _ _
@@ -15,7 +15,7 @@ screen2=$(xrandr --listactivemonitors | grep "+" | awk '{print $4}' | awk NR==2)
 
 # to set same wallpaper on both desktops
 Single(){
-    walls=$(sxiv -t -o $DIR | xargs)  # running sxiv, and marking either one or two files
+    walls=$(sxiv -t -o -b -g 500x500+500+200 $DIR | xargs)  # running sxiv, and marking either one or two files
     wall1=$(printf "%s" "$walls" | awk '{print $1}')  # Print the path to the first marked picture
 
     # if no picture is marked in sxiv, exit.
@@ -34,7 +34,7 @@ Single(){
 
 # to set to diffrent wallpapers on each desktop
 Dual() {
-    dwalls=$(sxiv -t -o $DIR | xargs)  # running sxiv, and marking either one or two files
+    dwalls=$(sxiv -t -o -b -g 500x500+500+200 $DIR | xargs)  # running sxiv, and marking either one or two files
     dwall1=$(printf "%s" "$dwalls" | awk '{print $1}')  # Print the path to the first marked picture
     dwall2=$(printf "%s" "$dwalls" | awk '{print $2}')  # Print the path to the second marked picture
 
