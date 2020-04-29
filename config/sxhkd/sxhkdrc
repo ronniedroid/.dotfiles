@@ -20,7 +20,6 @@ super + Escape
 super + alt + space
     kbdlayout.sh && pkill -RTMIN+9 dwmblocks
 
-
 super + alt + w
   Wall-d
 #pulse Audio controls
