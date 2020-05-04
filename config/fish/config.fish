@@ -4,7 +4,8 @@ set PATH $HOME/.local/bin/ $PATH
 
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+export EDITOR='nvim'
 
-PF_COL1=6 PF_COL2=7 PF_COL3=1 PF_SEP=":"  pfetch
+PF_INFO="ascii title os kernel shell wm editor pkgs memory palette" PF_COL1=6 PF_COL2=7 PF_COL3=1 pfetch
 
 fish_vi_key_bindings
