@@ -15,7 +15,7 @@ window:
                 columns: 80
                 lines: 24
 
-        
+
         padding:
                 x: 10
                 y: 10
@@ -24,11 +24,11 @@ window:
 
         decorations: none
 font:
-       
+
         size: 10.0
 
         normal:
-                family: Cascadia Code
+                family: Hack
                 style: Regular
 
 colors:

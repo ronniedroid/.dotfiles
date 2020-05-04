@@ -1,7 +1,6 @@
 set PATH $HOME/.Scripts/ $PATH
 set PATH $HOME/.Scripts/statusbar $PATH
 set PATH $HOME/.local/bin/ $PATH
-set PATH $HOME/.config/Wall-d/ $PATH
 
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999

@@ -1,9 +1,8 @@
-#
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
 
-# Shortcuts
-
-super + alt + p
-    pmenu.sh
+# Apps shortcuts
 
 super + shift + f
     firefox
@@ -11,17 +10,23 @@ super + shift + f
 super + shift + e
     emacs
 
+# Scripts shortcuts
+
+super + alt + p
+    pmenu.sh
+
 super + alt + m
     MonitorLayout.sh
-# make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
 
 super + alt + space
     kbdlayout.sh && pkill -RTMIN+9 dwmblocks
 
 super + alt + w
-  Wall-d
+  Wall-d -d $HOME/Pictures/wallpapers/
+
+super + {_,shift + } alt + b
+    bmanager.sh {_,-a (xclip -o)}
+
 #pulse Audio controls
 
 super + {Left,Right}
