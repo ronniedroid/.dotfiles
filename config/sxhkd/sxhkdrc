@@ -22,7 +22,7 @@ super + alt + space
 
 
 super + alt + w
-  Wall-d
+  Wall-d -d ~/Pictures/wallpapers
 #pulse Audio controls
 
 super + {Left,Right}
