@@ -27,7 +27,7 @@ screens() {
 }
 
 update() {
-    xsetroot -name "$(screens)$(kbd)$(bri)$(volume)$(time)$(net | tr '\n' ' ')" &
+    xsetroot -name "$(screens)$(kbd)$(bri)$(volume)$(time)$(net)" &
     wait
 }
 
