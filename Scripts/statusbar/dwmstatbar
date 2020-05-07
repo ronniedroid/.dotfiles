@@ -6,8 +6,12 @@ net() {
     internet
 }
 
-time() {
+ctime() {
     clock
+}
+
+bat() {
+    battery
 }
 
 vol() {
@@ -25,9 +29,12 @@ kbd() {
 screens() {
     screenstatus
 }
+wthr() {
+    weather
+}
 
 update() {
-    xsetroot -name "$(screens)$(kbd)$(bri)$(volume)$(time)$(net)" &
+    xsetroot -name "$(screens)$(kbd)$(wthr)$(bri)$(volume)$(bat)$(ctime)$(net)" &
     wait
 }
 
