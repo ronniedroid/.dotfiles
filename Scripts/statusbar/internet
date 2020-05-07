@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
 
 essid=$(nmcli | grep "connected" | awk '{print $4}')
-status=$(nmcli | grep "connected" | awk '{print $2}')
+wstatus=$(nmcli | grep "connected" | awk '{print $2}')
 
-if [ $status == connected ]
+if [ "$wstatus" = "connected" ]
 then
-  wifiicon=" "
+  icon=""
 else
-  wifiicon=""
+  icon=""
   essid="disconnected"
 fi
 
-printf "%s \\n" "^c#2e3440^^b#bf616a^ $wifiicon^ d^^c#bf616a ^ $essid"
+printf "%s\n" "^c#2e3440^^b#bf616a^ $icon ^c#bf616a^^b#2e3440^ $essid ^d^"

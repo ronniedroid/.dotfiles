@@ -1,0 +1,38 @@
+#!/bin/sh
+
+trap 'update' 5
+
+net() {
+    internet
+}
+
+time() {
+    clock
+}
+
+vol() {
+    volume
+}
+
+bri() {
+    brightness
+}
+
+kbd() {
+    kbdlayout
+}
+
+screens() {
+    screenstatus
+}
+
+update() {
+    xsetroot -name "$(screens)$(kbd)$(bri)$(volume)$(time)$(net)" &
+    wait
+}
+
+while :; do
+    update
+    sleep 10 &
+    wait
+done

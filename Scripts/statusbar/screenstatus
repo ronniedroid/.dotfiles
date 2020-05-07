@@ -3,9 +3,11 @@
 sstatus=$(xrandr --listactivemonitors | grep "Monitors" | awk '{print $2}')
 
 if [ "$sstatus" -eq 1 ]; then
+    text="Single"
     icon=""
 else
+    text="Dual"
     icon=""
 fi
 
-printf "%s \\n" "^c#2e3440^^b#d08770^ $icon^ d^"
+printf "%s\n" "^c#2e3440^^b#d08770^ $icon ^c#d08770^^b#2e3440^ $text ^d^"

@@ -16,10 +16,10 @@ super + alt + p
     pmenu.sh
 
 super + alt + m
-    MonitorLayout.sh
+    MonitorLayout.sh && refstatbar
 
 super + alt + space
-    kbdlayout.sh && pkill -RTMIN+9 dwmblocks
+    kbdlayout.sh && refstatbar
 
 super + alt + w
   Wall-d -d $HOME/Pictures/wallpapers/
@@ -30,12 +30,12 @@ super + {_,shift + } alt + b
 #pulse Audio controls
 
 super + {Left,Right}
-    pamixer {-d,-i} 5 && pkill -RTMIN+10 dwmblocks
+    pamixer {-d,-i} 5 && refstatbar
 
 # Sreen brightness controls
 
 super + {Down,Up}
-	light {-U,-A,} 5 && pkill -RTMIN+11 dwmblocks
+	light {-U,-A,} 5 && refstatbar
 
 # Media player controls
 
