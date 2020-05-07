@@ -7,7 +7,7 @@ super + p
 
 super + shift + f
     firefox
-    
+
 
 
 # terminal emulator
@@ -24,7 +24,9 @@ super + Escape
 
 super + alt + space
     ~/.Scripts/kbdlayout.sh
-    
+
+super + alt + y
+    switcher.sh
 #pulse Audio controls
 
 super + Left
@@ -45,7 +47,7 @@ super + Down
 
 XF86KbdBrightnessUp
 	light -s sysfs/leds/smc::kbd_backlight -A 5    # increase Kbd brightness
-XF86KbdBrightnessDown 
+XF86KbdBrightnessDown
 	light -s sysfs/leds/smc::kbd_backlight -U 5 # decrease Kbd brightness
 
 # Media player controls

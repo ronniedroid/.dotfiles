@@ -1,3 +1,5 @@
+/* ColorScheme */
+
 #define nord0 #2E3440
 #define nord1 #3B4252
 #define nord2 #434C5E
@@ -37,6 +39,8 @@
 *.color13: nord15
 *.color14: nord7
 *.color15: nord6
+
+/* Rofi settings */
 
 rofi.padding: 20
 rofi.line-padding: 2

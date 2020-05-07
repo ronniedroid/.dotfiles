@@ -22,15 +22,11 @@ super + alt + space
     kbdlayout.sh && pkill -RTMIN+9 dwmblocks
 
 super + alt + w
-<<<<<<< HEAD
-  Wall-d -d ~/Pictures/wallpapers
-=======
   Wall-d -d $HOME/Pictures/wallpapers/
 
 super + {_,shift + } alt + b
     bmanager.sh {_,-a (xclip -o)}
 
->>>>>>> 1b2771184417abd2403ca7bfeff85cd4bc63b2f1
 #pulse Audio controls
 
 super + {Left,Right}

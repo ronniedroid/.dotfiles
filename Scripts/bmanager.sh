@@ -21,4 +21,4 @@ done
 menu="dmenu -i -l 10 -p "Bookmarks""
 items=$(printf '%s\n' "${bookmarks[@]}" | $menu )
 
-[ -n "$items" ] && qutebrowser $items || exit 0
+[ -n "$items" ] && firefox $items || exit 0

@@ -23,3 +23,4 @@ bspc rule -a firefox desktop=^2
 bspc rule -a Emacs desktop=^3 state=tiled
 bspc rule -a mpv desktop=^3
 bspc rule -a Thunderbird desktop=^5
+bspc rule -a Sxiv state=floating
