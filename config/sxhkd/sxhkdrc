@@ -22,7 +22,7 @@ super + alt + space
     kbdlayout.sh && refstatbar
 
 super + alt + w
-  Wall-d -d $HOME/Pictures/wallpapers/
+  Wall-d -d $HOME/Pictures/Wallpapers/
 
 super + {_,shift + } alt + b
     bmanager.sh {_,-a (xclip -o)}

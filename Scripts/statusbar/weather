@@ -4,22 +4,22 @@ report="$HOME/.local/share/weatherreport"
 
 getforecast() { curl -sf "wttr.in?format="%C:+%t"" > "${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" || exit 1 ;}
 
-
-
 [ "$(stat -c %y "${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] || getforecast
 
 condition=$(cat $report | awk -F ":" '{print $1}' | sed 's/ //g')
-temp=$(cat $report | awk  -F ":" '{print $2}' | sed 's/ //g')
+temp=$(cat $report | awk  -F ":" '{print $2}' | sed 's/ //g;s/+//g')
 
 case "$condition" in
     Sunny) icon="" ;;
-    Partlycloudy) icon="" ;;
+    Partlycloudy) icon="" ;;
     Cloudy|Verycloudy) icon="" ;;
     Fog) icon="" ;;
     Lightshowers|Lightsleetshowers|Lightsleet|Lightrain) icon="" ;;
     Heavyshowers|Heavyrain) icon="" ;;
-    Lightsnow|Lightsnowshowers|Heavysnow|Heavysnowshowers) icon="" ;;
-    Thunderyshowers|Thunderyheavyrain|Thunderysnowshowers) icon=""
+    Lightsnow|Lightsnowshowers) icon="" ;;
+    Heavysnow|Heavysnowshowers) icon="" ;;
+    Thunderyshowers|Thunderyheavyrain)  icon="" ;;
+    Thunderysnowshowers) icon=""
 esac
 
 
