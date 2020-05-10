@@ -10,6 +10,11 @@ super + shift + f
 super + shift + e
     emacs
 
+super + shift + t
+    thunderbird
+
+super + shift + w
+    VBoxManage startvm "Windows 10"
 # Scripts shortcuts
 
 super + alt + p

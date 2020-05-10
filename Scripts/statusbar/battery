@@ -5,11 +5,11 @@ battery="/sys/class/power_supply/BAT0/"
 capacity=$(cat "$battery"/capacity)
 bstatus=$(cat "$battery"/status)
 
-if [ "$bstatus" == Charging ]; then
+if [ "$bstatus" = "Charging" ] || [ "$bstatus" = "Unknown" ]; then
     icon=""
-elif [ "$bstatus" == Full ]; then
+elif [ "$bstatus" = "Full" ]; then
     icon=""
-elif [ "$bstatus" == Discharging ]; then
+elif [ "$bstatus" = "Discharging" ]; then
     if [ $capacity -gt 75 ]; then
         icon=""
     elif [ $capacity -lt 25 ]; then

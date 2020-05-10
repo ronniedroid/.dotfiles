@@ -1,6 +1,7 @@
 set PATH $HOME/.Scripts/ $PATH
 set PATH $HOME/.Scripts/statusbar $PATH
 set PATH $HOME/.local/bin/ $PATH
+set PATH /opt/texlive/2020/bin/x86_64-linux $PATH
 
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999

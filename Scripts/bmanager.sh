@@ -1,10 +1,7 @@
 #!/bin/bash
 
-bookmarksf=~/.Scripts/bookmarks
+bookmarksf="$HOME/.Scripts/bookmarks"
 
-declare -a bookmarks
-
-bookmarks=($(<$bookmarksf))
 
 input="$2"
 addnew() {
@@ -19,6 +16,9 @@ while getopts a: option; do
 done
 
 menu="dmenu -i -l 10 -p "Bookmarks""
-items=$(printf '%s\n' "${bookmarks[@]}" | $menu )
+items=$(cat $bookmarksf | awk -F "-" '{print $1}' | $menu )
 
-[ -n "$items" ] && firefox $items || exit 0
+bms=$(cat $bookmarksf | grep "$items" | awk -F "-" '{print $2}')
+
+[ -n "$items" ] && firefox $bms || exit 0
+

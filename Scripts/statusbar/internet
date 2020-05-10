@@ -1,8 +1,8 @@
 #!/bin/sh
 
 
-essid=$(nmcli | grep "connected" | awk '{print $4}')
-wstatus=$(nmcli | grep "connected" | awk '{print $2}')
+essid=$(nmcli | grep -v "disconnected" | grep "connected" | awk '{print $4}')
+wstatus=$(nmcli | grep -v "disconnected" | grep connected | awk '{print $2}')
 
 if [ "$wstatus" = "connected" ]
 then

@@ -34,7 +34,7 @@ wthr() {
 }
 
 update() {
-    xsetroot -name "$(screens)$(kbd)$(wthr)$(bri)$(volume)$(ctime)$(net)" &
+    xsetroot -name "$(screens)$(kbd)$(wthr)$(bri)$(volume)$(bat)$(ctime)$(net)" &
     wait
 }
 

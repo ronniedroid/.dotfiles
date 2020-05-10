@@ -10,7 +10,7 @@
 
 Poweroff() {
  MENU="dmenu -i -l 2 -p "-PowerOff?""
- P=$(echo -e "YES\nNO\n" | $MENU)
+ P=$(echo -e "YES\nNO" | $MENU)
 
 case "$P" in
    YES) loginctl poweroff ;;
@@ -20,17 +20,17 @@ case "$P" in
 
 Reboot() {
  MENU="dmenu -i -l 2 -p "-Reboot?""
- R=$(echo -e "YES\nNO\n" | $MENU)
+ R=$(echo -e "YES\nNO" | $MENU)
 
 case "$R" in
-   YES) loginctl poweroff ;;
+   YES) loginctl reboot ;;
     NO) exit 0
   esac
 }
 
 Logout() {
  MENU="dmenu -i -l 2 -p "-Logout?""
- L=$(echo -e "YES\nNO\n" | $MENU)
+ L=$(echo -e "YES\nNO" | $MENU)
 
 case "$L" in
    YES) pkill dwm ;;
@@ -39,7 +39,7 @@ case "$L" in
 }
 
 MENU="dmenu -i -l 3 -p "-PowerMenu""
-PM=$(echo -e " Logout\n Reboot\n Poweroff\n" | $MENU)
+PM=$(echo -e " Logout\n Reboot\n Poweroff" | $MENU)
 
   case "$PM" in
     *Poweroff) Poweroff ;;
