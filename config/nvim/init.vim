@@ -4,27 +4,33 @@
 call plug#begin()
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'ncm2/ncm2-cssomni'
 Plug 'junegunn/fzf'
 Plug 'chrisbra/Colorizer'
 Plug 'justinmk/vim-sneak'
 Plug 'preservim/nerdtree'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 "----------------------colorscheme-----------------------
 "nvim colorscheme
-colorscheme nord
+colorscheme onedark
 "lightline colorscheme
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'onedark',
       \ }
+
+"24bit support
+if (empty($TMUX))
+  if (has("nvim"))
+      let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+    if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
 "FZF colorscheme
 let g:fzf_colors =
@@ -63,17 +69,12 @@ set tabstop=2
 set cursorline
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-" completion
-set shortmess+=c
-inoremap <c-c> <ESC>
-" pyclang
-let g:ncm2_pyclang#library_path = '/usr/lib64/libclang.so.5.0'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"------------------coc-configuration-----------------------
+let g:coc_node_path="/bin/node"
+
 "------------------keybindings--------------------------------
 
 let mapleader = " "
@@ -92,7 +93,6 @@ noremap <leader>[ :bp<CR>
 noremap <leader>] :bn<CR>
 " Close buffer
 noremap <leader>k :bd<CR>
-map <leader>p :!clear && shellcheck %<CR>
 
 " Enable spell checking, s for spell check
 map <leader>s :setlocal spell! spelllang=en_us<CR>
@@ -101,6 +101,14 @@ noremap <leader>, :FZF ~<CR>
 noremap <leader>f :FZF<CR>
 noremap <leader>n :NERDTreeToggle<CR>
 
+
 let g:UltiSnipsExpandTrigger="<tab>"  " use <Tab> trigger autocompletion
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
+"-----------------Macros-------------------
+
+let @r = "I<li>A</li>j"
+let @t = "I'A',j"
+let @y = "A,j"

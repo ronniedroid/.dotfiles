@@ -22,4 +22,4 @@ else
 fi
 
 
-printf "%s%% \n" "^c#2e3440^^b#5e81ac^ $icon ^c#5e81ac^^b#2e3440^ $capacity"
+printf "%s%% \n" "^c#282c34^^b#61afef^ $icon ^c#abb2bf^^b#282c34^ $capacity"

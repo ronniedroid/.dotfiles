@@ -1,63 +1,40 @@
 /* ColorScheme */
 
-#define nord0 #2E3440
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
+#define onedark0 #ABB2BF
+#define onedark1 #282C34
+#define onedark3 #3E4452
+#define onedark4 #282C34
+#define onedark5 #ABB2BF
+#define onedark6 #5C6370
+#define onedark7 #56B6C2
+#define onedark8 #56B6C2
+#define onedark9 #61AFEF
+#define onedark11 #E06C75
+#define onedark13 #E5C07B
+#define onedark14 #98C379
+#define onedark15 #C678DD
 
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
+*.foreground:   onedark4
+*.background:   onedark0
+*.cursorColor:  onedark4
 *fading: 35
-*fadeColor: nord3
+*fadeColor: onedark3
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+*.color0: onedark1
+*.color1: onedark11
+*.color2: onedark14
+*.color3: onedark13
+*.color4: onedark9
+*.color5: onedark15
+*.color6: onedark8
+*.color7: onedark5
+*.color8: onedark3
+*.color9: onedark11
+*.color10: onedark14
+*.color11: onedark13
+*.color12: onedark9
+*.color13: onedark15
+*.color14: onedark7
+*.color15: onedark6
 
-/* Rofi settings */
-
-rofi.padding: 20
-rofi.line-padding: 2
-rofi.hide-scrollbar: true
-rofi.separator-style: solid
-rofi.width: 20
-rofi.lines: 6
-
-!Enable the extended coloring options
-rofi.color-enabled: true
-
-! Property Name     BG       Border   Separator
-rofi.color-window:  #3B4252, #8fbcbb, #8fbcbb
-
-! Property Name     BG       FG       BG-alt   Head-BG  Head-FG
-rofi.color-normal:  #3B4252, #E5E9F0, #3B4252, #3B4252, #8FBCBB
-
-
-rofi.font: Cascadia Code 12
 

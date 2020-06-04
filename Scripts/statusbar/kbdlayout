@@ -3,4 +3,4 @@
 layout=$(setxkbmap -query | grep layout | awk '{print $2}')
 icon=""
 
-printf "%s\n" "^c#2e3440^^b#b48ead^ $icon ^c#b48ead^^b#2e3440^ $layout ^d^"
+printf "%s\n" "^c#282c34^^b#c678dd^ $icon ^c#abb2bf^^b#282c34^ $layout ^d^"

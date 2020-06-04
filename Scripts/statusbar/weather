@@ -23,7 +23,7 @@ case "$condition" in
 esac
 
 
-printf "%s\n" "^c#2e3440^^b#81a1c1^ $icon ^c#81a1c1^^b#2e3440^ $temp ^d^"
+printf "%s\n" "^c#282c34^^b#abb2bf^ $icon ^c#abb2bf^^b#282c34^ $temp ^d^"
 
 
 

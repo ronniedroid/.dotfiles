@@ -15,6 +15,7 @@ super + shift + t
 
 super + shift + w
     VBoxManage startvm "Windows 10"
+
 # Scripts shortcuts
 
 super + alt + p

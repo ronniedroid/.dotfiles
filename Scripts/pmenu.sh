@@ -13,8 +13,8 @@ Poweroff() {
  P=$(echo -e "YES\nNO" | $MENU)
 
 case "$P" in
-   YES) loginctl poweroff ;;
-    NO) exit 0
+    YES) loginctl poweroff ;;
+    NO) exit 0 ;;
   esac
 }
 
@@ -38,11 +38,22 @@ case "$L" in
   esac
 }
 
-MENU="dmenu -i -l 3 -p "-PowerMenu""
-PM=$(echo -e " Logout\n Reboot\n Poweroff" | $MENU)
+Lock() {
+ MENU="dmenu -i -l 2 -p "-Lock?""
+ L=$(echo -e "YES\nNO" | $MENU)
+
+case "$L" in
+   YES) betterlockscreen -l ;;
+    NO) exit 0
+  esac
+}
+
+MENU="dmenu -i -l 4 -p "-PowerMenu""
+PM=$(echo -e " Lock\n Logout\n Reboot\n Poweroff" | $MENU)
 
   case "$PM" in
     *Poweroff) Poweroff ;;
     *Reboot) Reboot ;;
-    *Logout) Logout
+    *Logout) Logout ;;
+    *Lock) Lock ;;
   esac

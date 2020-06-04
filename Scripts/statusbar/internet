@@ -12,4 +12,4 @@ else
   essid="disconnected"
 fi
 
-printf "%s\n" "^c#2e3440^^b#bf616a^ $icon ^c#bf616a^^b#2e3440^ $essid ^d^"
+printf "%s\n" "^c#282c34^^b#be5046^ $icon ^c#abb2bf^^b#282c34^ $essid ^d^"
