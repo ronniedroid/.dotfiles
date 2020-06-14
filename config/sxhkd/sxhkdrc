@@ -1,4 +1,8 @@
 # make sxhkd reload its configuration files:
+
+super + Return
+    alacritty
+
 super + Escape
 	pkill -USR1 -x sxhkd
 
@@ -7,14 +11,17 @@ super + Escape
 super + shift + f
     firefox
 
+super + d
+    dmenu_run
+
 super + shift + e
     emacs
 
 super + shift + t
     thunderbird
 
-super + shift + w
-    VBoxManage startvm "Windows 10"
+#super + shift + w
+#    VBoxManage startvm "Windows 10"
 
 # Scripts shortcuts
 

@@ -1,5 +1,6 @@
 #!/bin/sh
 
+wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 volstat=$(pamixer --get-volume)
 
 vol=$(echo "$volstat")
@@ -12,4 +13,10 @@ else
 	icon=""
 fi
 
-printf "%s%% \n" "^c#282c34^^b#e5c07b^ $icon ^c#abb2bf^^b#282c34^ $vol"
+if [ "$wm" = "dwm" ]; then
+    printf "%s%% \n" "^c#282c34^^b#e5c07b^ $icon ^c#abb2bf^^b#282c34^ $vol"
+elif [ "$wm" = "spectrwm" ]; then
+    printf "%s%%  \n" "+@fg=3;$icon+@fg=7; $volstat"
+else
+    printf "%s%% \n" "$icon $volstat"
+fi

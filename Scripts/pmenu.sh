@@ -8,6 +8,8 @@
 #
 
 
+wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
+
 Poweroff() {
  MENU="dmenu -i -l 2 -p "-PowerOff?""
  P=$(echo -e "YES\nNO" | $MENU)
@@ -33,7 +35,11 @@ Logout() {
  L=$(echo -e "YES\nNO" | $MENU)
 
 case "$L" in
-   YES) pkill dwm ;;
+   YES) if [ "$wm" = "dwm" ]; then
+       pkill dwm
+   else
+       pkill spectrwm
+   fi ;;
     NO) exit 0
   esac
 }

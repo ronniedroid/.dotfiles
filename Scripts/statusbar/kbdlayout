@@ -1,6 +1,13 @@
 #!/bin/sh
 
+wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 layout=$(setxkbmap -query | grep layout | awk '{print $2}')
 icon=""
 
-printf "%s\n" "^c#282c34^^b#c678dd^ $icon ^c#abb2bf^^b#282c34^ $layout ^d^"
+if [ "$wm" = "dwm" ]; then
+    printf "%s\n" "^c#282c34^^b#c678dd^ $icon ^c#abb2bf^^b#282c34^ $layout ^d^"
+elif [ "$wm" = "spectrwm" ]; then
+    printf "%s \n" "+@fg=5;$icon+@fg=7; $layout "
+else
+    printf "%s \n" "$icon $layout"
+fi

@@ -1,6 +1,15 @@
 #!/bin/sh
 
+wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 bri=$(light -G | sed 's/\..*//g')
 icon=""
 
-printf "%s%% \n" "^c#282c34^^b#56b6c2^ $icon ^c#abb2bf^^b#282c34^ $bri"
+
+
+if [ "$wm" = "dwm" ]; then
+    printf "%s%% \n" "^c#282c34^^b#56b6c2^ $icon ^c#abb2bf^^b#282c34^ $bri"
+elif [ "$wm" = "spectrwm" ]; then
+    printf "%s%%  \n" "+@fg=6;$icon+@fg=7; $bri"
+else
+    printf "%s%% \n" "$icon $bri"
+fi

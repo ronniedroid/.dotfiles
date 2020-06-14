@@ -1,5 +1,6 @@
 #!/bin/sh
 
+wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 sstatus=$(xrandr --listactivemonitors | grep "Monitors" | awk '{print $2}')
 
 if [ "$sstatus" -eq 1 ]; then
@@ -10,4 +11,8 @@ else
     icon=""
 fi
 
-printf "%s\n" "^c#282c34^^b#e06c75^ $icon ^c#abb2bf^^b#282c34^ $text ^d^"
+if [ "$wm" = "dwm" ]; then
+    printf "%s\n" "^c#282c34^^b#e06c75^ $icon ^c#abb2bf^^b#282c34^ $text ^d^"
+else
+    printf "%s%% \n" "$icon $sstatus"
+fi
