@@ -77,7 +77,7 @@ case "$condition" in
     else
         icon=""
         fi ;;
-    Lightrain)
+    Lightrain|Lightrainshower)
     if [ "$time" = "AM" ]
     then
         icon=""

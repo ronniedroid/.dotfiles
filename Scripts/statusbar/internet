@@ -9,7 +9,7 @@ if [ "$wstatus" = "connected" ]
 then
   icon=""
 else
-  icon=""
+  icon="睊"
   essid="disconnected"
 fi
 

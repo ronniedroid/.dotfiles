@@ -2,7 +2,7 @@
 
 wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 cdate=$(date '+%b %d (%a) %H:%M')
-icon=''
+icon=''
 
 
 if [ "$wm" = "dwm" ]; then

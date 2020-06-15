@@ -2,7 +2,7 @@
 
 wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 bri=$(light -G | sed 's/\..*//g')
-icon=""
+icon=""
 
 
 

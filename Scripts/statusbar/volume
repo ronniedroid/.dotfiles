@@ -5,12 +5,16 @@ volstat=$(pamixer --get-volume)
 
 vol=$(echo "$volstat")
 
+
 if [ "$vol" -gt "70" ]; then
 	icon=""
+elif [ "$vol" -eq "0" ]; then
+    icon="婢"
 elif [ "$vol" -lt "30" ]; then
-	icon=""
-else
 	icon=""
+
+else
+	icon="墳"
 fi
 
 if [ "$wm" = "dwm" ]; then

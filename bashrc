@@ -19,6 +19,8 @@ alias D='cd ~/Downloads'
 alias d='cd ~/Documents'
 alias fuck='sudo !!'
 alias ls='exa -al'
+alias mpv='sw smpv'
+alias sxiv='sw ssxiv'
 
 
 #bind 'set show-all-if-ambiguous on'

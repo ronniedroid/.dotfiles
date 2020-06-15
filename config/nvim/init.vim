@@ -2,13 +2,10 @@
 "-----------------------Plugins-----------------------------
 
 call plug#begin()
-Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'chrisbra/Colorizer'
 Plug 'justinmk/vim-sneak'
-Plug 'preservim/nerdtree'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
@@ -101,10 +98,8 @@ noremap <leader>, :FZF ~<CR>
 noremap <leader>f :FZF<CR>
 noremap <leader>n :NERDTreeToggle<CR>
 
-
-let g:UltiSnipsExpandTrigger="<tab>"  " use <Tab> trigger autocompletion
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+imap <tab> <Plug>(coc-snippets-expand-jump)
+let g:coc_snippet_prev = '<s-tab>'
 
 
 "-----------------Macros-------------------

@@ -1,40 +1,31 @@
-/* ColorScheme */
+! Custom
+! Original theme https://github.com/nathanbuchar/atom-one-dark-terminal
+*.foreground:    #ABB2BF
+*.background:    #1E2127
+*.cursorColor:   #5C6370
+*.highlightColor:#3A3F4B
 
-#define onedark0 #ABB2BF
-#define onedark1 #282C34
-#define onedark3 #3E4452
-#define onedark4 #282C34
-#define onedark5 #ABB2BF
-#define onedark6 #5C6370
-#define onedark7 #56B6C2
-#define onedark8 #56B6C2
-#define onedark9 #61AFEF
-#define onedark11 #E06C75
-#define onedark13 #E5C07B
-#define onedark14 #98C379
-#define onedark15 #C678DD
-
-*.foreground:   onedark4
-*.background:   onedark0
-*.cursorColor:  onedark4
-*fading: 35
-*fadeColor: onedark3
-
-*.color0: onedark1
-*.color1: onedark11
-*.color2: onedark14
-*.color3: onedark13
-*.color4: onedark9
-*.color5: onedark15
-*.color6: onedark8
-*.color7: onedark5
-*.color8: onedark3
-*.color9: onedark11
-*.color10: onedark14
-*.color11: onedark13
-*.color12: onedark9
-*.color13: onedark15
-*.color14: onedark7
-*.color15: onedark6
-
-
+! Negro y gris
+*.color0:        #1E2127
+*.color8:        #5C6370
+! Rojos
+*.color1:        #E06C75
+*.color9:        #E06C75
+! Verde
+*.color2:        #98C379
+*.color10:       #98C379
+! Amarillo
+*.color3:        #D19A66
+*.color11:       #D19A66
+! Azul
+*.color4:        #61AFEF
+*.color12:       #61AFEF
+! Magenta
+*.color5:        #C678DD
+*.color13:       #C678DD
+! Cyan
+*.color6:        #56B6C2
+*.color14:       #56B6C2
+! Blanco
+*.color7:        #ABB2BF
+*.color15:       #FFFFFF

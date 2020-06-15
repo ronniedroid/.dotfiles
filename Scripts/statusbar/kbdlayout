@@ -2,7 +2,7 @@
 
 wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 layout=$(setxkbmap -query | grep layout | awk '{print $2}')
-icon=""
+icon=""
 
 if [ "$wm" = "dwm" ]; then
     printf "%s\n" "^c#282c34^^b#c678dd^ $icon ^c#abb2bf^^b#282c34^ $layout ^d^"
