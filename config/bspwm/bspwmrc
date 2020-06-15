@@ -6,7 +6,6 @@ xsetroot -cursor_name left_ptr
 
 
 bspc monitor LVDS1 -d I II III IV V
-bspc monitor VGA1 -d VI
 
 bspc config border_width        3
 bspc config window_gap          12

@@ -2,7 +2,7 @@
 
 file="$HOME/.local/share/unhide"
 app="$1"
-target="$2"
+#target="$2"
 
 tid=$(xdo id)
 
@@ -16,4 +16,4 @@ showlast() {
     xdo show -r $sid
 }
 
-hidecurrent & $1 $target ; showlast
+hidecurrent & $@ ; showlast
