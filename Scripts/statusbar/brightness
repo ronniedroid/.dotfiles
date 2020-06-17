@@ -2,9 +2,19 @@
 
 wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 bri=$(light -G | sed 's/\..*//g')
-icon=""
 
+if [ "$bri" -gt "90" ]; then
+	icon=""
+elif [ "$bri" -gt "70" ]; then
+	icon=""
+elif [ "$bri" -eq "0" ]; then
+    icon=""
+elif [ "$bri" -lt "30" ]; then
+	icon=""
 
+else
+	icon=""
+fi
 
 if [ "$wm" = "dwm" ]; then
     printf "%s%% \n" "^c#282c34^^b#56b6c2^ $icon ^c#abb2bf^^b#282c34^ $bri"

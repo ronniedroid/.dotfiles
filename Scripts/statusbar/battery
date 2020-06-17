@@ -31,7 +31,7 @@ elif [ "$bstatus" = "Discharging" ]; then
         icon=""
     elif [ $capacity -gt 70 ]; then
         icon=""
-    elif [ $capacity -lt 30 ]; then
+    elif [ $capacity -lt 40 ]; then
         icon=""
     elif [ $capacity -lt 10 ]; then
         icon=""

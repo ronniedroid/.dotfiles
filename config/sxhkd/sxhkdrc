@@ -12,7 +12,7 @@ super + shift + f
     firefox
 
 super + d
-    dmenu_run
+    dmenu_run -h 24
 
 super + shift + e
     emacs
@@ -37,8 +37,8 @@ super + alt + space
 super + alt + w
   Wall-d -d $HOME/Pictures/Wallpapers/
 
-super + {_,shift + } alt + b
-    bmanager.sh {_,-a (xclip -o)}
+super + alt + b ; {a,b,d,y,r}
+    bmanager.sh {-a (xclip -o),-b,-d,-y,-r}
 
 #pulse Audio controls
 
