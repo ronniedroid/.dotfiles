@@ -24,7 +24,7 @@ items=$($search | $menu )
 
 bookmarks() {
 menu="dmenu -i -l 10 -h 24 -p "Bookmarks""
-items=$(awk -F "+" '{print $1}' $bookmarksf | $menu )
+items=$(awk -F "+" '{print $1}' $bookmarksf | sort | $menu )
 
 bms=$(grep -m1 "$items" $bookmarksf | awk -F "+" '{print $2}')
 
@@ -34,7 +34,7 @@ bms=$(grep -m1 "$items" $bookmarksf | awk -F "+" '{print $2}')
 
 rbookmark() {
 menu="dmenu -i -l 10 -p "Remove_a_Bookmarks""
-items=$(awk -F "+" '{print $1}' $bookmarksf | $menu )
+items=$(awk -F "+" '{print $1}' $bookmarksf | sort | $menu )
 
 [ -n "$items" ] && sed -i "/$items/d" "$bookmarksf" || exit 0
 echo $items $bookmarksf
