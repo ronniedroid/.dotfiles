@@ -4,10 +4,12 @@ set PATH $HOME/.local/bin/ $PATH
 set PATH /opt/texlive/2020/bin/x86_64-linux $PATH
 set PATH $HOME/.cargo/bin/ $PATH
 
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-export EDITOR='nvim'
 
+export MANPAGER='nvim +Man!'
+export EDITOR='nvim'
+export MANWIDTH=999
+
+. $HOME/.config/fish/exports
 PF_INFO="ascii title os kernel shell wm editor pkgs memory palette" PF_COL1=6 PF_COL2=7 PF_COL3=1 pfetch
 
 fish_vi_key_bindings

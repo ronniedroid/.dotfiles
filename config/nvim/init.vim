@@ -9,6 +9,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
+Plug 'kovetskiy/sxhkd-vim'
 call plug#end()
 
 "----------------------colorscheme-----------------------

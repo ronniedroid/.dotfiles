@@ -1,15 +1,15 @@
 # make sxhkd reload its configuration files:
 
 super + Return
-    alacritty
+		alacritty
 
 super + Escape
-	pkill -USR1 -x sxhkd
+		pkill -USR1 -x sxhkd
 
 # Apps shortcuts
 
 super + shift + f
-    firefox
+		firefox
 
 super + d
     dmenu_run -h 24
@@ -20,25 +20,28 @@ super + shift + e
 super + shift + t
     thunderbird
 
-#super + shift + w
-#    VBoxManage startvm "Windows 10"
+super + shift + w
+    VBoxManage startvm "Windows 10"
 
 # Scripts shortcuts
 
-super + alt + p
+alt + shift + p
     pmenu.sh
 
-super + alt + m
+alt + shift + m
     MonitorLayout.sh && refstatbar
 
-super + alt + space
+alt + shift + space
     kbdlayout.sh && refstatbar
 
-super + alt + w
-  Wall-d -d $HOME/Pictures/Wallpapers/
+alt + shift + w
+		Wall-d -d $HOME/Pictures/Wallpapers/
 
-super + alt + b ; {a,b,d,y,r}
+alt + shift + b ; {a,b,d,y,r}
     bmanager.sh {-a (xclip -o),-b,-d,-y,-r}
+
+alt + shift + comma
+    bitwarden-dmenu --dmenu-args='-i -l 10 -p Select_item' --clear-clipboard 30 --session-timeout 100 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
 
 #pulse Audio controls
 
@@ -48,15 +51,15 @@ super + {Left,Right}
 # Sreen brightness controls
 
 super + {Down,Up}
-	light {-U,-A,} 5 && refstatbar
+		light {-U,-A,} 5 && refstatbar
 
 # Media player controls
 
 XF86AudioPlay
-	playerctl play
+		playerctl play
 XF86AudioPause
-	playerctl pause
+		playerctl pause
 XF86AudioNext
-	playerctl next
+		playerctl next
 XF86AudioPrev
-playerctl previous
+		playerctl previous

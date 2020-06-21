@@ -25,10 +25,10 @@ window:
         decorations: none
 font:
 
-        size: 10.0
+        size: 12.0
 
         normal:
-                family: Hack Nerd Font
+                family: Code New Roman Nerd Font
                 style: Regular
 
 # Colors (One Dark)
