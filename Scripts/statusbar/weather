@@ -2,7 +2,8 @@
 
 wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 report="$HOME/.local/share/weatherreport"
-time=$(date | awk '{print $6}')
+timed=$(date | awk '{print $6}')
+timet=$(date | awk '{print $5}' | awk -F ":" '{print $1}')
 
 getforecast() { curl -sf "wttr.in?format="%C:+%t"" > "${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" || exit 1 ;}
 
@@ -15,109 +16,154 @@ temp=$(cat $report | awk  -F ":" '{print $2}' | sed 's/ //g;s/+//g')
 
 case "$condition" in
     Sunny|Clear)
-    if [ "$time" = "AM" ]
+    if [ "$timed" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Partlycloudy)
     if [ "$time" = "AM" ]
     then
         icon="杖"
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon="杖"
         fi ;;
     Cloudy)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Verycloudy)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Fog)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Lightshowers)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Heavyshowers)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Lightsleet)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Lightsleetshowers)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Lightrain|Lightrainshower)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Heavyrain)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Thunderyshowers|Thunderyheavyrain)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Lightsnow|Lightsnowshowers|Heavysnow|Heavysnowshowers)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
    Thunderysnowshowers)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
         fi ;;
     Thunderstorm)
     if [ "$time" = "AM" ]
     then
         icon=""
-    else
+    elif [ "$timed" = "PM" ] && [ "$timet" -ge "07" ]
+    then
         icon=""
+    else
+        icon=""
     fi ;;
 esac
 
