@@ -3,6 +3,9 @@
 super + Return
 		alacritty
 
+alt + Return
+		st
+
 super + Escape
 		pkill -USR1 -x sxhkd
 
@@ -35,23 +38,24 @@ alt + shift + space
     kbdlayout.sh && refstatbar
 
 alt + shift + w
-		Wall-d -d $HOME/Pictures/Wallpapers/
+		Wall-d -f -d $HOME/Pictures/Wallpapers/
 
 alt + shift + b ; {a,b,d,y,r}
     bmanager.sh {-a (xclip -o),-b,-d,-y,-r}
 
 alt + shift + comma
-    bitwarden-dmenu --dmenu-args='-i -l 10 -p Select_item' --clear-clipboard 30 --session-timeout 100 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
+    bitwarden-dmenu --dmenu-args='-i -l 10 -p Select_item' --clear-clipboard 60 --session-timeout 440 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
 
 #pulse Audio controls
 
 super + {Left,Right}
     pamixer {-d,-i} 5 && refstatbar
 
+
 # Sreen brightness controls
 
 super + {Down,Up}
-		light {-U,-A,} 5 && refstatbar
+		light {-U,-A} 5 && refstatbar
 
 # Media player controls
 

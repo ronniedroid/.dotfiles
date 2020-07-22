@@ -31,6 +31,16 @@ font:
                 family: Code New Roman Nerd Font
                 style: Regular
 
+        bold:
+                family: Code New Roman Nerd Font
+                style: Bold
+
+        italic:
+                family: Code New Roman Nerd Font
+                style: Italic
+
+
+
 # Colors (One Dark)
 colors:
   # Default colors

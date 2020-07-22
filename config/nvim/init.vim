@@ -10,6 +10,9 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
 Plug 'kovetskiy/sxhkd-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 "----------------------colorscheme-----------------------
@@ -47,8 +50,13 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 "---------------------settings---------------------------
 
+augroup vimrc_filetype
+	autocmd!
+	autocmd FileType c call s:MyCSettings()
+augroup end
+
 set nocompatible
-set clipboard+=unnamedplus      " use the same clipbord as system
+set clipboard=unnamedplus      " use the same clipbord as system
 set splitright                  " Vertical windows should be split to right
 set splitbelow                  " Horizontal windows should split to bottom
 set noshowmatch                 " Do not show matching brackets by flickering
@@ -60,16 +68,27 @@ set smartcase
 set encoding=utf-8
 set number relativenumber
 set termguicolors
-set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=2
 set cursorline
+set nobackup
+set nowritebackup
+set formatoptions-=cro
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeShowHidden=1
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+function! s:MyCSettings()
+	map - :s/^/\/\//<CR>:nohlsearch<CR>
+	set autoindent
+	set cinoptions=:0
+	setlocal foldnestmax=1
+	set cc=81
+endfunction
+
+let g:indentLine_enabled = 1
+
 "------------------coc-configuration-----------------------
 let g:coc_node_path="/bin/node"
 
@@ -102,9 +121,11 @@ noremap <leader>n :NERDTreeToggle<CR>
 imap <tab> <Plug>(coc-snippets-expand-jump)
 let g:coc_snippet_prev = '<s-tab>'
 
+"coc-explorer
+:nmap <leader>e :CocCommand explorer<CR>
 
 "-----------------Macros-------------------
 
-let @r = "I<li>A</li>j"
-let @t = "I'A',j"
-let @y = "A,j"
+let @l = "I<li>A</li>j"
+let @c = "I'A',j"
+let @n = "A,j"

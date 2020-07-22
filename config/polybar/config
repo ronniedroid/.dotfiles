@@ -5,13 +5,13 @@ background = #3b4252
 background-alt = #444
 background-desktop = #8fbcbb
 background-battery-nord = #81A1C1
-background-wlan-nord = #BF616A 
-background-cpu-nord = #D08770 
+background-wlan-nord = #BF616A
+background-cpu-nord = #D08770
 background-memory-nord = #B48EAD
-background-volume-nord = #EBCB8B 
+background-volume-nord = #EBCB8B
 ;foreground = ${xrdb:color7:#222}
 ;nord 6
-foreground = #3b4252 
+foreground = #3b4252
 foreground-alt = #555
 primary = #ffb52a
 secondary = #81a1c1
@@ -52,8 +52,8 @@ font-2 = "Roboto Mono Bold for Powerline:size=10;1"
 font-3 = siji:pixelsize=10;1
 
 modules-left = bspwm xwindow
-modules-center = 
-modules-right = xkeyboard backlight volume battery date wlan 
+modules-center =
+modules-right = xkeyboard backlight volume battery date wlan
 
 wm-restack = bspwm
 
@@ -68,7 +68,7 @@ tray-background = #3b4252
 type = internal/backlight
 card = intel_backlight
 format = <label>
-label = "  %percentage%% " 
+label = "  %percentage%% "
 label-foreground = #8fbcbb
 format-prefix = "      "
 format-prefix-background = #8fbcbb
@@ -129,7 +129,7 @@ format-disconnected-foreground=${colors.background-wlan-nord}
 format-disconnected-prefix =  "    "
 format-disconnected-prefix-background=${colors.background-wlan-nord}
 format-disconnected-prefix-foreground= #3b4252
-connected-active-font=2 
+connected-active-font=2
 disconnected-active-font=2
 
 [module/date]
@@ -139,8 +139,8 @@ interval = 5
 date =
 date-alt = "  %Y-%m-%d "
 
-time = "  %H:%M " 
-time-alt = "  %H:%M:%S "  
+time = "  %H:%M "
+time-alt = "  %H:%M:%S "
 ;have to manually insert module margins here
 format-prefix = "      "
 format-prefix-background = #a3be8c
@@ -156,9 +156,9 @@ format-volume = <label-volume>
 label-volume = "  %percentage%% "
 label-volume-foreground = ${colors.background-volume-nord}
 format-volume-prefix = "      "
-format-volume-prefix-background = #ebcb8b 
+format-volume-prefix-background = #ebcb8b
 format-muted-prefix = "      "
-format-muted-prefix-background = #ebcb8b 
+format-muted-prefix-background = #ebcb8b
 format-muted-foreground = ${colors.foreground}
 label-muted-foreground = ${colors.background-volume-nord}
 format-volume-foreground = ${colors.foreground}
@@ -170,12 +170,12 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 100
-background = #3b4252 
+background = #3b4252
 format-discharging-prefix= "       "
-format-discharging-prefix-background = #5e81ac 
+format-discharging-prefix-background = #5e81ac
 format-discharging-prefix-foreground = #3b4252
 format-charging-prefix = "        "
-format-charging-prefix-background = #5e81ac 
+format-charging-prefix-background = #5e81ac
 format-charging-prefix-foreground = #3b4252
 format-charging-foreground = #81A1C1
 format-charging = <label-charging>

@@ -40,6 +40,6 @@ update() {
 
 while :; do
     update
-    sleep 10 &
+    sleep 60 &
     wait
 done

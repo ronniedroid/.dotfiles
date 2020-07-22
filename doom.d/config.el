@@ -23,7 +23,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-one)
 
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/org/")
