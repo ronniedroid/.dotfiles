@@ -20,7 +20,7 @@ fi
 if [ "$wm" = "dwm" ]; then
     printf "%s%% \n" "^c#282c34^^b#e5c07b^ $icon ^c#abb2bf^^b#282c34^ $vol"
 elif [ "$wm" = "spectrwm" ]; then
-    printf "%s%%  \n" "+@fg=3;$icon+@fg=7; $volstat"
+    printf "%s \n" "+@fg=3;$icon "
 else
     printf "%s%% \n" "$icon $volstat"
 fi

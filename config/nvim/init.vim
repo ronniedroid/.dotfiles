@@ -78,6 +78,8 @@ set formatoptions-=cro
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" fzf command
+let $FZF_DEFAULT_COMMAND = "find -L"
 
 function! s:MyCSettings()
 	map - :s/^/\/\//<CR>:nohlsearch<CR>
@@ -116,13 +118,6 @@ map <leader>s :setlocal spell! spelllang=en_us<CR>
 " difining FZF for my usually visited files
 noremap <leader>, :FZF ~<CR>
 noremap <leader>f :FZF<CR>
-noremap <leader>n :NERDTreeToggle<CR>
-
-imap <tab> <Plug>(coc-snippets-expand-jump)
-let g:coc_snippet_prev = '<s-tab>'
-
-"coc-explorer
-:nmap <leader>e :CocCommand explorer<CR>
 
 "-----------------Macros-------------------
 

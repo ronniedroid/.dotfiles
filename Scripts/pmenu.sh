@@ -15,7 +15,7 @@ Poweroff() {
  P=$(echo -e "YES\nNO" | $MENU)
 
 case "$P" in
-    YES) loginctl poweroff ;;
+    YES) systemctl poweroff ;;
     NO) exit 0 ;;
   esac
 }
@@ -25,7 +25,7 @@ Reboot() {
  R=$(echo -e "YES\nNO" | $MENU)
 
 case "$R" in
-   YES) loginctl reboot ;;
+   YES) systemctl reboot ;;
     NO) exit 0
   esac
 }
@@ -37,8 +37,10 @@ Logout() {
 case "$L" in
    YES) if [ "$wm" = "dwm" ]; then
        pkill dwm
-   else
+	 elif ["$wm" = "spectrwm"]; then
        pkill spectrwm
+	 else
+			 qtile-cmd -o cmd -f shutdown
    fi ;;
     NO) exit 0
   esac

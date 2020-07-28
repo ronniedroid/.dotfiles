@@ -3,59 +3,50 @@
 super + Return
 		alacritty
 
-alt + Return
-		st
-
-super + Escape
+alt + Escape
 		pkill -USR1 -x sxhkd
 
 # Apps shortcuts
 
-super + shift + f
+alt + f
 		firefox
 
-super + d
+alt + d
     dmenu_run -h 24
 
-super + shift + e
+alt + e
     emacs
 
-super + shift + t
+alt + t
     thunderbird
-
-super + shift + w
-    VBoxManage startvm "Windows 10"
 
 # Scripts shortcuts
 
-alt + shift + p
+alt + p
     pmenu.sh
 
-alt + shift + m
-    MonitorLayout.sh && refstatbar
+alt + m
+    MonitorLayout.sh
 
-alt + shift + space
-    kbdlayout.sh && refstatbar
+alt + space
+    kbdlayout.sh
 
-alt + shift + w
+alt + w
 		Wall-d -f -d $HOME/Pictures/Wallpapers/
 
-alt + shift + b ; {a,b,d,y,r}
+alt + b ; {a,b,d,y,r}
     bmanager.sh {-a (xclip -o),-b,-d,-y,-r}
-
-alt + shift + comma
-    bitwarden-dmenu --dmenu-args='-i -l 10 -p Select_item' --clear-clipboard 60 --session-timeout 440 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
 
 #pulse Audio controls
 
-super + {Left,Right}
-    pamixer {-d,-i} 5 && refstatbar
+alt + {Left,Right}
+    pamixer {-d,-i} 5
 
 
 # Sreen brightness controls
 
-super + {Down,Up}
-		light {-U,-A} 5 && refstatbar
+alt + {Down,Up}
+		light {-U,-A} 5
 
 # Media player controls
 
