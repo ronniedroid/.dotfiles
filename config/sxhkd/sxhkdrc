@@ -37,6 +37,9 @@ alt + w
 alt + b ; {a,b,d,y,r}
     bmanager.sh {-a (xclip -o),-b,-d,-y,-r}
 
+alt + c
+		confmanager.sh
+
 #pulse Audio controls
 
 alt + {Left,Right}

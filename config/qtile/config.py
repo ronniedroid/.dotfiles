@@ -38,14 +38,14 @@ keys = [
     Key("M-n", lazy.layout.normalize()),
     Key("M-m", lazy.layout.maximize()),
     # Move the master pane Left/Right:
-    Key("M-S-<space>", lazy.layout.flip()),
+    Key("M-<space>", lazy.layout.flip()),
     # Toggel fullscreen on/off:
     Key("M-f", lazy.window.toggle_fullscreen()),
 
     # Change Layout:
     Key("M-<Tab>", lazy.next_layout()),
     # Close focused window:
-    Key("M-S-q", lazy.window.kill()),
+    Key("M-q", lazy.window.kill()),
 
     # Restart qtile in place:
     Key("M-C-r", lazy.restart()),
@@ -54,7 +54,9 @@ keys = [
     #Key("M- "r", lazy.spawncmd()),
 
     Key("M-r", lazy.run_extension(extension.WindowList(
-        item_format="{group}: {window}",
+        item_format="{id}: {window}",
+        dmenu_ignorecase=True,
+        dmenu_prompt=" Avilable Windows"
     ))),
 ]
 
@@ -128,17 +130,15 @@ widget_defaults = dict(
 def get_bar():
     return bar.Bar([
        widget.GroupBox(
-           active = "e06c75",
+           active = "98c379",
            inactive = "abb2bf",
-           this_current_screen_border = "56b6c2",
+           this_current_screen_border = "61afef",
            highlight_method = "text",
+           highlight_color=["282c34", "282c34"],
            center_aligned=True,
            rounded=False,
            borderwidth=0,
            padding=6,
-       ),
-       widget.Prompt(
-           prompt='Run:',
        ),
       widget.Spacer(bar.STRETCH),
        widget.Systray(
@@ -185,7 +185,7 @@ def get_bar():
            interface="wlp5s0",
            format="{essid}",
        ),
-    ], 28, background="2e3440")
+    ], 28, margin=0)
 
 screens = [
     Screen(top=get_bar()),
