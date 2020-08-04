@@ -1,0 +1,326 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+; -- Colors -- {{{
+[colors]
+background = #282c34
+background-alt = #202329
+foreground = #abb2bf
+foreground-alt = #282c34
+red = #e06c75
+green = #98c379
+yellow = #e5c07b
+blue = #61afef
+magenta= #c678dd
+cyan = #56b6c2
+; }}}
+; -- BAR: qtile -- {{{
+[bar/qtile]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 27
+; offset-x = 1%
+; offset-y = 1%
+radius = 0
+fixed-center = false
+
+background = ${colors.background-alt}
+foreground = ${colors.foreground-alt}
+
+; line-size = 0
+; line-color = #f00
+
+; border-size = 0
+; border-color = #00000000
+
+padding-left = 1
+padding-right = 1
+
+; module-margin-left = 1
+; module-margin-right = 0.6
+
+font-0 = Hack Nerd Font:pixelsize=11;1
+font-1 = NotoColorEmoji:scale=12
+
+modules-left = ewmh xwindow
+modules-right = weather xkeyboard date xbacklight pulseaudio battery wlan
+
+tray-position = right
+tray-padding = 4
+tray-maxsize = 12
+tray-background = ${colors.background}
+
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = pointer
+; }}}
+; -- Ewmh -- {{{
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = false
+enable-scroll = false
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-default = 
+
+format = <label-state>
+
+label-monitor = %name%
+
+label-active = %icon%
+label-active-foreground = ${colors.cyan}
+label-active-background = ${colors.background}
+label-active-padding = 1
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.green}
+label-occupied-background = ${colors.background}
+label-occupied-padding = 1
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.background}
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background}
+label-empty-padding = 1
+; }}}
+; -- XWindow -- {{{
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+label-background = ${colors.background}
+label-foreground = ${colors.foreground}
+
+label-padding = 2
+label-margin = 1
+; }}}
+; -- XKeyboard -- {{{
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.magenta}
+format-prefix-background = ${colors.background}
+format-prefix-padding = 1
+
+label-layout = "%layout%"
+label-layout-padding-right = 1
+label-layout-margin = 0
+label-layout-foreground = ${colors.foreground}
+label-layout-background = ${colors.background}
+
+; }}}
+; -- XBacklight -- {{{
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <ramp>
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+ramp-background = ${colors.background}
+ramp-foreground = ${colors.cyan}
+
+ramp-padding = 1
+ramp-margin-left = 1
+
+; }}}
+; -- WLAN -- {{{
+[module/wlan]
+type = internal/network
+interface = wlp5s0
+interval = 3.0
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = 直
+label-diconnected = 睊
+
+label-connected-foreground = ${colors.red}
+label-connected-background = ${colors.background}
+
+label-disconnected-foreground = ${colors.red}
+label-disconnected-background = ${colors.background}
+
+label-connected-padding-right = 2
+label-disconnected-padding-right = 2
+
+
+; ramp-signal-0 = 
+; ramp-signal-1 = 
+; ramp-signal-2 = 
+; ramp-signal-3 = 
+; ramp-signal-4 = 
+; ramp-signal-foreground = ${colors.red}
+; ramp-signal-background = ${colors.background}
+
+; ramp-signal-padding-right = 2
+; ramp-signal-padding-left = 1
+; }}}
+; -- Date -- {{{
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt =
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.green}
+format-prefix-background = ${colors.background}
+
+label = %date% %time%
+
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+label-padding-right = 1
+
+; }}}
+; -- Pulseaudio -- {{{
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-font = 1
+format-volume = <ramp-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = " ﱝ muted"
+label-muted-foreground = ${colors.yellow}
+label-muted-background = ${colors.background}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 墳
+ramp-volume-3 = 
+
+ramp-volume-foreground = ${colors.yellow}
+ramp-volume-background = ${colors.background}
+ramp-volume-padding = 1
+; }}}
+; -- Battery -- {{{
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging>
+format-discharging = <ramp-capacity>
+
+format-full = <ramp-capacity>
+format-full-prefix = ""
+format-full-prefix-foreground = ${colors.blue}
+format-full-prefix-padding = 1
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.blue}
+ramp-capacity-background = ${colors.background}
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-0-foreground = ${colors.red}
+
+ramp-capacity-padding = 1
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.blue}
+animation-charging-background = ${colors.background}
+animation-charging-framerate = 750
+animation-charging-padding = 1
+; }}}
+; -- PowerMenu -- {{{
+; [module/powermenu]
+; type = custom/menu
+
+; expand-right = true
+
+; format-spacing = 1
+
+; label-open = 
+; label-open-foreground = ${colors.secondary}
+; label-close =  cancel
+; label-close-foreground = ${colors.secondary}
+; label-separator = |
+; label-separator-foreground = ${colors.foreground-alt}
+
+; menu-0-0 = reboot
+; menu-0-0-exec = menu-open-1
+; menu-0-1 = power off
+; menu-0-1-exec = menu-open-2
+
+; menu-1-0 = cancel
+; menu-1-0-exec = menu-open-0
+; menu-1-1 = reboot
+; menu-1-1-exec = systemctl reboot
+
+; menu-2-0 = power off
+; menu-2-0-exec = systemctl poweroff
+; menu-2-1 = cancel
+; menu-2-1-exec = menu-open-0
+; }}}
+; -- Weather -- {{{
+[module/weather]
+type = custom/script
+interval = 1.0
+
+exec = ~/.Scripts/statusbar/weather
+label = "%output%"
+
+label-background = ${colors.background}
+label-foreground = ${colors.foreground}
+label-margin = 1
+label-padding = 1
+; }}}
+
+; -- Settings -- {{{
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+; }}}
+; -- Global WM -- {{{
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+; }}}
+; vim:ft=dosini

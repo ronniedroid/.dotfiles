@@ -172,5 +172,5 @@ if [ "$wm" = "dwm" ]; then
 elif [ "$wm" = "spectrwm" ]; then
     printf "%s \n" "+@fg=7;$icon+@fg=7; $temp "
 else
-    printf "%s \n" "$icon $temp"
+    printf "%s\n" "$icon  $temp"
 fi

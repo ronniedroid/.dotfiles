@@ -5,6 +5,7 @@
 # Importing python/qtile libraries:
 
 import os
+import subprocess
 import re
 import socket
 import os.path
@@ -77,7 +78,7 @@ groups = [
     ),
     Group(
         "4",
-        matches=[Match(wm_class=["libreoffice"])],
+        matches=[Match(wm_class=["libreoffice", "Discord"])],
         label=""
     ),
     Group(
@@ -120,7 +121,6 @@ layouts = [
 widget_defaults = dict(
     font='Hack Nerd Font',
     fontsize=16,
-    #padding=4,
     background="282c34",
     foreground="abb2bf",
     padding=6,
@@ -168,6 +168,8 @@ def get_bar():
        ),
        widget.Backlight(
            backlight_name="intel_backlight",
+           #padding=0,
+           #margin=0,
            format='{percent: 2.0%}'
        ),
        widget.TextBox(
@@ -188,7 +190,7 @@ def get_bar():
     ], 28, margin=0)
 
 screens = [
-    Screen(top=get_bar()),
+    Screen(),
     Screen(),
 ]
 
@@ -222,8 +224,13 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'branchdialog'},  # gitk
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
+],border_width=0)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
 wmname = "LG3D"
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])

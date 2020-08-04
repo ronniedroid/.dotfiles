@@ -75,6 +75,7 @@ set cursorline
 set nobackup
 set nowritebackup
 set formatoptions-=cro
+set foldmethod=marker
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
