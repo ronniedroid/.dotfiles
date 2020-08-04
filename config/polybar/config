@@ -238,10 +238,11 @@ full-at = 98
 format-charging = <animation-charging>
 format-discharging = <ramp-capacity>
 
-format-full = <ramp-capacity>
-format-full-prefix = ""
-format-full-prefix-foreground = ${colors.blue}
-format-full-prefix-padding = 1
+format-full = <label-full>
+label-full = 
+label-full-foreground = ${colors.blue}
+label-full-background = ${colors.background}
+label-full-padding = 1
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 

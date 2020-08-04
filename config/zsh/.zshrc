@@ -36,13 +36,11 @@ alias lsa="exa --icons -a -l"
 alias zathura="sw zathura"
 
 # Setting PATH
-export PATH=/home/ronnie/.local/bin:$PATH
-export PATH=/home/ronnie/.Scripts:$PATH
-export PATH=/home/ronnie/.Scripts/statusbar:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.Scripts:$PATH
+export PATH=$HOME/.Scripts/statusbar:$PATH
 
 #zPlug
-
-
 ZPLUG_HOME=~/.config/zsh/.zplug
 source ~/.config/zsh/.zplug/init.zsh
 
