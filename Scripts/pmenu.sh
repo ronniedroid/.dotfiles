@@ -8,7 +8,7 @@
 #
 
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
+wm=$(grep "exec" $HOME/.xinitrc | awk '{print $2}')
 
 Poweroff() {
  MENU="dmenu -i -l 2 -p "-PowerOff?""
@@ -35,10 +35,8 @@ Logout() {
  L=$(echo -e "YES\nNO" | $MENU)
 
 case "$L" in
-   YES) if [ "$wm" = "dwm" ]; then
-       pkill dwm
-	 elif ["$wm" = "spectrwm"]; then
-       pkill spectrwm
+   YES) if [ "$wm" = "spectrwm" ]; then
+			 pkill spectrwm
 	 else
 			 qtile-cmd -o cmd -f shutdown
    fi ;;

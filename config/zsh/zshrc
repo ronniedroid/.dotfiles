@@ -1,5 +1,5 @@
 # pfetch
-PF_COL1=6 PFCOL2=7 PF_COL3=1 PF_SEP=" " pfetch
+PF_SEP=" " pfetch
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors

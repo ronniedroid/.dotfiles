@@ -17,6 +17,7 @@ picom
 polybar
 qtile
 spectrwm
+spectrwm_bindings
 sxhkd
 xresources
 zsh")
@@ -50,6 +51,9 @@ case "$choice" in
 	;;
 	spectrwm)
 		choice="$HOME/.config/spectrwm/spectrwm.conf"
+	;;
+	spectrwm_bindings)
+		choice="$HOME/.config/spectrwm/spectrwm_us.conf"
 	;;
 	sxhkd)
 		choice="$HOME/.config/sxhkd/sxhkdrc"

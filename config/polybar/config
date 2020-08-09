@@ -27,7 +27,7 @@ cyan = #56b6c2
 [bar/qtile]
 monitor = ${env:MONITOR:eDP1}
 width = 100%
-height = 27
+height = 28
 ; offset-x = 1%
 ; offset-y = 1%
 radius = 0
@@ -39,8 +39,9 @@ foreground = ${colors.foreground-alt}
 ; line-size = 0
 ; line-color = #f00
 
-; border-size = 0
-; border-color = #00000000
+; border-top-size = 2
+; border-color = ${colors.green}
+
 
 padding-left = 1
 padding-right = 1
@@ -48,10 +49,11 @@ padding-right = 1
 ; module-margin-left = 1
 ; module-margin-right = 0.6
 
-font-0 = Hack Nerd Font:pixelsize=11;1
+font-0 = Hack Nerd Font:pixelsize=11;3
 font-1 = NotoColorEmoji:scale=12
+font-2 = Material Icons:pixelsize=11;4
 
-modules-left = ewmh xwindow
+modules-left = ewmh layout xwindow
 modules-right = weather xkeyboard date xbacklight pulseaudio battery wlan
 
 tray-position = right
@@ -59,7 +61,50 @@ tray-padding = 4
 tray-maxsize = 12
 tray-background = ${colors.background}
 
-;override-redirect = true
+; override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = pointer
+; }}}
+; -- BAR: swm -- {{{
+[bar/swm]
+monitor = ${env:MONITOR:eDP1}
+width = 50%
+height = 27
+offset-x = 50%
+;offset-y = 1%
+radius = 0
+fixed-center = false
+
+background = ${colors.background-alt}
+foreground = ${colors.foreground-alt}
+
+; line-size = 0
+; line-color = #f00
+
+; border-top-size = 2
+; border-color = ${colors.green}
+
+
+padding-left = 1
+padding-right = 1
+
+; module-margin-left = 1
+; module-margin-right = 0.6
+
+font-0 = Hack Nerd Font:pixelsize=11;3
+font-1 = NotoColorEmoji:scale=12
+font-2 = Material Icons:pixelsize=11;4
+
+modules-left =
+modules-right = weather xkeyboard date xbacklight pulseaudio battery wlan
+
+tray-position = right
+tray-padding = 4
+tray-maxsize = 12
+tray-background = ${colors.background}
+
+override-redirect = true
 
 cursor-click = pointer
 cursor-scroll = pointer
@@ -69,7 +114,7 @@ cursor-scroll = pointer
 type = internal/xworkspaces
 
 pin-workspaces = false
-enable-click = false
+enable-click = true
 enable-scroll = false
 
 icon-0 = 1;
@@ -160,8 +205,8 @@ interval = 3.0
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 
-label-connected = 直
-label-diconnected = 睊
+label-connected = 
+label-diconnected = 
 
 label-connected-foreground = ${colors.red}
 label-connected-background = ${colors.background}
@@ -169,8 +214,8 @@ label-connected-background = ${colors.background}
 label-disconnected-foreground = ${colors.red}
 label-disconnected-background = ${colors.background}
 
-label-connected-padding-right = 2
-label-disconnected-padding-right = 2
+label-connected-padding-right = 1
+label-disconnected-padding-right = 1
 
 
 ; ramp-signal-0 = 
@@ -307,6 +352,18 @@ label = "%output%"
 label-background = ${colors.background}
 label-foreground = ${colors.foreground}
 label-margin = 1
+label-padding = 1
+; }}}
+; -- layout -- {{{
+[module/layout]
+type = custom/script
+interval = 1.0
+
+exec = ~/.Scripts/statusbar/qlayout.sh
+label = "%output%"
+
+label-background = ${colors.background}
+label-foreground = ${colors.foreground}
 label-padding = 1
 ; }}}
 

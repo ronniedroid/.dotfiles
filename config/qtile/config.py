@@ -187,7 +187,7 @@ def get_bar():
            interface="wlp5s0",
            format="{essid}",
        ),
-    ], 28, margin=0)
+    ], 28, margin=0, opacity=0)
 
 screens = [
     Screen(),

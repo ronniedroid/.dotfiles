@@ -167,10 +167,4 @@ case "$condition" in
     fi ;;
 esac
 
-if [ "$wm" = "dwm" ]; then
-    printf "%s\n" "^c#282c34^^b#abb2bf^ $icon ^c#abb2bf^^b#282c34^ $temp ^d^"
-elif [ "$wm" = "spectrwm" ]; then
-    printf "%s \n" "+@fg=7;$icon+@fg=7; $temp "
-else
-    printf "%s\n" "$icon  $temp"
-fi
+printf "%s\n" "$icon  $temp"
