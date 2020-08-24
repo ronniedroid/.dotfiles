@@ -55,8 +55,8 @@
 ~/.dotfiles/Scripts/statusbar/battery
   #+END_SRC
 
-  #+RESULTS:
-  :  100%
+  RESULTS:
+   100%
 
 - brightness: Print the brightness level plus an icon, the icon will change based on the brightness level
 
@@ -64,8 +64,8 @@
 ~/.dotfiles/Scripts/statusbar/brightness
   #+END_SRC
 
-  #+RESULTS:
-  :   100%
+  RESULTS:
+    100%
 
 - volume: Print the brightness level plus an icon, the icon will change based on the brightness level
 
@@ -73,8 +73,8 @@
 ~/.dotfiles/Scripts/statusbar/volume
   #+END_SRC
 
-  #+RESULTS:
-  :   100%
+  RESULTS:
+    100%
 
 - clock: Print the current time and date in the following formate plus an icon indecator
 
@@ -82,8 +82,8 @@
 ~/.dotfiles/Scripts/statusbar/clock
   #+END_SRC
 
-  #+RESULTS:
-  :   Aug 24 (Mon) 13:45
+  RESULTS:
+    Aug 24 (Mon) 13:45
 
 - internet: Print the essid of the network the machine is connected to plus an icon indecator
 
@@ -91,8 +91,8 @@
 ~/.dotfiles/Scripts/statusbar/internet
   #+END_SRC
 
-  #+RESULTS:
-  :   What
+  RESULTS:
+    What
 
   in which "what" is the essid of the network my chine is connected to.
 
@@ -102,8 +102,8 @@
 ~/.dotfiles/Scripts/statusbar/kbdlayout
   #+END_SRC
 
-  #+RESULTS:
-  :   us
+  RESULTS:
+    us
 
 - screenstatus: Print an icon indecating whether the machine is connected to a single or dual monitors.
 
@@ -111,8 +111,8 @@
 ~/.dotfiles/Scripts/statusbar/screenstatus
   #+END_SRC
 
-  #+RESULTS:
-  : 
+  RESULTS:
+  
 
   The "" is used for dual monitors.
 
@@ -122,8 +122,8 @@
 ~/.dotfiles/Scripts/statusbar/weather
   #+END_SRC
 
-  #+RESULTS:
-  :   34°C
+  RESULTS:
+    34°C
 
 - statusbar.sh: combine all the above scripts into one loop for use with spectrwm bar-action (can be used with any other status bar like dwm).
 - refstatbar: used to sind a trap signale to the statusbar.sh for updating some elements on change. this methode is not very good is it will slow down your machine and I am trying to make it work better, but no promises. I am temporarly using polybar as the statusbar on the right of the screenshort above.
