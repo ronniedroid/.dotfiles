@@ -39,7 +39,7 @@ alias zathura="sw zathura"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.Scripts:$PATH
 export PATH=$HOME/.Scripts/statusbar:$PATH
-
+export PATH=$HOME/.emacs.d/bin:$PATH
 #zPlug
 ZPLUG_HOME=~/.config/zsh/.zplug
 source ~/.config/zsh/.zplug/init.zsh

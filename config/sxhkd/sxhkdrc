@@ -40,6 +40,9 @@ alt + b ; {a,b,d,y,r}
 alt + c
 		confmanager.sh
 
+alt + s
+		dmenu-scrot.sh
+
 #pulse Audio controls
 
 alt + {Left,Right}

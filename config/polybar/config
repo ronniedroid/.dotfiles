@@ -117,25 +117,25 @@ pin-workspaces = false
 enable-click = true
 enable-scroll = false
 
-icon-0 = 1;
-icon-1 = 2;
-icon-2 = 3;
-icon-3 = 4;
-icon-4 = 5;
-icon-5 = 6;
-icon-default = 
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-default = 
 
 format = <label-state>
 
 label-monitor = %name%
 
-label-active = %icon%
+label-active = %name%
 label-active-foreground = ${colors.cyan}
 label-active-background = ${colors.background}
 label-active-padding = 1
 
-label-occupied = %icon%
-label-occupied-foreground = ${colors.green}
+label-occupied = %name%
+label-occupied-foreground = ${colors.foreground}
 label-occupied-background = ${colors.background}
 label-occupied-padding = 1
 
@@ -309,7 +309,8 @@ animation-charging-4 = 
 animation-charging-foreground = ${colors.blue}
 animation-charging-background = ${colors.background}
 animation-charging-framerate = 750
-animation-charging-padding = 1
+animation-charging-padding-left = 1
+animation-charging-padding-right = 2
 ; }}}
 ; -- PowerMenu -- {{{
 ; [module/powermenu]
@@ -366,7 +367,6 @@ label-background = ${colors.background}
 label-foreground = ${colors.foreground}
 label-padding = 1
 ; }}}
-
 ; -- Settings -- {{{
 [settings]
 screenchange-reload = true

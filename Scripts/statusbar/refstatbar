@@ -3,10 +3,4 @@
 # Refresh the status bar.
 # Send SIGTRAP signal to status bar script, which will handle it with a trap.
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
-
-if [ "$wm" = "dwm" ]; then
-    pkill -SIGTRAP dwmstatbar
-else
-    pkill -SIGTRAP statusbar.sh
-fi
+pkill -SIGTRAP statusbar.sh

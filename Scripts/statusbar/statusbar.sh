@@ -1,5 +1,7 @@
 #!/bin/sh
 
+trap 'update' 5
+
 net() {
     internet
 }
@@ -31,7 +33,13 @@ wthr() {
     weather
 }
 
+update() {
+    echo "$(wthr)$(kbd)$(bri)$(volume)$(bat)$(ctime)$(net)" &
+    wait
+}
+
 while :; do
-    echo "$(wthr)$(kbd)$(ctime)$(bri)$(volume)$(bat)$(net)" &
-    sleep 60
+    update
+    sleep 10 &
+    wait
 done

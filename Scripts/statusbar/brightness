@@ -1,25 +1,18 @@
 #!/bin/sh
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 bri=$(light -G | sed 's/\..*//g')
 
 if [ "$bri" -gt "90" ]; then
-	icon=""
+	icon=" "
 elif [ "$bri" -gt "70" ]; then
-	icon=""
+	icon=" "
 elif [ "$bri" -eq "0" ]; then
-    icon=""
+    icon=" "
 elif [ "$bri" -lt "30" ]; then
-	icon=""
+	icon=" "
 
 else
-	icon=""
+	icon=" "
 fi
 
-if [ "$wm" = "dwm" ]; then
-    printf "%s%% \n" "^c#282c34^^b#56b6c2^ $icon ^c#abb2bf^^b#282c34^ $bri"
-elif [ "$wm" = "spectrwm" ]; then
-    printf "%s \n" "+@fg=6;$icon "
-else
-    printf "%s%% \n" "$icon $bri"
-fi
+printf "%s%% \n" "$icon $bri"

@@ -1,22 +1,15 @@
 #!/bin/sh
 
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 essid=$(nmcli | grep -v "disconnected" | grep "connected" | awk '{print $4}')
 wstatus=$(nmcli | grep -v "disconnected" | grep connected | awk '{print $2}')
 
 if [ "$wstatus" = "connected" ]
 then
-  icon=""
+  icon=" "
 else
   icon="睊"
   essid="disconnected"
 fi
 
-if [ "$wm" = "dwm" ]; then
-    printf "%s\n" "^c#282c34^^b#be5046^ $icon ^c#abb2bf^^b#282c34^ $essid ^d^"
-elif [ "$wm" = "spectrwm" ]; then
-    printf "%s \n" "+@fg=1;$icon "
-else
-    printf "%s \n" "$icon $essid"
-fi
+printf "%s \n" "$icon $essid"

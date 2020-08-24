@@ -1,13 +1,12 @@
 #!/bin/sh
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 volstat=$(pamixer --get-volume)
 
 vol=$(echo "$volstat")
 
 
 if [ "$vol" -gt "70" ]; then
-	icon=""
+	icon=" "
 elif [ "$vol" -eq "0" ]; then
     icon="婢"
 elif [ "$vol" -lt "30" ]; then
@@ -17,10 +16,4 @@ else
 	icon="墳"
 fi
 
-if [ "$wm" = "dwm" ]; then
-    printf "%s%% \n" "^c#282c34^^b#e5c07b^ $icon ^c#abb2bf^^b#282c34^ $vol"
-elif [ "$wm" = "spectrwm" ]; then
-    printf "%s \n" "+@fg=3;$icon "
-else
-    printf "%s%% \n" "$icon $volstat"
-fi
+printf "%s%% \n" "$icon $volstat"

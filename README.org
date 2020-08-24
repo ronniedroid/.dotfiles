@@ -1,0 +1,129 @@
+#+TITLE: My Personal Dotfiles and scripts
+
+#+ATTR_ORG: :width 500
+[[file:screenshot.png][My Desktop Screenshot]]
+
+* depencencies
+** Software
+
+- alacritty
+- nvim
+- picom
+- polybar
+- spectrwm
+- sxhkd
+- zsh
+- doom emacs
+
+** script
+
+- dmenu
+- fzf
+- xdo
+- xrandr
+- scrot
+- git
+- setxkbmap
+- pulseaudo
+- light
+- awk
+- cat
+- sed
+- bash
+- will be updated if more are needed.
+- Hack Nerd Font
+
+* The dotfiles
+
+** System Scripts
+
+ - bmanager.sh: A bookmarks manager  (plus duckduckgo and youtube search).
+ - bookmarks: The bookmarks.
+ - confmanager.sh: my config files manager, lists all the config files in dmenu and allows me to edit them with my text editor.
+ - dmenu-scrot.sh: dmenu script to take screenshots, you can name the screenshot then chose from three scrot modes.
+ - gitit.sh: a simple git helper using fzf.
+ - kbdlayout.sh: just a simple script for switching between two keyboard layouts.
+ - MonitorLayout.sh: a simple dmenu script to switch between single and dual monitors.
+ - pmenu.sh: a dmenu script for power managment, you can lick, logout, reboot and poweroff the machine. and will also ask you for confirmation.
+ - sw: a simple shell script for WM agnostic swallowing using xdo.
+
+** Statusbar script
+
+- battery: Print the battery capacity plus an icon indecator, The Icon changes based on capacity and weather the battery is charging or discharging.
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/battery
+  #+END_SRC
+
+  #+RESULTS:
+  :  100%
+
+- brightness: Print the brightness level plus an icon, the icon will change based on the brightness level
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/brightness
+  #+END_SRC
+
+  #+RESULTS:
+  :   100%
+
+- volume: Print the brightness level plus an icon, the icon will change based on the brightness level
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/volume
+  #+END_SRC
+
+  #+RESULTS:
+  :   100%
+
+- clock: Print the current time and date in the following formate plus an icon indecator
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/clock
+  #+END_SRC
+
+  #+RESULTS:
+  :   Aug 24 (Mon) 13:45
+
+- internet: Print the essid of the network the machine is connected to plus an icon indecator
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/internet
+  #+END_SRC
+
+  #+RESULTS:
+  :   What
+
+  in which "what" is the essid of the network my chine is connected to.
+
+- kbdlayout: print the current keyboard layout plus an icon indecator:
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/kbdlayout
+  #+END_SRC
+
+  #+RESULTS:
+  :   us
+
+- screenstatus: Print an icon indecating whether the machine is connected to a single or dual monitors.
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/screenstatus
+  #+END_SRC
+
+  #+RESULTS:
+  : 
+
+  The "" is used for dual monitors.
+
+- weather: Print current weather degree in C plus an icon indecator that changes based on weather condition (Many conditions are covered), Uses wttr.in for the weather info.
+
+  #+BEGIN_SRC sh
+~/.dotfiles/Scripts/statusbar/weather
+  #+END_SRC
+
+  #+RESULTS:
+  :   34°C
+
+- statusbar.sh: combine all the above scripts into one loop for use with spectrwm bar-action (can be used with any other status bar like dwm).
+- refstatbar: used to sind a trap signale to the statusbar.sh for updating some elements on change. this methode is not very good is it will slow down your machine and I am trying to make it work better, but no promises. I am temporarly using polybar as the statusbar on the right of the screenshort above.

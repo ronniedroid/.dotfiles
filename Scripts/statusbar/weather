@@ -1,6 +1,5 @@
 #!/bin/sh
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 report="$HOME/.local/share/weatherreport"
 timed=$(date | awk '{print $6}')
 timet=$(date | awk '{print $5}' | awk -F ":" '{print $1}')

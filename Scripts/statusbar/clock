@@ -1,15 +1,7 @@
 #!/bin/sh
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 cdate=$(date '+%b %d (%a) %H:%M')
-icon=''
+icon=' '
 
 
-if [ "$wm" = "dwm" ]; then
-    printf "%s\n" "^c#282c34^^b#98c379^ $icon ^c#abb2bf^^b#282c34^ $cdate ^d^"
-elif [ "$wm" = "spectrwm" ]; then
-    printf "%s \n" "+@fg=2;$icon+@fg=7; $cdate "
-else
-    printf "%s \n" "$icon $cdate"
-fi
-
+printf "%s \n" "$icon $cdate"

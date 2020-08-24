@@ -1,6 +1,5 @@
 #!/bin/bash
 
-wm=$(cat ~/.xinitrc | grep "exec" | awk '{print $2}')
 battery="/sys/class/power_supply/BAT0/"
 
 capacity=$(cat "$battery"/capacity)
@@ -42,10 +41,4 @@ else
     icon=""
 fi
 
-if [ "$wm" = "dwm" ]; then
-    printf "%s%% \n" "^c#282c34^^b#61afef^ $icon ^c#abb2bf^^b#282c34^ $capacity"
-elif [ "$wm" = "spectrwm" ]; then
-    printf "%s% \n" "+@fg=4;$icon "
-else
-    printf "%s%% \n" "$icon $capacity"
-fi
+printf "%s%% \n" "$icon $capacity"
