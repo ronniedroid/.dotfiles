@@ -4,7 +4,8 @@
 [[file:screenshot.png][My Desktop Screenshot]]
 
 * depencencies
-** Software
+
+** Software I use
 
 - alacritty
 - nvim
@@ -15,7 +16,7 @@
 - zsh
 - doom emacs
 
-** script
+** scripts depencencies
 
 - dmenu
 - fzf
@@ -56,7 +57,7 @@
   #+END_SRC
 
   RESULTS:
-  " 100%"
+   100%
 
 - brightness: Print the brightness level plus an icon, the icon will change based on the brightness level
 
@@ -65,7 +66,7 @@
   #+END_SRC
 
   RESULTS:
-  "  100%"
+    100%
 
 - volume: Print the brightness level plus an icon, the icon will change based on the brightness level
 
@@ -74,7 +75,7 @@
   #+END_SRC
 
   RESULTS:
-  "  100%"
+    100%
 
 - clock: Print the current time and date in the following formate plus an icon indecator
 
@@ -83,7 +84,7 @@
   #+END_SRC
 
   RESULTS:
-  "  Aug 24 (Mon) 13:45"
+    Aug 24 (Mon) 13:45
 
 - internet: Print the essid of the network the machine is connected to plus an icon indecator
 
@@ -92,7 +93,7 @@
   #+END_SRC
 
   RESULTS:
-  "  What"
+    What
 
   in which "what" is the essid of the network my chine is connected to.
 
@@ -103,7 +104,7 @@
   #+END_SRC
 
   RESULTS:
-  "  us"
+    us
 
 - screenstatus: Print an icon indecating whether the machine is connected to a single or dual monitors.
 
@@ -112,7 +113,7 @@
   #+END_SRC
 
   RESULTS:
-  ""
+  
 
   The "" is used for dual monitors.
 
@@ -123,7 +124,14 @@
   #+END_SRC
 
   RESULTS:
-  "  34°C"
+    34°C
 
 - statusbar.sh: combine all the above scripts into one loop for use with spectrwm bar-action (can be used with any other status bar like dwm).
 - refstatbar: used to sind a trap signale to the statusbar.sh for updating some elements on change. this methode is not very good is it will slow down your machine and I am trying to make it work better, but no promises. I am temporarly using polybar as the statusbar on the right of the screenshort above.
+
+
+* Links to my projects
+
+[[https://github.com/ronniedroid/Wall-d][Wall-d: a simple and fast wallpaper manager for x]]
+
+[[https://github.com/ronniedroid/getnf][getNF: A better way to install NerdFonts]]
