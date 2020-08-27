@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name:btn
-# key: btn
-# --
-    <a href="../Report.html";
-        <button type="submit" class="btn default-btn">
-        <i class="fa fa-home"></i>
-        </button>
-        </a>

@@ -48,7 +48,7 @@
  - pmenu.sh: a dmenu script for power managment, you can lick, logout, reboot and poweroff the machine. and will also ask you for confirmation.
  - sw: a simple shell script for WM agnostic swallowing using xdo.
 
-** Statusbar script
+** Statusbar scripts
 
 - battery: Print the battery capacity plus an icon indecator, The Icon changes based on capacity and weather the battery is charging or discharging.
 
