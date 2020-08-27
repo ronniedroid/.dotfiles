@@ -30,3 +30,4 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
 
 export DOOMDIR="${XDG_CONFIG_HOME:-$HOME/.config}/doom"
 export GNUPGHOME="${XDG_CONFIG_HOME:-$HOME/.config}/gnupg"
+export ZPLUG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zplug"
