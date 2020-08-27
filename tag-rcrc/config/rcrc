@@ -1,1 +1,1 @@
-EXCLUDES="LICENSE README.org screenshot.png"
+EXCLUDES="pkglist.txt aurpkglist.txt LICENSE README.org screenshot.png"
