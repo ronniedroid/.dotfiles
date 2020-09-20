@@ -23,7 +23,9 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one-light)
+
+(setq fancy-splash-image "~/.config/doom/emacs.png")
 
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/org/")
@@ -66,3 +68,5 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;;enable Emmet's css abbreviation.

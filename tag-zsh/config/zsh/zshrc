@@ -34,6 +34,9 @@ alias vim="nvim"
 alias ls="exa --icons -a"
 alias lsa="exa --icons -a -l"
 alias zathura="sw zathura"
+alias em="/usr/bin/emacs -nw"
+alias emacs="emacsclient -c -a 'emacs'"
+alias semacs="sw emacsclient -c -a 'emacs'"
 
 # Setting PATH
 export PATH=$HOME/.local/bin:$PATH

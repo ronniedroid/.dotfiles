@@ -15,7 +15,11 @@ alt + d
     dmenu_run -h 24
 
 alt + e
-    emacs
+    emacsclient -c -a emacs
+
+alt + n
+    emacsclient -c -a '' --eval '(dired nil)'
+    #alacritty -e nnn
 
 alt + t
     thunderbird
@@ -35,7 +39,7 @@ alt + w
 		wall-d -f -d $HOME/Pictures/Wallpapers/
 
 alt + b ; {a,b,d,y,r}
-    bmanager.sh {-a (xclip -o),-b,-d,-y,-r}
+    bmanager.sh {-a ,-b,-d,-y,-r}
 
 alt + c
 		confmanager.sh

@@ -2,29 +2,20 @@
 
 bookmarksf="$HOME/.Scripts/bookmarks"
 
-
-input="$2"
 addnew() {
-    echo $input >> $bookmarksf
-}
+keyword=$(dmenu -i -p "Enter Bookmark Name")
+url=$(xclip -o)
 
-duckgo() {
-menu="dmenu -i -l 10 -h 24 -p "DuckDuckGo""
-items=$($search | $menu )
-
- [ -n "$items" ] && firefox duckduckgo/"$items" || exit 0
-}
-
-yt() {
-menu="dmenu -i -l 10 -h 24 -p "YouTube""
-items=$($search | $menu )
-
- [ -n "$items" ] && firefox https://www.youtube.com/results?search_query="$items" || exit 0
+if [ -z "$keyword" ];
+then
+    exit 0
+else
+    echo "$keyword+$url" >> $bookmarksf
+fi
 }
 
 bookmarks() {
-menu="dmenu -i -l 10 -h 24 -p "Bookmarks""
-items=$(awk -F "+" '{print $1}' $bookmarksf | sort | $menu )
+items=$(awk -F "+" '{print $1}' $bookmarksf | sort | dmenu -i -l 10 -h 24 -p "Bookmarks")
 
 bms=$(grep -m1 "$items" $bookmarksf | awk -F "+" '{print $2}')
 
@@ -33,21 +24,16 @@ bms=$(grep -m1 "$items" $bookmarksf | awk -F "+" '{print $2}')
 }
 
 rbookmark() {
-menu="dmenu -i -l 10 -p "Remove_a_Bookmarks""
-items=$(awk -F "+" '{print $1}' $bookmarksf | sort | $menu )
+items=$(awk -F "+" '{print $1}' $bookmarksf | sort | dmenu -i -l 10 -p "Remove a Bookmarks")
 
 [ -n "$items" ] && sed -i "/$items/d" "$bookmarksf" || exit 0
-echo $items $bookmarksf
 
 }
 
-while getopts a:bdyr option; do
+while getopts abr option; do
     case "${option}" in
         a) addnew && exit 0 ;;
         b) bookmarks ;;
-        d) duckgo ;;
-        y) yt ;;
         r) rbookmark && exit 0 ;;
     esac
 done
-

@@ -1,7 +1,8 @@
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -c -a emacs"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER="Firefox"
 export READER="zathura"
 
 # ~/ Clean-up:
@@ -26,7 +27,6 @@ export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
 export UNISON="${XDG_DATA_HOME:-$HOME/.local/share}/unison"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export RCRC="${XDG_CONFIG_HOME:-$HOME/.config}/rcrc"
-export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
 
 export DOOMDIR="${XDG_CONFIG_HOME:-$HOME/.config}/doom"
 export GNUPGHOME="${XDG_CONFIG_HOME:-$HOME/.config}/gnupg"

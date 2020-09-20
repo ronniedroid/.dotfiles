@@ -32,10 +32,10 @@ case "$choice" in
 		choice="$HOME/.config/alacritty/alacritty.yml"
 	;;
     doom.d/config.el)
-		choice="$HOME/.doom.d/config.el"
+		choice="$HOME/.config/doom/config.el"
 	;;
     doom.d/init.el)
-		choice="$HOME/.doom.d/init.el"
+		choice="$HOME/.config/doom/init.el"
 	;;
 	neovim)
 		choice="$HOME/.config/nvim/init.vim"
@@ -68,4 +68,4 @@ case "$choice" in
 		exit 1
 	;;
 esac
-alacritty -e nvim "$choice"
+emacsclient -c -a emacs "$choice"

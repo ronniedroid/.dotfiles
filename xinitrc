@@ -5,5 +5,6 @@ wall-d -f -r &
 xrdb -merge ~/.Xresources &&
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 #picom &
+emacs --daemon &
 
 exec spectrwm
