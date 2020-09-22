@@ -1,9 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; refresh' after modifying this file!
-
-
 ;; These are used for a number of things, particularly for GPG configuration,
 ;; some email clients, file templates and snippets.
 (setq user-full-name "Ronnie Nissan"
@@ -34,7 +30,7 @@
 ;; `nil' to disable it:
 (setq display-line-numbers-type 'relative)
 
-
+;; make orgmode keywords colors when exported though latex
 
 (defun org-latex-format-headline-colored-keywords-function
     (todo todo-type priority text tags info)
@@ -51,22 +47,24 @@
 
 (setq org-latex-format-headline-function 'org-latex-format-headline-colored-keywords-function)
 
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', where Emacs
-;;   looks when you load packages with `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
-;; they are implemented.
+;; emmet mode
 
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;;enable Emmet's css abbreviation.
+
+;; Setting up prettier
+
+(add-hook 'js-mode-hook 'prettier-js-mode)
+
+(setq prettier-js-args '(
+  "--trailing-comma" "none"
+  "--bracket-spacing" "true"
+  "--single-quote" "true"
+  "--no-semi" "true"
+  "--jsx-single-quote" "true"
+  "--jsx-bracket-same-line" "true"
+  "--print-width" "100"))
+
+;;svelte mode
+
+(add-to-list 'auto-mode-alist '("\\.svelte\\'" . svelte-mode))
