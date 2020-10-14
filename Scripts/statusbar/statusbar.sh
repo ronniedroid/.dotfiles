@@ -34,7 +34,7 @@ wthr() {
 }
 
 update() {
-    echo "$(wthr)$(kbd)$(bri)$(volume)$(bat)$(ctime)$(net)" &
+    echo "$(wthr)| $(kbd)| $(bri)| $(volume)| $(bat)| $(ctime)| $(net)" &
     wait
 }
 

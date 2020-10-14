@@ -1,6 +1,6 @@
 #!/bin/sh
 
 layout=$(setxkbmap -query | grep layout | awk '{print $2}')
-icon=" "
+icon=""
 
 printf "%s \n" "$icon $layout"

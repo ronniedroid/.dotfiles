@@ -4,3 +4,4 @@
 (package! emmet-mode)
 (package! svelte-mode)
 (package! prettier-js)
+(package! modus-operandi-theme)

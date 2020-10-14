@@ -12,4 +12,4 @@ else
   essid="disconnected"
 fi
 
-printf "%s \n" "$icon $essid"
+printf "%s\n" "$icon $essid"

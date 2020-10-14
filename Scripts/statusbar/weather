@@ -166,4 +166,4 @@ case "$condition" in
     fi ;;
 esac
 
-printf "%s\n" "$icon  $temp"
+printf "%s \n" "$icon $temp"

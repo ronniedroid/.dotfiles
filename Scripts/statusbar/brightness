@@ -12,7 +12,7 @@ elif [ "$bri" -lt "30" ]; then
 	icon=" "
 
 else
-	icon=" "
+	icon=""
 fi
 
 printf "%s%% \n" "$icon $bri"

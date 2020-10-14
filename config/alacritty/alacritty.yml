@@ -40,12 +40,12 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0xfafafa'
+    background: '0xffffff'
     foreground: '0x383a42'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xfafafa'
+    text: '0xf0f0f0'
     cursor: '0x383a42'
 
   # Normal colors
