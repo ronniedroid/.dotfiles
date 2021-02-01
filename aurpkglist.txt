@@ -1,7 +1,0 @@
-betterlockscreen-git
-cnrdrvcups-lb
-pfetch
-polybar-git
-ttf-ms-fonts
-update-grub
-xcursor-breeze

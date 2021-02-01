@@ -22,7 +22,7 @@ sxhkd
 xresources
 zsh")
 
-choice=$(echo -e "${options[@]}" | dmenu -i -l 10 -p ' Configs')
+choice=$(echo -e "${options[@]}" | rofi -dmenu -i -l 10 -c -p ' Configs' -width 300)
 
 case "$choice" in
 	quit)
@@ -68,4 +68,4 @@ case "$choice" in
 		exit 1
 	;;
 esac
-emacsclient -c -a emacs "$choice"
+alacritty -e nvim "$choice"

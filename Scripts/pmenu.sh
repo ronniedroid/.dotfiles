@@ -11,7 +11,7 @@
 wm=$(grep "exec" $HOME/.xinitrc | awk '{print $2}')
 
 Poweroff() {
- MENU="dmenu -i -l 2 -p "-PowerOff?""
+ MENU="rofi -dmenu -c -i -l 4 -p "-PowerOff?" -width 200"
  P=$(echo -e "YES\nNO" | $MENU)
 
 case "$P" in
@@ -21,7 +21,7 @@ case "$P" in
 }
 
 Reboot() {
- MENU="dmenu -i -l 2 -p "-Reboot?""
+ MENU="rofi -dmenu -c -i -l 4 -p "-Reboot?" -width 200"
  R=$(echo -e "YES\nNO" | $MENU)
 
 case "$R" in
@@ -31,21 +31,17 @@ case "$R" in
 }
 
 Logout() {
- MENU="dmenu -i -l 2 -p "-Logout?""
+ MENU="rofi -dmenu -c -i -l 4 -p "-Logout?" -width 200"
  L=$(echo -e "YES\nNO" | $MENU)
 
 case "$L" in
-   YES) if [ "$wm" = "spectrwm" ]; then
-			 pkill spectrwm
-	 else
-			 qtile-cmd -o cmd -f shutdown
-   fi ;;
+   YES) bspc quit ;;
     NO) exit 0
   esac
 }
 
 Lock() {
- MENU="dmenu -i -l 2 -p "-Lock?""
+ MENU="rofi -dmenu -c -i -l 4 -p "-Lock?" -width 200"
  L=$(echo -e "YES\nNO" | $MENU)
 
 case "$L" in
@@ -54,7 +50,7 @@ case "$L" in
   esac
 }
 
-MENU="dmenu -i -l 4 -p "-PowerMenu""
+MENU="rofi -dmenu -c -i -l 4 -p "-PowerMenu" -width 200"
 PM=$(echo -e " Lock\n Logout\n Reboot\n Poweroff" | $MENU)
 
   case "$PM" in

@@ -1,22 +1,22 @@
-! Base16 One Light
-! Scheme: Daniel Pfeifer (http://github.com/purpleKarrot)
+ Base16 OneDark
+! Scheme: Lalit Magant (http://github.com/tilal6991)
 
-#define base00 #fafafa
-#define base01 #f0f0f1
-#define base02 #e5e5e6
-#define base03 #a0a1a7
-#define base04 #696c77
-#define base05 #383a42
-#define base06 #202227
-#define base07 #090a0b
-#define base08 #ca1243
-#define base09 #d75f00
-#define base0A #c18401
-#define base0B #50a14f
-#define base0C #0184bc
-#define base0D #4078f2
-#define base0E #a626a4
-#define base0F #986801
+#define base00 #282c34
+#define base01 #353b45
+#define base02 #3e4451
+#define base03 #545862
+#define base04 #565c64
+#define base05 #abb2bf
+#define base06 #b6bdca
+#define base07 #c8ccd4
+#define base08 #e06c75
+#define base09 #d19a66
+#define base0A #e5c07b
+#define base0B #98c379
+#define base0C #56b6c2
+#define base0D #61afef
+#define base0E #c678dd
+#define base0F #be5046
 
 *foreground:   base05
 #ifdef background_opacity
@@ -36,10 +36,19 @@
 *color7:       base05
 
 *color8:       base03
-*color9:       base09
-*color10:      base01
-*color11:      base02
-*color12:      base04
-*color13:      base06
-*color14:      base0F
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
 *color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06

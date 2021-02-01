@@ -3,7 +3,7 @@
 bookmarksf="$HOME/.Scripts/bookmarks"
 
 addnew() {
-keyword=$(dmenu -i -p "Enter Bookmark Name")
+keyword=$(rofi -dmenu -i -c -p "Enter Bookmark Name" -width 300)
 url=$(xclip -o)
 
 if [ -z "$keyword" ];
@@ -15,7 +15,7 @@ fi
 }
 
 bookmarks() {
-items=$(awk -F "+" '{print $1}' $bookmarksf | sort | dmenu -i -l 10 -h 24 -p "Bookmarks")
+items=$(awk -F "+" '{print $1}' $bookmarksf | sort | rofi -dmenu -i -l 10 -c -p "Bookmarks" -width 300)
 
 bms=$(grep -m1 "$items" $bookmarksf | awk -F "+" '{print $2}')
 
@@ -24,7 +24,7 @@ bms=$(grep -m1 "$items" $bookmarksf | awk -F "+" '{print $2}')
 }
 
 rbookmark() {
-items=$(awk -F "+" '{print $1}' $bookmarksf | sort | dmenu -i -l 10 -p "Remove a Bookmarks")
+items=$(awk -F "+" '{print $1}' $bookmarksf | sort | rofi -dmenu -i -l 10 -c -p "Remove a Bookmarks" -width 300)
 
 [ -n "$items" ] && sed -i "/$items/d" "$bookmarksf" || exit 0
 
