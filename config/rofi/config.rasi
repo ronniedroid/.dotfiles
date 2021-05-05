@@ -1,3 +1,3 @@
 configuration {
-	theme: "~/.config/rofi/themes/modus-vivendi.rasi";
+	theme: "~/.config/rofi/themes/modus_vivendi.rasi";
 }

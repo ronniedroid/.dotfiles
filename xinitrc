@@ -6,6 +6,8 @@ xrdb -merge ~/.Xresources &
 picom &
 nm-applet &
 volumeicon &
+udiskie --no-automount --no-notify --tray &
 
-
+#exec /home/ronnie/.config/rpenrose/target/release/rpenrose &> ~/.rpenrose.log
 exec awesome
+#exec spectrwm

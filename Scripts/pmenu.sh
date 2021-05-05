@@ -8,7 +8,7 @@
 #
 
 
-wm=$(grep "exec" $HOME/.xinitrc | awk '{print $2}')
+wm=$(wmctrl -m | grep "Name" | awk '{print $2}')
 
 Poweroff() {
  MENU="rofi -dmenu -c -i -l 4 -p "-PowerOff?" -width 200"
@@ -35,7 +35,7 @@ Logout() {
  L=$(echo -e "YES\nNO" | $MENU)
 
 case "$L" in
-   YES) bspc quit ;;
+   YES) pkill $wm ;;
     NO) exit 0
   esac
 }

@@ -6,23 +6,24 @@
  */
 
 * {
-    background-color:            #000000;
-    border-color:                #ffffff;
-    text-color:                  #ffffff;
+    background-color:            #282c34;
+    border-color:                #abb2bf;
+    text-color:                  #abb2bf;
     font:                        "Code New Roman Nerd Font 14";
     prompt-font:                 "Code New Roman Nerd Font 14";
-    prompt-background:           #00d3d0;
-    prompt-foreground:           #000000;
+    prompt-background:           @text-color;
+    prompt-foreground:           @background-color;
     prompt-padding:              4px;
     /*alternate-normal-background: #1c1f24;
     alternate-normal-foreground: @text-color;*/
-    selected-normal-background:  #00d3d0;
-    selected-normal-foreground:  #000000;
+    selected-normal-background:  @text-color;
+    selected-normal-foreground:  @background-color;
     spacing:                     3;
 }
 #window {
     border:  2;
     padding: 5;
+
 }
 #mainbox {
     border:  0;
