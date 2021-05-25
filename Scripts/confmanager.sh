@@ -10,17 +10,11 @@
 # Dmenu script for editing some of my more frequently edited config files.
 
 declare options=("alacritty
-doom.d/config.el
-doom.d/init.el
 neovim
-picom
-polybar
-qtile
-spectrwm
-spectrwm_bindings
-sxhkd
-xresources
-zsh")
+sway
+waybar
+waybar-style
+fish")
 
 choice=$(echo -e "${options[@]}" | rofi -dmenu -i -l 10 -c -p ' Configs' -width 300)
 
@@ -31,38 +25,17 @@ case "$choice" in
 	alacritty)
 		choice="$HOME/.config/alacritty/alacritty.yml"
 	;;
-    doom.d/config.el)
-		choice="$HOME/.config/doom/config.el"
-	;;
-    doom.d/init.el)
-		choice="$HOME/.config/doom/init.el"
-	;;
 	neovim)
 		choice="$HOME/.config/nvim/init.vim"
 	;;
-	picom)
-		choice="$HOME/.config/picom/picom.conf"
+	waybar)
+		choice="$HOME/.config/waybar/config"
 	;;
-	polybar)
-		choice="$HOME/.config/polybar/config"
+	waybar-style)
+		choice="$HOME/.config/waybar/style"
 	;;
-	qtile)
-		choice="$HOME/.config/qtile/config.py"
-	;;
-	spectrwm)
-		choice="$HOME/.config/spectrwm/spectrwm.conf"
-	;;
-	spectrwm_bindings)
-		choice="$HOME/.config/spectrwm/spectrwm_us.conf"
-	;;
-	sxhkd)
-		choice="$HOME/.config/sxhkd/sxhkdrc"
-	;;
-	xresources)
-		choice="$HOME/.Xresources"
-	;;
-	zsh)
-		choice="$HOME/.config/zsh/.zshrc"
+    fish)
+		choice="$HOME/.config/fish/config.fish"
 	;;
 	*)
 		exit 1

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Refresh the status bar.
-# Send SIGTRAP signal to status bar script, which will handle it with a trap.
-
-pkill -SIGTRAP statusbar.sh

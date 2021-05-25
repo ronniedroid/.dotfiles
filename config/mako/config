@@ -1,0 +1,11 @@
+font=Hack Nerd Font 9
+background-color=#434343
+text-color=#92baff
+width=200
+border-size=2
+border-color=#92baff
+icon-path=/usr/share/icons/Papirus-Light
+default-timeout=5000
+ignore-timeout=1
+margin=40
+padding=10

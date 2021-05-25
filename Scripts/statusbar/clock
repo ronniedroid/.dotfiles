@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cdate=$(date '+%b %d (%a) %H:%M')
-icon=''
-
-
-printf "%s \n" "$icon $cdate"
