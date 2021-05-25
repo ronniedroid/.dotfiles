@@ -7,9 +7,10 @@
 # |_| \_\___/|_| |_|_| |_|_|\___| |_| \_|_|___/___/\__,_|_| |_|
 #
 
-dir=$(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
 MENU="rofi -dmenu -c -i -l 4 -p "Grim" -width 200"
+name=$(echo "" | rofi -dmenu -c -i -l 0 -p "Name" -width 200)
 
+dir=$(xdg-user-dir PICTURES)/"$name.png"
 
 quick() {
     sleep 1 && grim $dir
@@ -20,19 +21,21 @@ delayed() {
     sleep $delay && grim $dir
 }
 
-selection() {
+monitor() {
     monitors=$(swaymsg -t get_outputs | grep name | sed 's/"name":\ "//g;s/",//g'| $MENU)
     grim -o $monitors $dir
 }
 
-# Lock() {
-# }
+selection() {
+    grim -g "$(slurp)" $dir
+}
 
-PM=$(echo -e "quick\ndelayed\nselection" | $MENU)
+PM=$(echo -e "quick\ndelayed\nmonitor\nselection" | $MENU)
 
   case "$PM" in
     *quick) quick ;;
     *delayed) delayed ;;
+    *monitor) monitor ;;
     *selection) selection ;;
 esac
  
