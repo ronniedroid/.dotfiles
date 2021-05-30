@@ -58,9 +58,10 @@ exec_always {
 # Example configuration:
 #
    input "type:keyboard" {
-       xkb_layout us,ar
-       xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
+       xkb_layout us,ara
+       xkb_options ctrl:nocaps,altwin:swap_lalt_lwin,grp:win_space_toggle
    }
+
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -165,7 +166,7 @@ exec_always {
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+p focus parent
 #
 # Scratchpad:
 #
@@ -206,13 +207,34 @@ bindsym $mod+r mode "resize"
 #
 # my bindings
 #
+mode "bookmarks" {
+    bindsym b exec "bmanager.sh -b & swaymsg mode 'default'"
+    bindsym a exec "bmanager.sh -a & swaymsg mode 'default'"
+    bindsym r exec "bmanager.sh -r & swaymsg mode 'default'"
+    bindsym escape mode "default"
+}
 
 mode "scripts" {
     bindsym p exec "pmenu.sh & swaymsg mode 'default'"
     bindsym s exec "grim.sh & swaymsg mode 'default'"
+    bindsym c exec "confmanager.sh & swaymsg mode 'default'"
+    bindsym b mode "bookmarks"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+s mode "scripts"
+
+mode "apps" {
+    bindsym b exec "brave & swaymsg mode 'default'"
+    bindsym f exec "firefox & swaymsg mode 'default'"
+    bindsym p exec "pcmanfm & swaymsg mode 'default'"
+    bindsym g exec "gimp & swaymsg mode 'default'"
+    bindsym i exec "inkscape & swaymsg mode 'default'"
+    bindsym d exec "flatpak run com.discordapp.Discord & swaymsg mode 'default'"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+a mode "apps"
 
 #
 # Status Bar:
@@ -220,7 +242,6 @@ bindsym $mod+s mode "scripts"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
-    }
 }
 
 include /etc/sway/config.d/*
