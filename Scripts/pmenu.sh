@@ -45,7 +45,7 @@ Lock() {
  L=$(echo -e "YES\nNO" | $MENU)
 
 case "$L" in
-   YES) swaylock -f -i ~/Pictures/wallpapers/carl-nenzen-loven-busqfOj6i80-unsplash.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff ;;
+   YES) swaylock -f -i ~/Pictures/wallpapers/car-at-night.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff ;;
     NO) exit 0
   esac
 }

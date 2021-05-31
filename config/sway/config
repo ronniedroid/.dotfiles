@@ -36,16 +36,15 @@ exec {
 ### Output configuration
 
 output {
-    * bg ~/Pictures/wallpapers/aaron-alvarado-OZSNnAU5RPk-unsplash.jpg fill
+    * bg ~/Pictures/wallpapers/car-at-night.jpg fill
     eDP-1 resolution 1366x768 position 0,0
     HDMI-A-1 resolution 1920x1080 position 1366,0
 }
 
 ### Idle configuration
  exec swayidle -w \
-          timeout 300 'swaylock -f -i ~/Pictures/wallpapers/carl-nenzen-loven-busqfOj6i80-unsplash.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
-          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          timeout 300 'swaylock -f -i ~/Pictures/wallpapers/car-at-night.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
+          before-sleep 'swaylock -f -i ~/Pictures/wallpapers/car-at-night.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
 
 ### Input configuration
    input "type:keyboard" {
