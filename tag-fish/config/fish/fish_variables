@@ -1,13 +1,28 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR XDG_CURRENT_DESKTOP:sway
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
 SETUVAR Z_DATA:/home/ronnie/\x2elocal/share/z/data
 SETUVAR Z_DATA_DIR:/home/ronnie/\x2elocal/share/z
 SETUVAR Z_EXCLUDE:\x5e/home/ronnie\x24
 SETUVAR __fish_initialized:3100
-SETUVAR _hydro_git_1340:wayland\u2022\x20
-SETUVAR _hydro_git_939:main\u2022\x20
+SETUVAR _hydro_git_10785:v2\u2022\x20
+SETUVAR _hydro_git_1236:main\x20
+SETUVAR _hydro_git_14250:main\u2022\x20
+SETUVAR _hydro_git_2057:main\u2022\x20
+SETUVAR _hydro_git_21964:main\u2022\x20
+SETUVAR _hydro_git_23690:main\u2022\x20
+SETUVAR _hydro_git_36515:main\x20
+SETUVAR _hydro_git_36773:main\u2022\x20
+SETUVAR _hydro_git_37054:main\x20
+SETUVAR _hydro_git_38682:main\u2022\x20
+SETUVAR _hydro_git_4124:main\u2022\x20
+SETUVAR _hydro_git_581:\x1d
+SETUVAR _hydro_git_582:wayland\u2022\x20
+SETUVAR _hydro_git_62504:main\u2022\x20
+SETUVAR _hydro_git_63458:main\u2022\x20
+SETUVAR _hydro_git_9152:main\u2022\x20
 SETUVAR fish_color_autosuggestion:88cf88
 SETUVAR fish_color_cancel:normal
 SETUVAR fish_color_command:ff8bd4

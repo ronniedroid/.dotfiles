@@ -21,7 +21,9 @@ gaps {
     outer 5
 }
 
-default_border pixel 2
+default_border normal 0
+titlebar_border_thickness 0
+titlebar_padding 0 0
 
 client.focused #ffffff #92baff #92baff #92baff
 client.focused_inactive #434343 #434343 #434343 #434343
@@ -31,6 +33,7 @@ client.unfocused #434343 #434343 #434343 #434343
 
 exec {
     nm-applet --indicator
+    udiskie --no-automount --no-notify --tray
 }
 
 ### Output configuration
@@ -104,6 +107,13 @@ bindsym --to-code {
     $mod+f fullscreen
     $mod+Shift+f floating toggle
     $mod+tab focus mode_toggle
+    # brightness controlls 
+    $mod+Down exec light -U 5
+    $mod+Up exec light -A 5
+    $mod+Left exec pamixer -d 10
+    $mod+Right exec pamixer -i 10
+    $mod+Shift+Right exec pamixer --allow-boost -i 10
+    $mod+Shift+Left exec pamixer -t
     }
 
 ### binding modes
@@ -140,10 +150,12 @@ mode "scripts" {
 mode "apps" {
     bindsym --to-code {
     b exec "brave & swaymsg mode 'default'"
-    f exec "firefox & swaymsg mode 'default'"
+    f exec "MOZ_ENABLE_WAYLAND=1 firefox & swaymsg mode 'default'"
+    t exec "MOZ_ENABLE_WAYLAND=1 thunderbird & swaymsg mode 'default'"
     p exec "pcmanfm & swaymsg mode 'default'"
     g exec "gimp & swaymsg mode 'default'"
     i exec "inkscape & swaymsg mode 'default'"
+    n exec "alacritty -e nvim & swaymsg mode 'default'"
     d exec "flatpak run com.discordapp.Discord & swaymsg mode 'default'"
     Escape mode "default"
     }
