@@ -156,6 +156,7 @@ mode "apps" {
     g exec "gimp & swaymsg mode 'default'"
     i exec "inkscape & swaymsg mode 'default'"
     n exec "alacritty -e nvim & swaymsg mode 'default'"
+    e exec "emacs & swaymsg mode 'default'"
     d exec "flatpak run com.discordapp.Discord & swaymsg mode 'default'"
     Escape mode "default"
     }
