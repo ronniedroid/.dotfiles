@@ -549,3 +549,6 @@ client.connect_signal(
   end
 )
 -- }}}
+
+awful.spawn.with_shell('~/.config/default.sh')
+awful.spawn.with_shell('wall-d -f -r')

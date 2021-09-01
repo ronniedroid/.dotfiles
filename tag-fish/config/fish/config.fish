@@ -11,5 +11,3 @@ fundle plugin 'jorgebucaran/hydro'
 fundle plugin 'ryotako/fish-vimcolor'
 
 fundle init
-
-

@@ -8,30 +8,27 @@ super + Escape
 	
 # Apps shortcuts
 
-super + shift + f
-    firefox
+super + a ; {f, t, b, e}
+    {firefox, thunderbird, brave, emacs}
 
 super + d
     rofi -modi drun -show drun -show-icons
 
-super + shift + t
-    thunderbird
-
 # Scripts shortcuts
 
-alt + shift + p
-    pmenu.sh
+super + space
+      switchkbdlayout.sh 
+
+super + p ; {l,e,r,s}
+    {betterlockscreen, pkill qtile, systemctl reboot, systemctl poweroff}
 
 alt + shift + m
     MonitorLayout.sh
 
-alt + space
-    switchkbdlayout.sh
+super + w ; {w,r}
+    {wall-d -f -R -d ~/Pictures/wallpapers/, wall-d -f -r}
 
-alt + shift + w
-    wall-d -f -R -d ~/Pictures/wallpapers/
-
-alt + shift + b ; {a,b,d,y,r}
+super + b ; {a,b,d,y,r}
     bmanager.sh {-a ,-b,-d,-y,-r}
 
 alt + shift + c
@@ -43,13 +40,13 @@ alt + shift + s
 #pulse Audio controls
 
 super + {Left,Right}
-    pamixer {-d,-i} 5 && uniblocks -u vol
+    pamixer {-d,-i} 5
 
 
 # Sreen brightness controls
 
 super + {Down,Up}
-    light {-U,-A} 5 && uniblocks -u bri
+    light {-U,-A} 5
 
 
 # Media player controls

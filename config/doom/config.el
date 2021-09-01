@@ -14,13 +14,19 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "CodeNewRoman Nerd Font" :size 15))
+(setq doom-font (font-spec :family "CodeNewRoman Nerd Font" :size 16))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
 ;;(setq doom-theme 'doom-one-light)
-(load-theme 'modus-operandi t)
+(load-theme 'modus-vivendi t)
+
+  ;; (setq modus-themes-vivendi-color-overrides
+  ;;       '((bg-main . "#191a1b")
+  ;;         )))
+
+;; (setq modus-themes-operandi-color-overrides nil)
 
 (setq all-the-icons-scale-factor 1.1)
 
@@ -36,7 +42,6 @@
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
-(setq display-line-numbers-type 'relative)
 
 ;; make orgmode keywords colors when exported though latex
 
@@ -54,33 +59,6 @@
            tags ":")))))
 
 (setq org-latex-format-headline-function 'org-latex-format-headline-colored-keywords-function)
-
-;; emmet mode
-
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;;enable Emmet's css abbreviation.
-
-;; Setting up prettier
-
-(add-hook 'js2-mode-hook 'prettier-js-mode)
-(add-hook 'web-mode-hook 'prettier-js-mode)
-
-;; (setq prettier-js-args '(
-;;   "--trailing-comma" "none"
-;;   "--bracket-spacing" "true"
-;;   "--single-quote" "true"
-;;   "--no-semi" "true"
-;;   "--jsx-single-quote" "true"
-;;   "--jsx-bracket-same-line" "true"
-;;   "--print-width" "100"))
-
-;;svelte mode
-
-(add-to-list 'auto-mode-alist '("\\.svelte\\'" . svelte-mode))
-
-;; RJSX setup
-
-(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 
  (defun toggle-transparency ()
    (interactive)

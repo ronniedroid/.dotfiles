@@ -15,15 +15,16 @@ local theme = {}
 
 local colors = {
     offwhite = '#ffffff',
-    black = '#000000',
+    black = '#191a1b',
     red = '#ff8059',
     green = '#00fc50',
     yellow = '#eecc00',
     blue = '#29aeff',
+    purple = '#b6a0ff',
     magenta = '#feacd0',
     cyan = '#00d3d0',
     white = '#dddddd',
-    grey = '#808080'
+    grey = '#323232'
 }
 
 theme.font = 'Cascadaia Code 10'
@@ -34,7 +35,7 @@ theme.bg_urgent = colors.red
 theme.bg_minimize = colors.yellow
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = colors.offwhite
+theme.fg_normal = colors.purple
 theme.fg_focus = colors.black
 theme.fg_urgent = colors.black
 theme.fg_minimize = colors.black
@@ -43,11 +44,14 @@ theme.gap_single_client = true
 theme.useless_gap = dpi(5)
 theme.border_width = dpi(3)
 theme.border_normal = colors.grey
-theme.border_focus = colors.offwhite
+theme.border_focus = colors.purple
 theme.border_marked = colors.blue
 
 theme.systray_icon_spacing = 3
 
+theme.taglist_fg_focus = colors.purple
+theme.taglist_bg_focus = colors.black
+theme.taglist_fg_empty = colors.offwhite
 theme.taglist_fg_occupied = colors.grey
 theme.taglist_spacing = 3
 theme.taglist_shape = function(cr, w, h)
@@ -56,9 +60,10 @@ end
 
 theme.tasklist_disable_icon = true
 theme.tasklist_align = "center"
-theme.tasklist_bg_focus = colors.offwhite
+theme.tasklist_bg_focus = colors.grey
 theme.tasklist_bg_normal = colors.grey
-theme.tasklist_fg_normal = colors.black
+theme.tasklist_fg_normal = colors.offwhite
+theme.tasklist_fg_focus = colors.purple
 theme.tasklist_spacing = 5
 theme.tasklist_shape = function(cr, w, h)
     gears.shape.rounded_rect(cr, w, h, roundness)
