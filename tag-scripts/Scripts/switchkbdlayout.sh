@@ -2,7 +2,7 @@
 
 
 if setxkbmap -query | grep "us" ; then
-	setxkbmap ku ;
+	setxkbmap ara ;
 else
 	setxkbmap us ;
 fi
