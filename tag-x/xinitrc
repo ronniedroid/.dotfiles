@@ -8,14 +8,13 @@ elif have dbus-launch; then
 fi
 
 xrdb -merge ~/.Xresources &
-setxkbmap -option ctrl:nocaps,grp:win_space_toggle
-sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
+#setxkbmap -option ctrl:nocaps,grp:win_space_toggle
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-picom &
-nm-applet &
-udiskie --no-automount --no-notify --tray &
+#picom &
+#nm-applet &
+#udiskie --no-automount --no-notify --tray &
 #autorandr --change &
-wall-d -f -r &
+#wall-d -f -r &
 
 #exec awesom
 exec qtile start

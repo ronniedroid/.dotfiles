@@ -40,6 +40,7 @@ keys = [
     Key("M-m", lazy.window.toggle_maximize()),
     Key("M-w", lazy.to_screen(0)),
     Key("M-e", lazy.to_screen(1)),
+    Key("M-<Return>", lazy.spawn("alacritty")),
 ]
 
 
