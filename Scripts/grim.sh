@@ -7,8 +7,8 @@
 # |_| \_\___/|_| |_|_| |_|_|\___| |_| \_|_|___/___/\__,_|_| |_|
 #
 
-MENU="rofi -dmenu -c -i -l 4 -p "Grim" -width 200"
-name=$(echo "" | rofi -dmenu -c -i -l 0 -p "Name" -width 200)
+MENU="wofi --dmenu -c -i -l 4 -p "Grim" -width 200"
+name=$(echo "" | wofi --dmenu -c -i -l 0 -p "Name" -width 200)
 
 dir=$(xdg-user-dir PICTURES)/"$name.png"
 
@@ -30,12 +30,11 @@ selection() {
     grim -g "$(slurp)" $dir
 }
 
-PM=$(echo -e "quick\ndelayed\nmonitor\nselection" | $MENU)
-
-  case "$PM" in
-    *quick) quick ;;
-    *delayed) delayed ;;
-    *monitor) monitor ;;
-    *selection) selection ;;
-esac
- 
+while getopts qdms option; do
+    case "${option}" in
+        q) quick && exit;;
+        d) delayed && exit ;;
+        m) monitor && exit;;
+	s) selection && exit
+    esac
+done

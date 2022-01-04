@@ -1,0 +1,39 @@
+#!/usr/bin/python
+import os
+import gi
+import subprocess
+
+gi.require_version("Gtk", "3.0")
+gi.require_version("AppIndicator3", "0.1")
+from gi.repository import Gtk as gtk, AppIndicator3 as appindicator
+
+
+def main():
+    indicator = appindicator.Indicator.new(
+        "volumetray",
+        "audio-volume-high-symbolic",
+        appindicator.IndicatorCategory.APPLICATION_STATUS,
+    )
+    indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
+    indicator.set_menu(menu())
+    gtk.main()
+
+
+def menu():
+    menu = gtk.Menu()
+
+    bmenu = gtk.MenuItem()
+
+    box = gtk.Box(True, 5)
+    adj1 = gtk.Adjustment(50, 0, 100, 1.0, 1.0, 0.0)
+    btn1 = gtk.VScale()
+    box.pack_start(btn1, True, True, 0)
+    bmenu.add(box)
+    menu.append(bmenu)
+
+    menu.show_all()
+    return menu
+
+
+if __name__ == "__main__":
+    main()

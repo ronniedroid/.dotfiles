@@ -5,8 +5,9 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu rofi -show drun | xargs swaymsg exec --
-set $gnome-schema org.gnome.desktop.interface
+set $menu wofi -I -i -a --show drun
+set $gnome-schema org.gnome.desktop.interfac
+set $laptop eDP-1
 
 ### theme
 exec_always {
@@ -17,13 +18,14 @@ exec_always {
 }
 
 gaps {
-    inner 5
-    outer 5
+    inner 3
+    outer 3
 }
 
-default_border normal 0
+default_border pixel 2
 titlebar_border_thickness 0
 titlebar_padding 0 0
+
 
 client.focused #ffffff #92baff #92baff #92baff
 client.focused_inactive #434343 #434343 #434343 #434343
@@ -32,6 +34,8 @@ client.unfocused #434343 #434343 #434343 #434343
 ### startup
 
 exec {
+    ~/.config/sway/powermenu
+    ~/.config/sway/grim
     nm-applet --indicator
     udiskie --no-automount --no-notify --tray
 }
@@ -39,20 +43,33 @@ exec {
 ### Output configuration
 
 output {
-    * bg ~/Pictures/wallpapers/car-at-night.jpg fill
-    eDP-1 resolution 1366x768 position 0,0
-    HDMI-A-1 resolution 1920x1080 position 1366,0
+    * bg ~/Pictures/wallpapers/wallpaper.jpg fill
+    eDP-1 res 1366x768 pos 0,0
+    HDMI-A-1 res 1920x1080 pos 0,0
+    DP-1 res 1920x1080 pos 1920,0
 }
+
+workspace 1 output HDMI-A-1 eDP-1
+workspace 2 output HDMI-A-1 eDP-1
+workspace 3 output HDMI-A-1 eDP-1
+workspace 4 output DP-1 eDP-1
+workspace 5 output DP-1 eDP-1
+workspace 6 output DP-1 eDP-1
+
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+exec_always ~/.config/sway/clamshell.sh
 
 ### Idle configuration
  exec swayidle -w \
-          timeout 300 'swaylock -f -i ~/Pictures/wallpapers/car-at-night.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
-          before-sleep 'swaylock -f -i ~/Pictures/wallpapers/car-at-night.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
+          timeout 300 'swaylock -f -i ~/Pictures/wallpapers/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
+          before-sleep 'swaylock -f -i ~/Pictures/wallpapers/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
 
 ### Input configuration
    input "type:keyboard" {
        xkb_layout us,ara
-       xkb_options ctrl:nocaps,altwin:swap_lalt_lwin,grp:win_space_toggle
+       xkb_options ctrl:nocaps,grp:win_space_toggle
    }
 
 ### Key bindings
@@ -61,7 +78,7 @@ bindsym --to-code {
     # Basics:
     $mod+Return exec $term
     $mod+q kill
-    $mod+d exec $menu
+    $mod+x exec $menu
     $mod+Ctrl+r reload
     # Moving around:
     # Move your focus around
@@ -69,42 +86,33 @@ bindsym --to-code {
     $mod+$down focus down
     $mod+$up focus up
     $mod+$right focus right
-    $mod+n focus output right
+    $mod+o focus output right
     $mod+p focus output lef
     # Move the focused window with the same, but add Shift
-    $mod+Shift+$left move left
-    $mod+Shift+$down move down
-    $mod+Shift+$up move up
-    $mod+Shift+$right move right
+    $mod+Ctrl+$left move left
+    $mod+Ctrl+$down move down
+    $mod+Ctrl+$up move up
+    $mod+Ctrl+$right move right
     # Workspaces:
     # Switch to workspace
-    $mod+1 workspace number 1
-    $mod+2 workspace number 2
-    $mod+3 workspace number 3
-    $mod+4 workspace number 4
-    $mod+5 workspace number 5
-    $mod+6 workspace number 6
-    $mod+7 workspace number 7
-    $mod+8 workspace number 8
-    $mod+9 workspace number 9
-    $mod+0 workspace number 10
+    $mod+a workspace number 1
+    $mod+s workspace number 2
+    $mod+d workspace number 3
+    $mod+f workspace number 4
+    $mod+u workspace number 5
+    $mod+i workspace number 6
     # Move focused container to workspace
-    $mod+Shift+1 move container to workspace number 1
-    $mod+Shift+2 move container to workspace number 2
-    $mod+Shift+3 move container to workspace number 3
-    $mod+Shift+4 move container to workspace number 4
-    $mod+Shift+5 move container to workspace number 5
-    $mod+Shift+6 move container to workspace number 6
-    $mod+Shift+7 move container to workspace number 7
-    $mod+Shift+8 move container to workspace number 8
-    $mod+Shift+9 move container to workspace number 9
-    $mod+Shift+0 move container to workspace number 10
+    $mod+Ctrl+a move container to workspace number 1
+    $mod+Ctrl+s move container to workspace number 2
+    $mod+Ctrl+d move container to workspace number 3
+    $mod+Ctrl+f move container to workspace number 4
+    $mod+Ctrl+u move container to workspace number 5
+    $mod+Ctrl+i move container to workspace number 6
     # Layout stuff:
     $mod+b splith
     $mod+v splitv
     # Switch the current container between different layout styles
     $mod+e layout toggle split
-    $mod+f fullscreen
     $mod+Shift+f floating toggle
     $mod+tab focus mode_toggle
     # brightness controlls 
@@ -128,44 +136,8 @@ mode "resize" {
     }
 }
 
-mode "bookmarks" {
-    bindsym --to-code { 
-    b exec "bmanager.sh -b & swaymsg mode 'default'"
-    a exec "bmanager.sh -a & swaymsg mode 'default'"
-    r exec "bmanager.sh -r & swaymsg mode 'default'"
-    escape mode "default"
-    }
-}
-
-mode "scripts" {
-    bindsym --to-code {
-    p exec "pmenu.sh & swaymsg mode 'default'"
-    s exec "grim.sh & swaymsg mode 'default'"
-    c exec "confmanager.sh & swaymsg mode 'default'"
-    b mode "bookmarks"
-    Escape mode "default"
-    }
-}
-
-mode "apps" {
-    bindsym --to-code {
-    b exec "brave & swaymsg mode 'default'"
-    f exec "MOZ_ENABLE_WAYLAND=1 firefox & swaymsg mode 'default'"
-    t exec "MOZ_ENABLE_WAYLAND=1 thunderbird & swaymsg mode 'default'"
-    p exec "pcmanfm & swaymsg mode 'default'"
-    g exec "gimp & swaymsg mode 'default'"
-    i exec "inkscape & swaymsg mode 'default'"
-    n exec "alacritty -e nvim & swaymsg mode 'default'"
-    e exec "emacs & swaymsg mode 'default'"
-    d exec "flatpak run com.discordapp.Discord & swaymsg mode 'default'"
-    Escape mode "default"
-    }
-}
-
 # activate modes
 bindsym --to-code { 
-    $mod+a mode "apps"
-    $mod+s mode "scripts"
     $mod+r mode "resize"
 }
 
