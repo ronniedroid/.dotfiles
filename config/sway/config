@@ -4,7 +4,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term foot
 set $menu wofi -I -i -a --show drun
 set $gnome-schema org.gnome.desktop.interfac
 set $laptop eDP-1
