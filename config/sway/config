@@ -11,15 +11,15 @@ set $laptop eDP-1
 
 ### theme
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
-    gsettings set $gnome-schema icon-theme 'Papirus-Light'
-    gsettings set $gnome-schema cursor-theme 'Breeze'
+    gsettings set $gnome-schema gtk-theme 'adwaita'
+    gsettings set $gnome-schema icon-theme 'Papirus'
+    gsettings set $gnome-schema cursor-theme 'Breeze_cursors'
     gsettings set $gnome-schema font-name 'Hack Nerd Font'
 }
 
 gaps {
-    inner 3
-    outer 3
+    inner 0
+    outer 0
 }
 
 default_border pixel 2
@@ -43,10 +43,12 @@ exec {
 ### Output configuration
 
 output {
-    * bg ~/Pictures/wallpapers/wallpaper.jpg fill
-    eDP-1 res 1366x768 pos 0,0
+    * bg ~/Pictures/wallpapers/wallpaper.jpg stretch
+#    HDMI-A-1 bg ~/Pictures/wallpapers/w1.jpg stretch
+#    DP-1 bg ~/Pictures/wallpapers/w2.jpg stretch
     HDMI-A-1 res 1920x1080 pos 0,0
     DP-1 res 1920x1080 pos 1920,0
+    eDP-1 res 1366x768 pos 3840,0
 }
 
 workspace 1 output HDMI-A-1 eDP-1

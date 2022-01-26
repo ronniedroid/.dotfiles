@@ -8,8 +8,8 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 1);
-    color: #92BAFF;
+    background-color: rgba(23, 15, 14, 1);
+    color: #ffd9d7;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -21,19 +21,20 @@ window#waybar.hidden {
 #workspaces button {
   padding: 0 5px;
   margin: 4px 4px;
-  background-color: #777777;
-  color: #000000;
+  background-color: #372e2e;
+  color: #ffd9d7;
   border-radius: 10%;
 }
 
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  background: #777777;
+  background: #372e2e;
 }
 
 #workspaces button.focused {
-  background-color: #92BAFF;
+  background-color: #ffd9d7;
+  color: #372e2e;
 }
 
 #workspaces button.urgent {
@@ -55,8 +56,8 @@ window#waybar.hidden {
 #idle_inhibitor {
   padding: 0 10px;
   margin: 4px 4px;
-  background-color: #92BAFF;
-  color: #000000;
+  background-color: #ffd9d7;
+  color: #372e2e;
   border-radius: 10%;
 }
 
@@ -88,7 +89,7 @@ window#waybar.hidden {
 
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: #ffffff;
+    color: #372e2e;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -97,7 +98,7 @@ window#waybar.hidden {
 }
 
 #tray {
-  background-color: #92BAFF;
+  background-color: #ffd9d7;
 }
 
 #tray > .passive {
@@ -109,7 +110,12 @@ window#waybar.hidden {
   background-color: #eb4d4b;
 }
 
+#idle_inhibitor {
+  background-color: #372e2e;
+  color: #ffd9d7;
+}
+
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+  background-color: #ffd9d7;
+  color: #372e2e;
 }
