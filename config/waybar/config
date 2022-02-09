@@ -46,8 +46,8 @@
 	"exec-on-event": "true",
 	"interval": "once",
         "format": "{}",
-	"on-scroll-up": "light -A 5",
-	"on-scroll-down": "light -U 5",
+	"on-scroll-up": "light -A 1",
+	"on-scroll-down": "light -U 1",
     },
     "battery": {
         "bat": "BAT0",
