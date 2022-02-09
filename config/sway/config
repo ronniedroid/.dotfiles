@@ -1,12 +1,11 @@
 ### Variables
-set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
 set $term alacritty
 set $menu wofi -I -i -a --show drun
-set $gnome-schema org.gnome.desktop.interfac
+set $gnome-schema org.gnome.desktop.interface
 set $laptop eDP-1
 
 ### theme
@@ -53,10 +52,8 @@ output {
 
 workspace 1 output HDMI-A-1 eDP-1
 workspace 2 output HDMI-A-1 eDP-1
-workspace 3 output HDMI-A-1 eDP-1
+workspace 3 output DP-1 eDP-1
 workspace 4 output DP-1 eDP-1
-workspace 5 output DP-1 eDP-1
-workspace 6 output DP-1 eDP-1
 
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
@@ -75,56 +72,57 @@ exec_always ~/.config/sway/clamshell.sh
    }
 
 ### Key bindings
-floating_modifier $mod normal
+floating_modifier Mod1 normal
+mode "general" {
 bindsym --to-code {
     # Basics:
-    $mod+Return exec $term
-    $mod+q kill
-    $mod+x exec $menu
-    $mod+Ctrl+r reload
-    # Moving around:
-    # Move your focus around
-    $mod+$left focus left
-    $mod+$down focus down
-    $mod+$up focus up
-    $mod+$right focus right
-    $mod+o focus output right
-    $mod+p focus output lef
-    # Move the focused window with the same, but add Shift
-    $mod+Ctrl+$left move left
-    $mod+Ctrl+$down move down
-    $mod+Ctrl+$up move up
-    $mod+Ctrl+$right move right
+    Return exec "$term & swaymsg mode 'default'"
+    Ctrl+x exec "$menu & swaymsg mode 'default'"
+    Ctrl+r exec "swaymsg reload & swaymsg mode 'default'"
     # Workspaces:
     # Switch to workspace
-    $mod+a workspace number 1
-    $mod+s workspace number 2
-    $mod+d workspace number 3
-    $mod+f workspace number 4
-    $mod+u workspace number 5
-    $mod+i workspace number 6
+    Ctrl+a exec "swaymsg workspace number 1 & swaymsg mode 'default'"
+    Ctrl+s exec "swaymsg workspace number 2 & swaymsg mode 'default'"
+    Ctrl+d exec "swaymsg workspace number 3 & swaymsg mode 'default'"
+    Ctrl+f exec "swaymsg workspace number 4 & swaymsg mode 'default'"
+    #window movements
+    0 exec "swaymsg kill & swaymsg mode 'default'"
+    5 exec "swaymsg floating toggle && swaymsg mode 'default'"
+    t exec "swaymsg focus mode_toggle && swaymsg mode 'default'"
+    3 exec "swaymsg splith && swaymsg mode 'default'"
+    2 exec "swaymsg splitv && swaymsg mode 'default'"
+    #move focus to window
+    $left focus left
+    $down focus down
+    $up focus up
+    $right focus right
+    #move the focused window
+    Ctrl+$left move left
+    Ctrl+$down move down
+    Ctrl+$up move up
+    Ctrl+$right move right
     # Move focused container to workspace
-    $mod+Ctrl+a move container to workspace number 1
-    $mod+Ctrl+s move container to workspace number 2
-    $mod+Ctrl+d move container to workspace number 3
-    $mod+Ctrl+f move container to workspace number 4
-    $mod+Ctrl+u move container to workspace number 5
-    $mod+Ctrl+i move container to workspace number 6
-    # Layout stuff:
-    $mod+b splith
-    $mod+v splitv
-    # Switch the current container between different layout styles
-    $mod+e layout toggle split
-    $mod+Shift+f floating toggle
-    $mod+tab focus mode_toggle
-    # brightness controlls 
-    $mod+Down exec light -U 5
-    $mod+Up exec light -A 5
-    $mod+Left exec pamixer -d 10
-    $mod+Right exec pamixer -i 10
-    $mod+Shift+Right exec pamixer --allow-boost -i 10
-    $mod+Shift+Left exec pamixer -t
+    a exec "swaymsg move container to workspace number 1 && swaymsg mode 'default'"
+    s exec "swaymsg move container to workspace number 2 && swaymsg mode 'default'"
+    d exec "swaymsg move container to workspace number 3 && swaymsg mode 'default'"
+    f exec "swaymsg move container to workspace number 4 && swaymsg mode 'default'"
+    #go into other modes
+    r mode "resize"
+    c mode "control"
     }
+}
+
+mode "control" {
+    bindsym --to-code {
+    j exec light -U 5
+    k exec light -A 5
+    h exec pamixer -d 10
+    l exec pamixer -i 10
+    #exit this mode
+    Return mode "default"
+    Ctrl+g mode "default"	
+    }
+}
 
 ### binding modes
 mode "resize" {
@@ -133,14 +131,15 @@ mode "resize" {
     $down resize grow height 10px
     $up resize shrink height 10px
     $right resize grow width 10px
+    #exit this mode
     Return mode "default"
-    Escape mode "default"
+    Ctrl+g mode "default"
     }
 }
 
 # activate modes
 bindsym --to-code { 
-    $mod+r mode "resize"
+    Ctrl+z mode "general"
 }
 
 # Status Bar:
