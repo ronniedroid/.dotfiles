@@ -1,21 +1,16 @@
 ### Variables
 set $mod Mod4
-set $left h
-set $down j
-set $up k
-set $right l
+set $left j
+set $down k
+set $up l
+set $right semicolon
 set $term alacritty
 set $menu wofi -I -i -a --show drun
 set $gnome-schema org.gnome.desktop.interfac
 set $laptop eDP-1
 
 ### theme
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'adwaita'
-    gsettings set $gnome-schema icon-theme 'Papirus'
-    gsettings set $gnome-schema cursor-theme 'Breeze_cursors'
-    gsettings set $gnome-schema font-name 'Hack Nerd Font'
-}
+exec_always import-gsettings
 
 gaps {
     inner 0
@@ -34,37 +29,34 @@ client.unfocused #434343 #434343 #434343 #434343
 ### startup
 
 exec {
-    ~/.config/sway/powermenu
-    ~/.config/sway/grim
+    powermenu
+    grim
     nm-applet --indicator
     udiskie --no-automount --no-notify --tray
 }
 
 ### Output configuration
 
+exec_always kanshi
+
 output {
-    * bg ~/Pictures/wallpapers/wallpaper.jpg stretch
+    * bg ~/Pictures/wallpaper.jpg stretch
 #    HDMI-A-1 bg ~/Pictures/wallpapers/w1.jpg stretch
 #    DP-1 bg ~/Pictures/wallpapers/w2.jpg stretch
-    HDMI-A-1 res 1920x1080 pos 0,0
-    DP-1 res 1920x1080 pos 1920,0
-    eDP-1 res 1366x768 pos 3840,0
+    # HDMI-A-1 res 1920x1080 pos 0,0
+    # DP-1 res 1920x1080 pos 1920,0
+    # eDP-1 res 1366x768 pos 3840,0
 }
 
-workspace 1 output HDMI-A-1 eDP-1
-workspace 2 output HDMI-A-1 eDP-1
-workspace 3 output DP-1 eDP-1
-workspace 4 output DP-1 eDP-1
+# bindswitch --reload --locked lid:on output $laptop disable
+# bindswitch --reload --locked lid:off output $laptop enable
 
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
-
-exec_always ~/.config/sway/clamshell.sh
+# exec_always clamshell.sh
 
 ### Idle configuration
  exec swayidle -w \
-          timeout 300 'swaylock -f -i ~/Pictures/wallpapers/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
-          before-sleep 'swaylock -f -i ~/Pictures/wallpapers/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
+          timeout 300 'swaylock -f -i ~/Pictures/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
+          before-sleep 'swaylock -f -i ~/Pictures/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
 
 ### Input configuration
    input "type:keyboard" {
@@ -86,8 +78,6 @@ bindsym --to-code {
     $mod+$down focus down
     $mod+$up focus up
     $mod+$right focus right
-    $mod+o focus output right
-    $mod+p focus output lef
     # Move the focused window with the same, but add Shift
     $mod+Ctrl+$left move left
     $mod+Ctrl+$down move down
@@ -109,7 +99,7 @@ bindsym --to-code {
     $mod+Ctrl+u move container to workspace number 5
     $mod+Ctrl+i move container to workspace number 6
     # Layout stuff:
-    $mod+b splith
+    $mod+h splith
     $mod+v splitv
     # Switch the current container between different layout styles
     $mod+e layout toggle split
@@ -141,7 +131,7 @@ bindsym --to-code {
 
 # Status Bar:
 bar {
-    swaybar_command waybar
+        swaybar_command waybar
 }
 
 include /etc/sway/config.d/*

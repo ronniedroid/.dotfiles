@@ -27,15 +27,15 @@ font:
             y: 4
 
         normal:
-                family: Code New Roman Nerd Font
+                family: JetBrainsMono Nerd Font Mono
                 style: Regular
 
         bold:
-                family: Code New Roman Nerd Font
+                family: JetBrainsMono Nerd Font Mono
                 style: Bold
 
         italic:
-                family: Code New Roman Nerd Font
+                family: JetBrainsMono Nerd Font Mono
                 style: Italic
 
 # Colors (Modus)
@@ -128,4 +128,4 @@ modus-operandi: &light
 
 colors: *dark
 
-background_opacity: 1
+window_opacity: 1
