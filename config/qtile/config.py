@@ -34,6 +34,10 @@ keys = [
     Key([mod], "Right", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
     Key([mod], "Up", lazy.spawn("light -A 5"), desc="Brightness up"),
     Key([mod], "Down", lazy.spawn("light -U 5"), desc="Brightness down"),
+    # switch keyboard layouts
+    Key([mod], "Space", lazy.spawn("switchKbdLayout.sh")),
+    # take a screenshot
+    Key([mod], "t", lazy.spawn("dmenu-scrot.sh")),
     # extentions
     Key([mod], "x", lazy.run_extension(extension.DmenuRun(
         dmenu_prompt=">",
@@ -73,7 +77,7 @@ keys = [
     )))
 ]
 
-groups = [Group(i) for i in "asdfjk"]
+groups = [Group(i) for i in "asdfhjkl"]
 
 for i in groups:
     keys.extend(
@@ -150,7 +154,7 @@ screens = [
                 widget.Sep(size_percent=50),
                 widget.Volume(emoji=False, fmt='📢{}'),
                 widget.Sep(size_percent=50),
-                widget.KeyboardLayout(fmt='🖮 {}'),
+                widget.KeyboardLayout(fmt='🖮 {}', configured_keyboards=['us','ara']),
                 widget.Sep(size_percent=50),
                 widget.OpenWeather(location="Erbil", format='{location_city}: {temp}℃'),
                 widget.Sep(size_percent=50),                

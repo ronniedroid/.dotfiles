@@ -1,21 +1,14 @@
 # Prepare D-Bus
-if [ "$DBUS_SESSION_BUS_ADDRESS" ]; then
-	dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
-elif have dbus-run-session; then
-	exec dbus-run-session "$0" "$@" || exit
-elif have dbus-launch; then
-	exec dbus-launch --exit-with-session "$0" "$@" || exit
-fi
+#if [ "$DBUS_SESSION_BUS_ADDRESS" ]; then
+#	dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
+#elif have dbus-run-session; then
+#	exec dbus-run-session "$0" "$@" || exit
+#elif have dbus-launch; then
+#	exec dbus-launch --exit-with-session "$0" "$@" || exit
+#fi
 
-xrdb -merge ~/.Xresources &
-#setxkbmap -option ctrl:nocaps,grp:win_space_toggle
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 #picom &
-#nm-applet &
-#udiskie --no-automount --no-notify --tray &
 #autorandr --change &
 #wall-d -f -r &
 
-#exec awesom
-exec qtile start
-#exec xmonad
+#exec qtile start
