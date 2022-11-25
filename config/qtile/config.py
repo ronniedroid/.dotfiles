@@ -13,6 +13,16 @@ theme = {
     "foreground": "#ffffff"
 }
 
+dmenu_theme = dict(
+    dmenu_font="JetBrainsMono Nerd Font Mono",
+    background=theme["background"],
+    foreground=theme["foreground"],
+    selected_background=theme["foreground"],
+    selected_foreground=theme["background"],
+    dmenu_bottom=True,
+    dmenu_ignorecase=True,
+)
+
 keys = [
     Key([mod], "n", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "p", lazy.layout.up(), desc="Move focus up"),
@@ -41,23 +51,11 @@ keys = [
     # extentions
     Key([mod], "x", lazy.run_extension(extension.DmenuRun(
         dmenu_prompt=">",
-        dmenu_font="JetBrainsMono Nerd Font Mono",
-        background=theme["background"],
-        foreground=theme["foreground"],
-        selected_background=theme["foreground"],
-        selected_foreground=theme["background"],
-        dmenu_bottom=True,
-        dmenu_ignorecase=True,
+        **dmenu_theme
     ))),
     Key([mod], "b", lazy.run_extension(extension.WindowList(
         dmenu_prompt="Windows",
-        dmenu_font="JetBrainsMono Nerd Font Mono",
-        background=theme["background"],
-        foreground=theme["foreground"],
-        selected_background=theme["foreground"],
-        selected_foreground=theme["background"],
-        dmenu_bottom=True,
-        dmenu_ignorecase=True
+        **dmenu_theme
     ))),
     Key([mod], "e", lazy.run_extension(extension.CommandSet(
         commands={
@@ -67,13 +65,7 @@ keys = [
             'poweroff': 'systemctl poweroff'
         },
         dmenu_prompt="PowerMenu",
-        dmenu_font="JetBrainsMono Nerd Font Mono",
-        background=theme["background"],
-        foreground=theme["foreground"],
-        selected_background=theme["foreground"],
-        selected_foreground=theme["background"],
-        dmenu_bottom=True,
-        dmenu_ignorecase=True,
+        **dmenu_theme
     )))
 ]
 
@@ -96,10 +88,6 @@ for i in groups:
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
         ]
     )
 
