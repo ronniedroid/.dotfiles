@@ -126,6 +126,6 @@ modus-operandi: &light
     cyan:    '#205b93'
     white:   '#dddddd'
 
-colors: *dark
+colors: *light
 
 window_opacity: 1

@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window",],
-    "modules-right": ["idle_inhibitor","sway/language", "clock", "pulseaudio", "battery", "tray"],
+    "modules-right": ["idle_inhibitor", "sway/language", "clock", "pulseaudio", "battery", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -44,13 +44,13 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{icon} {capacity}% ",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " "]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -76,6 +76,14 @@
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{name}",
+        "persistent_workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": []
+        }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -93,6 +101,7 @@
     },
     "clock": {
         "timezone": "Asia/Baghdad",
+        "format": "⌚{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -113,7 +122,7 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " "]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
