@@ -110,49 +110,91 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+groupsWidget = dict(
+    highlight_method='block',
+    block_highlight_text_color=theme["background"],
+    this_current_screen_border=theme["foreground"],
+    rounded=True,
+)
+
+batteryWidget = dict(
+    charge_char="🔌",
+    discharge_char="🔋",
+    full_char="🔋",
+    empty_char="🪫",
+    notify_below=10,
+    format='{char}{percent:2.0%}'
+)
+
+backlightWidget = dict(
+    backlight_name="intel_backlight",
+    format='🔅{percent:2.0%}'
+)
+
+sepWidget = dict(
+    size_percent=50
+)
+
+weatherWidget = dict(
+    location="Erbil",
+    format='{location_city}: {temp}℃'
+)
+
+kbdWidget= dict(
+    fmt='🖮 {}',
+    configured_keyboards=['us','ara']
+)
+
+volumeWidget = dict(
+    emoji=False,
+    fmt='📢 {}'
+)
+
+systrayWidget = dict(
+    icon_size=14,
+    padding=10
+)
+
+clockWidget = dict(
+    format="%Y-%m-%d %a %I:%M %p"
+)
+
+spacerWidget = dict(
+    length=10
+)
+
+barOptions = dict(
+    background=theme["background"],
+    border_width=[2, 0, 2, 0],
+    border_color=[theme["background"], theme["background"], theme["background"], theme["background"]]
+)
+
 screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.Spacer(length=10),
-                widget.GroupBox(
-                    highlight_method='block',
-                    block_highlight_text_color=theme["background"],
-                    this_current_screen_border=theme["foreground"],
-                    rounded=True,
-                ),
+                widget.Spacer(**spacerWidget),
+                widget.GroupBox(**groupsWidget),
                 widget.WindowName(),
                 widget.Spacer(),
-                widget.Systray(icon_size=14, padding=10),
-                widget.Spacer(length=10),
-                widget.Sep(size_percent=50),
-                widget.Battery(
-                    charge_char="🔌",
-                    discharge_char="🔋",
-                    full_char="🔋",
-                    empty_char="🪫",
-                    notify_below=10,
-                    format='{char}{percent:2.0%}'
-                ),
-                widget.Sep(size_percent=50),
-                widget.Backlight(
-                    backlight_name="intel_backlight",
-                    format='🔅{percent:2.0%}'
-                ),
-                widget.Sep(size_percent=50),
-                widget.Volume(emoji=False, fmt='📢{}'),
-                widget.Sep(size_percent=50),
-                widget.KeyboardLayout(fmt='🖮 {}', configured_keyboards=['us','ara']),
-                widget.Sep(size_percent=50),
-                widget.OpenWeather(location="Erbil", format='{location_city}: {temp}℃'),
-                widget.Sep(size_percent=50),                
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.Spacer(length=10),
+                widget.Systray(**systrayWidget),
+                widget.Spacer(**spacerWidget),
+                widget.Sep(**sepWidget),
+                widget.Battery(**batteryWidget),
+                widget.Sep(**sepWidget),
+                widget.Backlight(**backlightWidget),
+                widget.Sep(**sepWidget),
+                widget.Volume(**volumeWidget),
+                widget.Sep(**sepWidget),
+                widget.KeyboardLayout(**kbdWidget),
+                widget.Sep(**sepWidget),
+                widget.OpenWeather(**weatherWidget),
+                widget.Sep(**sepWidget),                
+                widget.Clock(**clockWidget),
+                widget.Spacer(**spacerWidget),
             ],
             24,
-            background=theme["background"],
-            border_width=[2, 0, 2, 0],
-            border_color=[theme["background"], theme["background"], theme["background"], theme["background"]]
+            **barOptions
         ),
     ),
 ]
