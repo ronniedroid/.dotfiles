@@ -1,6 +1,7 @@
 import os
 import subprocess
 from libqtile import bar, layout, widget, hook, extension
+from qtile_extras import widget as w
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -132,12 +133,7 @@ backlightWidget = dict(
 )
 
 sepWidget = dict(
-    size_percent=50
-)
-
-weatherWidget = dict(
-    location="Erbil",
-    format='{location_city}: {temp}℃'
+    size_percent=60
 )
 
 kbdWidget= dict(
@@ -156,7 +152,7 @@ systrayWidget = dict(
 )
 
 clockWidget = dict(
-    format="%Y-%m-%d %a %I:%M %p"
+    format="📅 %y-%m-%d %a | ⏰ %H:%M"
 )
 
 spacerWidget = dict(
@@ -180,16 +176,13 @@ screens = [
                 widget.Systray(**systrayWidget),
                 widget.Spacer(**spacerWidget),
                 widget.Sep(**sepWidget),
-                widget.Battery(**batteryWidget),
-                widget.Sep(**sepWidget),
+                widget.Spacer(**spacerWidget),
+                w.UPowerWidget(),
                 widget.Backlight(**backlightWidget),
-                widget.Sep(**sepWidget),
                 widget.Volume(**volumeWidget),
                 widget.Sep(**sepWidget),
                 widget.KeyboardLayout(**kbdWidget),
                 widget.Sep(**sepWidget),
-                widget.OpenWeather(**weatherWidget),
-                widget.Sep(**sepWidget),                
                 widget.Clock(**clockWidget),
                 widget.Spacer(**spacerWidget),
             ],
