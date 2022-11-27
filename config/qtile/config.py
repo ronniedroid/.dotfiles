@@ -1,10 +1,11 @@
 import os
 import subprocess
-from libqtile import bar, layout, widget, hook, extension
-from qtile_extras import widget as w
+from libqtile import bar, layout, hook, extension
+from qtile_extras import widget
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from qtile_extras.widget.decorations import PowerLineDecoration
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -46,7 +47,7 @@ keys = [
     Key([mod], "Up", lazy.spawn("light -A 5"), desc="Brightness up"),
     Key([mod], "Down", lazy.spawn("light -U 5"), desc="Brightness down"),
     # switch keyboard layouts
-    Key([mod], "Space", lazy.spawn("switchKbdLayout.sh")),
+    Key([mod], "Space",  lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
     # take a screenshot
     Key([mod], "t", lazy.spawn("dmenu-scrot.sh")),
     # extentions
@@ -71,6 +72,17 @@ keys = [
 ]
 
 groups = [Group(i) for i in "asdfhjkl"]
+
+groups = [
+    Group(name="a", label="ܐ", matches=[Match(wm_class="emacs")]),
+    Group(name="s", label="ܣ", matches=[Match(wm_class="firefox"), Match(wm_class="librewolf")]),
+    Group(name="d", label="ܕ", matches=[Match(wm_class="discord")]),
+    Group(name="f", label="ܦ", matches=[Match(wm_class="Mail")]),
+    Group(name="h", label="ܗ"),
+    Group(name="j", label="ܥ"),
+    Group(name="k", label="ܟ"),
+    Group(name="l", label="ܠ", matches=[Match(wm_class="virt-manager")]),
+]
 
 for i in groups:
     keys.extend(
@@ -107,43 +119,49 @@ widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
     fontsize=15,
     padding=6,
-    foreground=theme["foreground"]
+    foreground=theme["foreground"],
+    theme_path='/usr/share/icons/Papirus-Dark'
 )
 extension_defaults = widget_defaults.copy()
 
 groupsWidget = dict(
+    font="AramaicShimo",
+    fontsize=24,
     highlight_method='block',
     block_highlight_text_color=theme["background"],
     this_current_screen_border=theme["foreground"],
     rounded=True,
 )
 
-batteryWidget = dict(
-    charge_char="🔌",
-    discharge_char="🔋",
-    full_char="🔋",
-    empty_char="🪫",
-    notify_below=10,
-    format='{char}{percent:2.0%}'
-)
-
-backlightWidget = dict(
-    backlight_name="intel_backlight",
-    format='🔅{percent:2.0%}'
-)
-
-sepWidget = dict(
-    size_percent=60
-)
-
 kbdWidget= dict(
-    fmt='🖮 {}',
-    configured_keyboards=['us','ara']
+    configured_keyboards=['us','ara'],
+    padding=10
 )
 
-volumeWidget = dict(
-    emoji=False,
-    fmt='📢 {}'
+powerWidget = dict(
+    margin=10
+)
+
+alsaWidget = dict(
+    mode="both",
+    bar_width=20,
+    icon_size=20,
+    bar_colour_mute=theme["background"],
+    bar_colour_normal=theme["background"],
+    bar_colour_high=theme["background"],
+    bar_colour_loud=theme["background"],
+    margin=10,
+    padding=0
+)
+
+lightWidget = dict(
+    mode="both",
+    bar_width=20,
+    icon_size=20,
+    bar_colour_low=theme["background"],
+    bar_colour_normal=theme["background"],
+    bar_colour_high=theme["background"],
+    padding=10
 )
 
 systrayWidget = dict(
@@ -152,17 +170,12 @@ systrayWidget = dict(
 )
 
 clockWidget = dict(
-    format="📅 %y-%m-%d %a | ⏰ %H:%M"
+    padding=1,
+    format="%y-%m-%d %a %H:%M"
 )
 
 spacerWidget = dict(
-    length=10
-)
-
-barOptions = dict(
-    background=theme["background"],
-    border_width=[2, 0, 2, 0],
-    border_color=[theme["background"], theme["background"], theme["background"], theme["background"]]
+    length=10,
 )
 
 screens = [
@@ -174,20 +187,15 @@ screens = [
                 widget.WindowName(),
                 widget.Spacer(),
                 widget.Systray(**systrayWidget),
-                widget.Spacer(**spacerWidget),
-                widget.Sep(**sepWidget),
-                widget.Spacer(**spacerWidget),
-                w.UPowerWidget(),
-                widget.Backlight(**backlightWidget),
-                widget.Volume(**volumeWidget),
-                widget.Sep(**sepWidget),
+                widget.LightControlWidget(**lightWidget),
+                widget.UPowerWidget(**powerWidget),
+                widget.ALSAWidget(**alsaWidget),
                 widget.KeyboardLayout(**kbdWidget),
-                widget.Sep(**sepWidget),
                 widget.Clock(**clockWidget),
-                widget.Spacer(**spacerWidget),
+                widget.Spacer(**spacerWidget)
             ],
-            24,
-            **barOptions
+            30,
+            background=theme["background"],
         ),
     ),
 ]
