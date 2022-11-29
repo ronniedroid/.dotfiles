@@ -1,11 +1,10 @@
 import os
 import subprocess
-from libqtile import bar, layout, hook, extension
-from qtile_extras import widget
+from libqtile import bar, layout, hook, extension, widget
+from qtile_extras import widget as w
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from qtile_extras.widget.decorations import PowerLineDecoration
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -61,27 +60,34 @@ keys = [
     ))),
     Key([mod], "e", lazy.run_extension(extension.CommandSet(
         commands={
-            'exit': 'qtile cmd-obj -o cmd -f shutdown',
             'reload': 'qtile cmd-obj -o cmd -f reload_config',
+            'logout': 'qtile cmd-obj -o cmd -f shutdown',
             'restart': 'systemctl reboot',
-            'poweroff': 'systemctl poweroff'
+            'shutdown': 'systemctl poweroff'
         },
         dmenu_prompt="PowerMenu",
+        **dmenu_theme
+    ))),
+    Key([mod], "o", lazy.run_extension(extension.CommandSet(
+        commands={
+            'both': 'both.sh',
+            'laptop': 'laptop.sh',
+            'desktop': 'monitor.sh',
+        },
+        dmenu_prompt="Screen layout",
         **dmenu_theme
     )))
 ]
 
-groups = [Group(i) for i in "asdfhjkl"]
-
 groups = [
-    Group(name="a", label="ܐ", matches=[Match(wm_class="emacs")]),
-    Group(name="s", label="ܣ", matches=[Match(wm_class="firefox"), Match(wm_class="librewolf")]),
-    Group(name="d", label="ܕ", matches=[Match(wm_class="discord")]),
-    Group(name="f", label="ܦ", matches=[Match(wm_class="Mail")]),
-    Group(name="h", label="ܗ"),
-    Group(name="j", label="ܥ"),
-    Group(name="k", label="ܟ"),
-    Group(name="l", label="ܠ", matches=[Match(wm_class="virt-manager")]),
+    Group(name="a", label="A", matches=[Match(wm_class="emacs")]),
+    Group(name="s", label="S", matches=[Match(wm_class="firefox"), Match(wm_class="librewolf")]),
+    Group(name="d", label="D", matches=[Match(wm_class="discord")]),
+    Group(name="f", label="F", matches=[Match(wm_class="Mail")]),
+    Group(name="h", label="H"),
+    Group(name="j", label="J"),
+    Group(name="k", label="K"),
+    Group(name="l", label="L", matches=[Match(wm_class="virt-manager")]),
 ]
 
 for i in groups:
@@ -120,13 +126,12 @@ widget_defaults = dict(
     fontsize=15,
     padding=6,
     foreground=theme["foreground"],
-    theme_path='/usr/share/icons/Papirus-Dark'
+    theme_path='/usr/share/icons/Papirus-Dark',
+    icon_size=20,
 )
 extension_defaults = widget_defaults.copy()
 
 groupsWidget = dict(
-    font="AramaicShimo",
-    fontsize=24,
     highlight_method='block',
     block_highlight_text_color=theme["background"],
     this_current_screen_border=theme["foreground"],
@@ -135,7 +140,6 @@ groupsWidget = dict(
 
 kbdWidget= dict(
     configured_keyboards=['us','ara'],
-    padding=10
 )
 
 powerWidget = dict(
@@ -145,7 +149,6 @@ powerWidget = dict(
 alsaWidget = dict(
     mode="both",
     bar_width=20,
-    icon_size=20,
     bar_colour_mute=theme["background"],
     bar_colour_normal=theme["background"],
     bar_colour_high=theme["background"],
@@ -157,7 +160,6 @@ alsaWidget = dict(
 lightWidget = dict(
     mode="both",
     bar_width=20,
-    icon_size=20,
     bar_colour_low=theme["background"],
     bar_colour_normal=theme["background"],
     bar_colour_high=theme["background"],
@@ -170,12 +172,15 @@ systrayWidget = dict(
 )
 
 clockWidget = dict(
-    padding=1,
     format="%y-%m-%d %a %H:%M"
 )
 
 spacerWidget = dict(
     length=10,
+)
+
+latteOptions = dict(
+    icon_size=15
 )
 
 screens = [
@@ -186,10 +191,11 @@ screens = [
                 widget.GroupBox(**groupsWidget),
                 widget.WindowName(),
                 widget.Spacer(),
+                # w.LatteWidget(**latteOptions),
                 widget.Systray(**systrayWidget),
-                widget.LightControlWidget(**lightWidget),
-                widget.UPowerWidget(**powerWidget),
-                widget.ALSAWidget(**alsaWidget),
+                # widget.LightControlWidget(**lightWidget),
+                w.UPowerWidget(**powerWidget),
+                # w.ALSAWidget(**alsaWidget),
                 widget.KeyboardLayout(**kbdWidget),
                 widget.Clock(**clockWidget),
                 widget.Spacer(**spacerWidget)
@@ -198,6 +204,7 @@ screens = [
             background=theme["background"],
         ),
     ),
+    Screen(),
 ]
 
 # Drag floating layouts.
