@@ -37,7 +37,7 @@
 
 Widget's with (extras) come from the qtile-extras package.
 
-- AGroupBox
+- GroupBox
 - WindowName
 - LatteWidget (extras)
 - LightControlWidget (extras)

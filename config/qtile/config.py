@@ -5,6 +5,8 @@ from qtile_extras import widget as w
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+import latte as l
+import alsavolumecontrol as als
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -35,16 +37,16 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     # volume and brightness controlls using the appropriate keys
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
-    Key([], "XF86AudioMute", lazy.spawn("amixer sset Master 1+ toggle"), desc="Mute/Unmute Volume"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 5"), desc="Brightness up"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 5"), desc="Brightness down"),
+    Key([], "XF86AudioLowerVolume", lazy.widget["alsawidget"].volume_down(), desc="Lower Volume by 5%"),
+    Key([], "XF86AudioRaiseVolume", lazy.widget["alsawidget"].volume_up(), desc="Raise Volume by 5%"),
+    Key([], "XF86AudioMute", lazy.widget["alsawidget"].toggle_mute(), desc="Mute/Unmute Volume"),
+    Key([], "XF86MonBrightnessDown", lazy.widget["lightcontrolwidget"].brightness_down(), desc="Brightness down"),
+    Key([], "XF86MonBrightnessUp", lazy.widget["lightcontrolwidget"].brightness_up(), desc="Brightness up"),
     # vulume and brightnes controlls using the arrow keys
-    Key([mod], "Left", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
-    Key([mod], "Right", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
-    Key([mod], "Up", lazy.spawn("light -A 5"), desc="Brightness up"),
-    Key([mod], "Down", lazy.spawn("light -U 5"), desc="Brightness down"),
+    Key([mod], "Left", lazy.widget["alsawidget"].volume_down(), desc="Lower Volume by 5%"),
+    Key([mod], "Right", lazy.widget["alsawidget"].volume_up(), desc="Raise Volume by 5%"),
+    Key([mod], "Down", lazy.widget["lightcontrolwidget"].brightness_down(), desc="Brightness down"),
+    Key([mod], "Up", lazy.widget["lightcontrolwidget"].brightness_up(), desc="Brightness up"),
     # switch keyboard layouts
     Key([mod], "Space",  lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
     # take a screenshot
@@ -126,7 +128,6 @@ widget_defaults = dict(
     fontsize=15,
     padding=6,
     foreground=theme["foreground"],
-    theme_path='/usr/share/icons/Papirus-Dark',
     icon_size=20,
 )
 extension_defaults = widget_defaults.copy()
@@ -140,6 +141,7 @@ groupsWidget = dict(
 
 kbdWidget= dict(
     configured_keyboards=['us','ara'],
+    padding= 10
 )
 
 powerWidget = dict(
@@ -147,23 +149,35 @@ powerWidget = dict(
 )
 
 alsaWidget = dict(
-    mode="both",
-    bar_width=20,
+    mode="drawing",
+    bar_width=25,
     bar_colour_mute=theme["background"],
     bar_colour_normal=theme["background"],
     bar_colour_high=theme["background"],
     bar_colour_loud=theme["background"],
-    margin=10,
-    padding=0
+    padding=10,
+    theme_path='/usr/share/icons/Papirus-Dark',
+    hide_interval=1,
+    icon_size=17
 )
 
 lightWidget = dict(
     mode="both",
-    bar_width=20,
+    bar_width=25,
     bar_colour_low=theme["background"],
-    bar_colour_normal=theme["background"],
+    bar_colour_medium=theme["background"],
     bar_colour_high=theme["background"],
-    padding=10
+    fill_colour_low=theme["foreground"],
+    fill_colour_medium=theme["foreground"],
+    fill_colour_high=theme["foreground"],
+    fill_colour_full=theme["foreground"],
+    border_colour_low=theme["foreground"],
+    border_colour_medium=theme["foreground"],
+    border_colour_high=theme["foreground"],
+    border_colour_full=theme["foreground"],
+    padding=5,
+    icon_size=12,
+    hide_interval=1
 )
 
 systrayWidget = dict(
@@ -179,8 +193,10 @@ spacerWidget = dict(
     length=10,
 )
 
+
 latteOptions = dict(
-    icon_size=15
+    icon_size=12,
+    padding=10,
 )
 
 screens = [
@@ -191,14 +207,15 @@ screens = [
                 widget.GroupBox(**groupsWidget),
                 widget.WindowName(),
                 widget.Spacer(),
-                # w.LatteWidget(**latteOptions),
                 widget.Systray(**systrayWidget),
-                # widget.LightControlWidget(**lightWidget),
+                widget.Spacer(**spacerWidget),
+                l.LatteWidget(**latteOptions),
                 w.UPowerWidget(**powerWidget),
-                # w.ALSAWidget(**alsaWidget),
+                w.LightControlWidget(**lightWidget),
+                als.ALSAWidget(**alsaWidget),
                 widget.KeyboardLayout(**kbdWidget),
                 widget.Clock(**clockWidget),
-                widget.Spacer(**spacerWidget)
+                widget.LaunchBar(text_only=True, progs=[("⏻", "wlogout", "power menu")])
             ],
             30,
             background=theme["background"],
