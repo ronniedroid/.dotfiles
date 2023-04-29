@@ -6,63 +6,65 @@ set $up l
 set $right semicolon
 set $term alacritty
 set $menu wofi -I -i -a --show drun
-set $gnome-schema org.gnome.desktop.interfac
+set $gnome-schema org.gnome.desktop.interface
 set $laptop eDP-1
+
+## Make GTK+ apps work well
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 ### theme
 exec_always import-gsettings
 
 gaps {
-    inner 0
-    outer 0
+    inner 2
+    outer 2
 }
 
 default_border pixel 2
 titlebar_border_thickness 0
 titlebar_padding 0 0
 
-
-client.focused #ffffff #92baff #92baff #92baff
-client.focused_inactive #434343 #434343 #434343 #434343
-client.unfocused #434343 #434343 #434343 #434343
+client.focused #3584e4 #3584e4 #3584e4 #3584e4
+client.focused_inactive #ffffff #ffffff #ffffff #ffffff
+client.unfocused #ffffff #ffffff #ffffff #ffffff
 
 ### startup
 
 exec {
-    powermenu
-    grim
     nm-applet --indicator
     udiskie --no-automount --no-notify --tray
 }
 
 ### Output configuration
 
-exec_always kanshi
-
 output {
-    * bg ~/Pictures/wallpaper.jpg stretch
-#    HDMI-A-1 bg ~/Pictures/wallpapers/w1.jpg stretch
-#    DP-1 bg ~/Pictures/wallpapers/w2.jpg stretch
-    # HDMI-A-1 res 1920x1080 pos 0,0
-    # DP-1 res 1920x1080 pos 1920,0
-    # eDP-1 res 1366x768 pos 3840,0
+    * bg ~/Pictures/wallpaper.png stretch
 }
 
+## Disable the laptop screen when closed and enable when opened
 # bindswitch --reload --locked lid:on output $laptop disable
 # bindswitch --reload --locked lid:off output $laptop enable
-
 # exec_always clamshell.sh
+
+exec_always kanshi
 
 ### Idle configuration
  exec swayidle -w \
-          timeout 300 'swaylock -f -i ~/Pictures/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
-          before-sleep 'swaylock -f -i ~/Pictures/wallpaper.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
+          timeout 300 'swaylock -f -i ~/Pictures/wallpaper.png --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
+          before-sleep 'swaylock -f -i ~/Pictures/wallpaper.png --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
 
 ### Input configuration
    input "type:keyboard" {
        xkb_layout us,ara
-       xkb_options ctrl:nocaps,grp:win_space_toggle
+       xkb_options ctrl:nocaps,grp:win_space_toggle,altwin:swap_lalt_lwin
    }
+
+### Window rules
+for_window [app_id="com.github.finefindus.eyedropper"] floating enable; resize set width 400 height 600
+for_window [app_id="org.gnome.Calculator"] floating enable; resize set width 400 height 600
+for_window [app_id="com.stremio.Stremio"] inhibit_idle visible; border none
 
 ### Key bindings
 floating_modifier $mod normal
@@ -105,12 +107,19 @@ bindsym --to-code {
     $mod+e layout toggle split
     $mod+Shift+f floating toggle
     $mod+tab focus mode_toggle
-    # brightness controlls 
-    $mod+Down exec light -U 5
-    $mod+Up exec light -A 5
-    $mod+Left exec amixer set 'Master' 10%-
-    $mod+Right exec amixer set 'Master' 10%+
+    $mod+p exec $HOME/.local/bin/pmenu.sh
+    $mod+o exec $HOME/.local/bin/grim.sh
     }
+
+bindsym --locked {
+    # Brightness control
+    XF86MonBrightnessDown exec light -U 5
+    XF86MonBrightnessUp exec light -A 5
+    # Volum control
+    XF86AudioMute exec amixer set Master toggle
+    XF86AudioLowerVolume exec amixer set Master 10%-
+    XF86AudioRaiseVolume exec amixer set Master 10%+
+}
 
 ### binding modes
 mode "resize" {
@@ -129,7 +138,7 @@ bindsym --to-code {
     $mod+r mode "resize"
 }
 
-# Status Bar:
+### Status Bar:
 bar {
         swaybar_command waybar
 }

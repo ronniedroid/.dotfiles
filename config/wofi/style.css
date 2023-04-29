@@ -1,0 +1,14 @@
+#outer-box {
+  background-color: @theme_base_color;
+  border: 2px solid @theme_selected_bg_color;
+}
+
+#input {
+  background-color: @theme_base_color;
+  border: none;
+  border-radius: 0;
+}
+
+#inner-box {
+  background-color: @theme_bg_color;
+}

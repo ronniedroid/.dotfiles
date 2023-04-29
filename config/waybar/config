@@ -55,7 +55,7 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": " ",
         "format-icons": {
             "default": ["", "", ""]
         },
@@ -68,31 +68,47 @@
     "height": 30,
     "spacing": 10,
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window",],
-    "modules-right": ["idle_inhibitor", "sway/language", "clock", "pulseaudio", "battery", "backlight", "tray"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": ["tray", "custom/sep", "idle_inhibitor", "pulseaudio", "battery", "backlight", "custom/sep",  "sway/language", "clock", "custom/sep", "custom/pmenu"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{name}",
-        "persistent_workspaces": {
-        "1": [],
-        "2": [],
-        "3": [],
-        "4": [],
-        "5": [],
-        "6": []
+        "format": "{icon}",
+        "format-icons": {
+        "1": "a",
+        "2": "s",
+        "3": "d",
+        "4": "f",
+        "5": "u",
+        "6": "i"
         }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
+    "sway/wondow": {
+        "max-length": 100,
+    },
+    "sway/language": {
+        "format": " {}",
+    },
+    "custom/pmenu": {
+        "format": "{icon}",
+        "format-icons": "  ",
+        "on-click": "$HOME/.local/bin/pmenu.sh",
+        "tooltip": false,
+    },
+    "custom/sep": {
+        "format": "{icon}",
+        "format-icons": "|",
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "  ",
-            "deactivated": "  "
+            "activated": " 󰅶 ",
+            "deactivated": " 󰾪 "
         }
     },
     "tray": {
@@ -101,7 +117,7 @@
     },
     "clock": {
         "timezone": "Asia/Baghdad",
-        "format": "⌚{:%H:%M}",
+        "format": "{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -127,7 +143,7 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": " ",
         "format-icons": {
             "default": ["", "", ""]
         },

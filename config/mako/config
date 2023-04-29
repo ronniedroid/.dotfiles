@@ -1,10 +1,10 @@
 font=Hack Nerd Font 9
-background-color=#434343
-text-color=#92baff
-width=200
+background-color=#f6f5f4
+text-color=#000000
+width=250
 border-size=2
-border-color=#92baff
-icon-path=/usr/share/icons/Papirus-Light
+border-color=#3584e4
+icon-path=/usr/share/icons/Adwaita
 default-timeout=5000
 ignore-timeout=1
 margin=40
