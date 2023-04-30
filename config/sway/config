@@ -18,8 +18,8 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 exec_always import-gsettings
 
 gaps {
-    inner 2
-    outer 2
+    inner 5
+    outer 5
 }
 
 default_border pixel 2
@@ -40,7 +40,7 @@ exec {
 ### Output configuration
 
 output {
-    * bg ~/Pictures/wallpaper.png stretch
+    * bg ~/Pictures/wallpapers/wallpaper.jpg stretch
 }
 
 ## Disable the laptop screen when closed and enable when opened
@@ -52,8 +52,8 @@ exec_always kanshi
 
 ### Idle configuration
  exec swayidle -w \
-          timeout 300 'swaylock -f -i ~/Pictures/wallpaper.png --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
-          before-sleep 'swaylock -f -i ~/Pictures/wallpaper.png --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
+          timeout 300 'swaylock -f -i ~/Pictures/wallpapers/wallpaper-lock.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff' \
+          before-sleep 'swaylock -f -i ~/Pictures/wallpapers/wallpaper-lock.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
 
 ### Input configuration
    input "type:keyboard" {
