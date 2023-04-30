@@ -1,152 +1,29 @@
 [{
     "layer": "top",
-             "output": "HDMI-A-1",
+    "output": "HDMI-A-1",
     "position": "bottom",
     "height": 30,
     "spacing": 10,
+    // Import configuration
+    "include": [
+        "~/.config/waybar/modules.json",
+    ],    
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window",],
-    "modules-right": ["idle_inhibitor", "sway/language", "clock", "pulseaudio", "battery", "tray"],
-    // Modules configuration
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}",
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "  ",
-            "deactivated": "  "
-        }
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        "timezone": "Asia/Baghdad",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}% ",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}%",
-        "format-muted": " ",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-}, {
+    "modules-right": ["tray", "custom/sep", "idle_inhibitor", "pulseaudio", "battery", "custom/sep",  "sway/language", "clock", "custom/sep", "custom/pmenu"],
+},
+{
     "layer": "top",
-             "output": "eDP-1",
+    "output": "eDP-1",
     "position": "bottom",
     "height": 30,
     "spacing": 10,
+    // Import modules
+    "include": [
+        "~/.config/waybar/modules.json",
+    ],
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": [],
     "modules-right": ["tray", "custom/sep", "idle_inhibitor", "pulseaudio", "battery", "backlight", "custom/sep",  "sway/language", "clock", "custom/sep", "custom/pmenu"],
-    // Modules configuration
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-        "1": "a",
-        "2": "s",
-        "3": "d",
-        "4": "f",
-        "5": "u",
-        "6": "i"
-        }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/wondow": {
-        "max-length": 100,
-    },
-    "sway/language": {
-        "format": " {}",
-    },
-    "custom/pmenu": {
-        "format": "{icon}",
-        "format-icons": "  ",
-        "on-click": "$HOME/.local/bin/pmenu.sh",
-        "tooltip": false,
-    },
-    "custom/sep": {
-        "format": "{icon}",
-        "format-icons": "|",
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": " 󰅶 ",
-            "deactivated": " 󰾪 "
-        }
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        "timezone": "Asia/Baghdad",
-        "format": "{:%H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}%",
-        "format-muted": " ",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
 }]
