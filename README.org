@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles and scripts
 
-#+ATTR_ORG: :width 500
-[[file:screenshot.png][My Desktop Screenshot]]
+#+ATTR_HTML: :width 500
+[[file:screenshot.png]]
 
 * Install
 
