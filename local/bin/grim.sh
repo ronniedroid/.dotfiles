@@ -12,7 +12,7 @@ now=$(date +"%a-%Y-%m-%d-%I-%M-%S")
 
 [ -z $get_name ] && name=$now || name=$get_name
 
-dir=$(xdg-user-dir PICTURES)/"$name.png"
+dir=$(xdg-user-dir PICTURES)/Screenshots/"$name.png"
 
 quick() {
 	sleep 1 && grim $dir
