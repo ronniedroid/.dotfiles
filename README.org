@@ -1,18 +1,18 @@
-#+TITLE: My Personal Dotfiles and scripts
+#+TITLE: My Personal Dotfiles and Scripts
 
 #+ATTR_HTML: :width 500
 [[file:screenshot.png]]
 
 * Install
 
-- Install all the depencencies
+- Install all the dependencies
 - Install RCM dotifles management tool
 - clone this repo to your $HOME directory
 - cd into $HOME/.dotfiles/
 - cp rcrc to $HOME/.rcrc
 - run rcup -v
 
-* depencencies
+* dependencies
 
 ** Software I use
 
@@ -34,13 +34,21 @@
 
 * The dotfiles
 
+** Configurations 
+
+A very simple Sway, Waybar, Mako and wofi.
+Mostly trying to follow the adwaita theme colors.
+
+Waybar and Wofi pick there colors from the currently
+set GTK theme.
+
 ** Scripts
 
-scripts found under local/bin
+Scripts found under local/bin
 
  - Clamshell: Disable the laptop display when the led is closed, made for sway (Unused when using Kanshi).
- - grim.sh: Takes a screenshot, uses wofi to name the file (optionally) and to choose a screenshot mode. (bound to mode+o)
- - pmenu.sh: Simple powermenu using wofi. (bound to mode+p)
+ - grim.sh: Takes a screenshot, uses wofi to name the file (optionally) and to choose a screenshot mode. (bound to `mode+o`)
+ - pmenu.sh: Simple powermenu using wofi. (bound to `mode+p`)
  - import-gsettings: imports GTK settings into Sway (not sure I am keeping this one)
 
 * Links to my projects
