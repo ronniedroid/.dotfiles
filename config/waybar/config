@@ -11,7 +11,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window",],
-    "modules-right": ["tray", "custom/sep", "idle_inhibitor", "pulseaudio", "battery", "custom/sep",  "sway/language", "clock", "custom/sep", "custom/pmenu"],
+    "modules-right": ["tray", "custom/sep", "idle_inhibitor", "pulseaudio", "battery", "custom/sep",  "sway/language", "clock", "custom/sep", "custom/max", "custom/float", "custom/kill", "custom/sep", "custom/pmenu"],
 },
 {
     "layer": "top",

@@ -4,8 +4,8 @@ set $left j
 set $down k
 set $up l
 set $right semicolon
-set $term alacritty
-set $menu wofi -I -i -a --show drun
+set $term foot
+set $menu wofi -I -i -a --width 300 --show drun
 set $gnome-schema org.gnome.desktop.interface
 set $laptop eDP-1
 
@@ -56,21 +56,28 @@ exec_always kanshi
           before-sleep 'swaylock -f -i ~/Pictures/wallpapers/wallpaper-lock.jpg --ring-color 000000 -r -K --key-hl-color 92baff --separator-color 92baff'
 
 ### Input configuration
-   input "type:keyboard" {
-       xkb_layout us,ara
-       xkb_options ctrl:nocaps,grp:win_space_toggle,altwin:swap_lalt_lwin
-   }
+input "type:keyboard" {
+    xkb_layout us,ara
+    xkb_options ctrl:nocaps,grp:win_space_toggle
+}
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll disabled
+}
 
 ### Window rules
 for_window [app_id="com.github.finefindus.eyedropper"] floating enable; resize set width 400 height 600
 for_window [app_id="org.gnome.Calculator"] floating enable; resize set width 400 height 600
 for_window [app_id="com.stremio.Stremio"] inhibit_idle visible; border none
+focus_follows_mouse no
 
 ### Key bindings
 floating_modifier $mod normal
+
 bindsym --to-code {
     # Basics:
-    $mod+Return exec $term
+    $mod+t exec $term
     $mod+q kill
     $mod+x exec $menu
     $mod+Ctrl+r reload
@@ -105,7 +112,8 @@ bindsym --to-code {
     $mod+v splitv
     # Switch the current container between different layout styles
     $mod+e layout toggle split
-    $mod+Shift+f floating toggle
+    $mod+Shift+f floating
+    $mod+Alt+f fullscreen
     $mod+tab focus mode_toggle
     $mod+p exec $HOME/.local/bin/pmenu.sh
     $mod+o exec $HOME/.local/bin/grim.sh

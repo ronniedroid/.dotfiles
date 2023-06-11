@@ -18,7 +18,7 @@ set -gx JAVA_HOME ~/.local/bin/graalvm-ce-java17-22.1.0
 set -l xdg_data_home $XDG_DATA_HOME ~/.local/share
 set -gx --path XDG_DATA_DIRS $xdg_data_home[1]/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
 set XDG_CURRENT_DESKTOP sway
-set XDG_SESSION_DESKTOP sway
+set XDG_SESSION_TYPE wayland
 
 for flatpakdir in ~/.local/share/flatpak/exports/bin /var/lib/flatpak/exports/bin
     if test -d $flatpakdir

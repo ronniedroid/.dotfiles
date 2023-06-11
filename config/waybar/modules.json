@@ -3,6 +3,14 @@
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{icon}",
+    "persistent_workspaces": {
+      "1": "[]",
+      "2": "[]",
+      "3": "[]",
+      "4": "[]",
+      "5": "[]",
+      "6": "[]"
+    },
     "format-icons": {
       "1": "a",
       "2": "s",
@@ -21,9 +29,27 @@
   "sway/language": {
     "format": " {}"
   },
+  "custom/max": {
+    "format": "{icon}",
+    "format-icons": " ",
+    "on-click": "swaymsg fullscreen",
+    "tooltip": false
+  },
+  "custom/float": {
+    "format": "{icon}",
+    "format-icons": " ",
+    "on-click": "swaymsg floating toggle",
+    "tooltip": false
+  },
+  "custom/kill": {
+    "format": "{icon}",
+    "format-icons": " ",
+    "on-click": "swaymsg kill",
+    "tooltip": false
+  },
   "custom/pmenu": {
     "format": "{icon}",
-    "format-icons": "  ",
+    "format-icons": " ",
     "on-click": "$HOME/.local/bin/pmenu.sh",
     "tooltip": false
   },
@@ -34,8 +60,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": " 󰅶 ",
-      "deactivated": " 󰾪 "
+      "activated": "󰅶 ",
+      "deactivated": "󰾪 "
     }
   },
   "tray": {
@@ -60,9 +86,9 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-charging": "{capacity}% 󰢝 ",
-    "format-plugged": "{capacity}% 󰂄",
-    "format-alt": "{time} {icon}",
+    "format-charging": "󰢝 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]

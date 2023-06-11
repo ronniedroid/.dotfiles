@@ -13,12 +13,19 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
+#custom-pmenu {
+  padding-right: 10px;
+}
+
 #workspaces {
   padding-left: 10px;
 }
 
-#custom-pmenu {
-  padding-right: 10px;
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: inherit;
+  font-weight: bold;
 }
 
 #workspaces button {
@@ -27,12 +34,12 @@ window#waybar.hidden {
   margin: 5px 2px;
   background-color: @theme_bg_color;
   color: @theme_text_color;
-  border: 1px solid @theme_selected_bg_color;
+  border: 2px solid @theme_selected_bg_color;
   border-radius: 9999;
 }
 
-#workspaces button:hover {
-  color: #000000;
+#workspaces button.persistent {
+  border: 2px solid @borders;
 }
 
 #workspaces button.focused {
@@ -41,5 +48,5 @@ window#waybar.hidden {
 }
 
 #workspaces button.urgent {
-  background-color: @warning_color;
+  border: 2px solid @warning_color;
 }
