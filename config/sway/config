@@ -35,12 +35,13 @@ client.unfocused #ffffff #ffffff #ffffff #ffffff
 exec {
     nm-applet --indicator
     udiskie --no-automount --no-notify --tray
+    /usr/bin/lxpolkit
 }
 
 ### Output configuration
 
 output {
-    * bg ~/Pictures/wallpapers/wallpaper.jpg stretch
+    * bg ~/Pictures/wallpapers/wallpaper.jpg fill
 }
 
 ## Disable the laptop screen when closed and enable when opened
