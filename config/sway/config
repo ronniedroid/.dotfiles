@@ -6,8 +6,11 @@ set $up l
 set $right semicolon
 set $term foot
 set $menu wofi -I -i -a --width 300 --show drun
-set $gnome-schema org.gnome.desktop.interface
+set $gnome_schema org.gnome.desktop.interface
 set $laptop eDP-1
+set $gtk_theme 'adw-gtk3'
+set $icon_theme 'Papirus-Light'
+set $font_name 'Inter 11'
 
 ## Make GTK+ apps work well
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -15,7 +18,11 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 ### theme
-exec_always import-gsettings
+exec_always {
+    gsettings set $gnome_schema gtk-theme $gtk_theme
+    gsettings set $gnome_schema icon-theme $icon_theme
+    gsettings set $gnome_schema font-name $font_name
+}
 
 gaps {
     inner 5
@@ -35,7 +42,7 @@ client.unfocused #ffffff #ffffff #ffffff #ffffff
 exec {
     nm-applet --indicator
     udiskie --no-automount --no-notify --tray
-    /usr/bin/lxpolkit
+    /usr/libexec/polkit-gnome-authentication-agent-1
 }
 
 ### Output configuration
